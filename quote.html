@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Get a Quote — PAS Logistics</title>
+  <meta name="description" content="Request an instant quote for air & sea shipments." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Floating Header -->
+  <header class="siteHeader" id="siteHeader">
+    <div class="container headerInner">
+      <a class="brand" href="index.html#top" aria-label="Go to home">
+        <span class="brandMark" aria-hidden="true"></span>
+        <span class="brandText">
+          <strong>PAS Logistics</strong>
+          <small>International Freight & Logistics</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#tracking">Tracking</a>
+        <a href="index.html#certs">Certifications</a>
+        <a href="index.html#clients">Clients</a>
+        <a href="index.html#offices">Offices</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="quote.html" class="navCta">Get a Quote</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="quotePage">
+    <section class="section">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Instant Quote Request</h2>
+          <p>Fast response for air & sea shipment inquiries. Fill the form below (demo).</p>
+        </div>
+
+        <div class="quoteLayout">
+          <div class="quoteInfo">
+            <div class="infoCard">
+              <h3>What you’ll get</h3>
+              <ul class="niceList">
+                <li>Recommended routing & service option</li>
+                <li>Estimated lead time and handling plan</li>
+                <li>Basic documentation checklist</li>
+                <li>Dedicated follow-up by ops team</li>
+              </ul>
+            </div>
+
+            <div class="infoCard">
+              <h3>Contact</h3>
+              <p class="muted">
+                Email: ops@yourcompany.com<br/>
+                Phone: +62 000-0000-0000<br/>
+                Hours: Mon–Sat, 09:00–17:00
+              </p>
+              <a class="btn btnGhost" href="index.html#tracking">Track Shipment</a>
+            </div>
+          </div>
+
+          <div class="heroCard quoteCard">
+            <div class="heroCardHead">
+              <h2>Request Form</h2>
+              <p>Please provide shipment details so we can respond faster.</p>
+            </div>
+
+            <form class="form" id="quoteForm">
+              <div class="formRow">
+                <label>
+                  <span>Name</span>
+                  <input required name="name" type="text" placeholder="Your name" />
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input required name="email" type="email" placeholder="name@company.com" />
+                </label>
+              </div>
+
+              <div class="formRow">
+                <label>
+                  <span>Service</span>
+                  <select name="service" required>
+                    <option value="" selected disabled>Select service</option>
+                    <option>Air Freight</option>
+                    <option>Sea Freight</option>
+                    <option>Customs Brokerage</option>
+                    <option>Project Transportation</option>
+                    <option>Shipbroker & Logistics</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Origin → Destination</span>
+                  <input name="route" type="text" placeholder="Surabaya → Singapore" />
+                </label>
+              </div>
+
+              <label>
+                <span>Message</span>
+                <textarea name="message" rows="4" placeholder="Cargo details, weight/volume, timeline..."></textarea>
+              </label>
+
+              <button class="btn btnPrimary btnFull" type="submit">Submit Request</button>
+              <p class="formNote">This demo form shows a success message (no backend).</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footerBottom">
+        <small>© <span id="year"></span> PAS Logistics. All rights reserved.</small>
+        <small class="muted"><a href="index.html#top">Back to Home</a></small>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
