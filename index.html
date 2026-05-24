@@ -151,11 +151,40 @@
         </div>
 
         <form class="track" id="trackForm">
-          <input class="trackInput" type="text" name="tracking" placeholder="e.g. PAS-SEA-2026-000123" required />
+          <input class="trackInput" id="trackingInput" type="text" name="tracking" placeholder="e.g. PAS-SEA-2026-000123" required />
           <button class="btn btnPrimary" type="submit">Track</button>
         </form>
 
         <div class="trackResult" id="trackResult" aria-live="polite"></div>
+
+        <script>
+          document.getElementById('trackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const trackingNumber = document.getElementById('trackingInput').value.trim();
+
+            if (!trackingNumber) {
+              alert('Please enter tracking number');
+              return;
+            }
+
+            const popupWidth = 1200;
+            const popupHeight = 850;
+
+            const left = (window.screen.width / 2) - (popupWidth / 2);
+            const top = (window.screen.height / 2) - (popupHeight / 2);
+
+            window.open(
+              'tracking-detail.html?tracking=' + encodeURIComponent(trackingNumber),
+              'trackingPopup',
+              'width=' + popupWidth +
+              ',height=' + popupHeight +
+              ',top=' + top +
+              ',left=' + left +
+              ',scrollbars=yes,resizable=yes'
+            );
+          });
+        </script>
       </div>
     </section>
 

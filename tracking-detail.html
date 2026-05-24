@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tracking Detail - PAS Logistics</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    body{
+      margin:0;
+      background:#f4f6f9;
+      font-family:Arial,sans-serif;
+      color:#1f2937;
+    }
+
+    .trackingPage{
+      padding:30px;
+    }
+
+    .topBar{
+      background:#ffffff;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom:24px;
+    }
+
+    .topBar h1{
+      margin:0;
+      font-size:32px;
+      color:#0A4A95;
+    }
+
+    .summaryGrid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+      margin-bottom:24px;
+    }
+
+    .summaryCard{
+      background:#fff;
+      border-radius:18px;
+      padding:20px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .summaryCard h3{
+      margin:0;
+      font-size:14px;
+      color:#6b7280;
+    }
+
+    .summaryCard .value{
+      margin-top:10px;
+      font-size:24px;
+      font-weight:bold;
+    }
+
+    .contentGrid{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:24px;
+    }
+
+    .card{
+      background:#fff;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .shipmentHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:15px;
+      margin-bottom:20px;
+    }
+
+    .shipmentTitle{
+      font-size:28px;
+      font-weight:bold;
+    }
+
+    .statusBadge{
+      background:#d1fae5;
+      color:#047857;
+      padding:10px 18px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:bold;
+    }
+
+    .infoGrid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-bottom:25px;
+    }
+
+    .infoBox{
+      background:#f9fafb;
+      border-radius:14px;
+      padding:16px;
+    }
+
+    .infoBox label{
+      display:block;
+      color:#6b7280;
+      font-size:13px;
+      margin-bottom:6px;
+    }
+
+    .timeline{
+      position:relative;
+      margin-top:20px;
+    }
+
+    .timeline:before{
+      content:'';
+      position:absolute;
+      left:14px;
+      top:0;
+      bottom:0;
+      width:3px;
+      background:#d1d5db;
+    }
+
+    .timelineItem{
+      position:relative;
+      padding-left:50px;
+      margin-bottom:28px;
+    }
+
+    .timelineDot{
+      width:16px;
+      height:16px;
+      border-radius:50%;
+      background:#0A4A95;
+      position:absolute;
+      left:8px;
+      top:5px;
+      border:4px solid #dbeafe;
+    }
+
+    .timelineItem h4{
+      margin:0;
+      font-size:17px;
+    }
+
+    .timelineItem p{
+      margin:8px 0;
+      color:#6b7280;
+    }
+
+    .closeBtn{
+      display:inline-block;
+      margin-top:20px;
+      background:#0A4A95;
+      color:#fff;
+      text-decoration:none;
+      padding:12px 24px;
+      border-radius:12px;
+      font-weight:bold;
+    }
+
+    @media(max-width: 900px){
+      .contentGrid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="trackingPage">
+
+  <div class="topBar">
+    <h1>Shipment Tracking Detail</h1>
+    <p>Real-time logistics tracking information for your shipment.</p>
+  </div>
+
+  <div class="summaryGrid">
+    <div class="summaryCard">
+      <h3>Tracking Number</h3>
+      <div class="value" id="trackingNumber">-</div>
+    </div>
+
+    <div class="summaryCard">
+      <h3>Status</h3>
+      <div class="value">In Transit</div>
+    </div>
+
+    <div class="summaryCard">
+      <h3>Origin</h3>
+      <div class="value">Surabaya</div>
+    </div>
+
+    <div class="summaryCard">
+      <h3>Destination</h3>
+      <div class="value">Singapore</div>
+    </div>
+  </div>
+
+  <div class="contentGrid">
+
+    <div class="card">
+
+      <div class="shipmentHeader">
+        <div class="shipmentTitle">Container Shipment</div>
+        <div class="statusBadge">ON DELIVERY PROCESS</div>
+      </div>
+
+      <div class="infoGrid">
+
+        <div class="infoBox">
+          <label>Consignee</label>
+          <strong>PT Vista Education</strong>
+        </div>
+
+        <div class="infoBox">
+          <label>Service Type</label>
+          <strong>Sea Freight</strong>
+        </div>
+
+        <div class="infoBox">
+          <label>Estimated Arrival</label>
+          <strong>25 May 2026</strong>
+        </div>
+
+      </div>
+
+      <h2>Shipment Timeline</h2>
+
+      <div class="timeline">
+
+        <div class="timelineItem">
+          <div class="timelineDot"></div>
+          <h4>Shipment Created</h4>
+          <p>Shipment data has been successfully created in system.</p>
+        </div>
+
+        <div class="timelineItem">
+          <div class="timelineDot"></div>
+          <h4>Picked Up</h4>
+          <p>Goods have been picked up from sender warehouse.</p>
+        </div>
+
+        <div class="timelineItem">
+          <div class="timelineDot"></div>
+          <h4>Custom Clearance</h4>
+          <p>Shipment completed customs clearance process.</p>
+        </div>
+
+        <div class="timelineItem">
+          <div class="timelineDot"></div>
+          <h4>On Delivery Process</h4>
+          <p>Shipment is currently heading to destination port.</p>
+        </div>
+
+      </div>
+
+      <a href="#" class="closeBtn" onclick="window.close()">Close Window</a>
+
+    </div>
+
+    <div class="card">
+
+      <h2>Shipment Information</h2>
+
+      <div class="infoGrid" style="grid-template-columns:1fr;">
+
+        <div class="infoBox">
+          <label>Container No</label>
+          <strong>MSCU-458221</strong>
+        </div>
+
+        <div class="infoBox">
+          <label>Weight</label>
+          <strong>2,200 KG</strong>
+        </div>
+
+        <div class="infoBox">
+          <label>Last Location</label>
+          <strong>Tanjung Perak Port</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const tracking = params.get('tracking') || 'PAS-SEA-2026-000123';
+  document.getElementById('trackingNumber').innerText = tracking;
+</script>
+
+</body>
+</html>
