@@ -1128,6 +1128,14 @@
             const query = inputEl.value.trim();
 
             if (!query) return;
+            
+            // Check API Key existence before sending
+            const savedApiKey = localStorage.getItem('gemini_api_key') || '';
+            if (!savedApiKey) {
+                showToast('API Key belum diisi! Cek menu Training Center.', 'error');
+                console.error("DEBUG: API Key kosong di LocalStorage.");
+            }
+
             inputEl.value = '';
 
             // User Chat Bubble
@@ -1161,7 +1169,6 @@
             // Fetch settings from LocalStorage
             const activePersona = localStorage.getItem('logibot_persona') || DEFAULT_PERSONA;
             const rules = JSON.parse(localStorage.getItem('logibot_rules') || '[]');
-            const savedApiKey = localStorage.getItem('gemini_api_key') || '';
 
             let processed = false;
             const useGrounding = document.getElementById('search-grounding').checked;
@@ -1169,7 +1176,6 @@
             // Use the saved API key
             const apiKey = savedApiKey || "";
             
-            // Ganti ke model gemini-1.5-flash untuk performa produksi yang stabil
             const modelName = "gemini-1.5-flash"; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
@@ -1189,13 +1195,13 @@
                         systemInstruction: { parts: [{ text: systemInstruction }] }
                     };
 
-                    // PERBAIKAN UTAMA: Mengganti "google_search" menjadi "googleSearch" sesuai standar REST API generateContent
                     if (useGrounding) { 
+                        // Using explicit tool config for Search
                         payload.tools = [{ "googleSearch": {} }]; 
                     }
 
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 12000); // Batas waktu respons diperluas ke 12 detik
+                    const timeoutId = setTimeout(() => controller.abort(), 12000);
 
                     const response = await fetch(apiUrl, {
                         method: 'POST',
@@ -1207,10 +1213,10 @@
 
                     const result = await response.json();
                     
-                    // Deteksi jika API mengembalikan payload error (misalnya API key salah/quota habis)
-                    if (result.error) {
-                        console.error("Gemini API Error Detail:", result.error);
-                        throw new Error(`${result.error.message} (Kode: ${result.error.code})`);
+                    // Detailed logging for debugging
+                    if (!response.ok) {
+                        console.error("DEBUG: Gemini API Response Error:", result);
+                        throw new Error(result.error?.message || "Request API gagal");
                     }
 
                     const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
@@ -1232,8 +1238,7 @@
                         processed = true;
                     }
                 } catch (e) {
-                    console.error("Koneksi API Gemini Gagal:", e);
-                    // Informasikan error ke ruang obrolan agar pengguna tahu penyebab kegagalan API
+                    console.error("DEBUG: Koneksi API Gemini Gagal:", e);
                     const loaderEl = document.getElementById(loadId);
                     if (loaderEl) loaderEl.remove();
                     
@@ -1244,9 +1249,9 @@
                             </div>
                             <div class="bg-red-950/20 rounded-2xl p-3 border border-red-900/30">
                                 <p class="text-xs text-red-400 leading-relaxed font-semibold">
-                                    ⚠️ LogiBot mengalami kendala saat memproses kunci API Anda.<br>
-                                    <span class="text-[10px] font-normal opacity-90 block mt-1">Detail Error: ${e.message}</span>
-                                    <span class="text-[9px] font-normal text-slate-400 block mt-1">Sistem otomatis beralih sementara ke database offline/mock untuk menjawab kueri Anda.</span>
+                                    ⚠️ LogiBot gagal merespon.<br>
+                                    <span class="text-[10px] font-normal opacity-90 block mt-1">Error: ${e.message}</span>
+                                    <span class="text-[9px] font-normal text-slate-400 block mt-1">Cek Console (F12) untuk detail error. Menggunakan jawaban offline.</span>
                                 </p>
                             </div>
                         </div>
@@ -1255,7 +1260,7 @@
                 }
             }
 
-            // High-fidelity fallback jika API key kosong atau gagal diproses
+            // High-fidelity fallback if API fails
             if (!processed) {
                 setTimeout(() => {
                     const loaderEl = document.getElementById(loadId);
