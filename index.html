@@ -369,7 +369,7 @@
                     <div class="flex items-center justify-between mt-2 px-1">
                         <span class="text-[10px] text-slate-500 flex items-center space-x-1">
                             <i data-lucide="info" class="w-3 h-3 text-indigo-400"></i>
-                            <span>Didukung model AI tingkat lanjut</span>
+                            <span>Didukung model AI tingkat lanjut (Gemini 1.5 Flash)</span>
                         </span>
                         <button onclick="toggleSlideOver('training-center')" class="text-[10px] text-indigo-400 hover:text-indigo-300 font-bold flex items-center space-x-0.5">
                             <i data-lucide="brain" class="w-3 h-3"></i>
@@ -1094,7 +1094,6 @@
             // Look into active user memory rules first using keyword frequency
             for (const rule of rules) {
                 const titleWords = rule.title.toLowerCase().split(/\s+/).filter(w => w.length > 3);
-                const descWords = rule.desc.toLowerCase().split(/\s+/).filter(w => w.length > 3);
                 
                 // If query matches rule title or description elements
                 const matchesTitle = titleWords.filter(word => q.includes(word)).length >= 2;
@@ -1167,9 +1166,12 @@
             let processed = false;
             const useGrounding = document.getElementById('search-grounding').checked;
 
-            // Use the saved API key, fallback to blank string (which our system preview handles)
+            // Use the saved API key
             const apiKey = savedApiKey || "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            
+            // Ganti ke model gemini-1.5-flash untuk performa produksi yang stabil
+            const modelName = "gemini-1.5-flash"; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
             // Check if we have an API key or if we are in the development sandbox environment
             const isSandbox = window.location.hostname === 'localhost' || 
@@ -1187,10 +1189,13 @@
                         systemInstruction: { parts: [{ text: systemInstruction }] }
                     };
 
-                    if (useGrounding) { payload.tools = [{ "google_search": {} }]; }
+                    // PERBAIKAN UTAMA: Mengganti "google_search" menjadi "googleSearch" sesuai standar REST API generateContent
+                    if (useGrounding) { 
+                        payload.tools = [{ "googleSearch": {} }]; 
+                    }
 
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 7000); // 7-second timeout for rapid fallback
+                    const timeoutId = setTimeout(() => controller.abort(), 12000); // Batas waktu respons diperluas ke 12 detik
 
                     const response = await fetch(apiUrl, {
                         method: 'POST',
@@ -1201,6 +1206,13 @@
                     clearTimeout(timeoutId);
 
                     const result = await response.json();
+                    
+                    // Deteksi jika API mengembalikan payload error (misalnya API key salah/quota habis)
+                    if (result.error) {
+                        console.error("Gemini API Error Detail:", result.error);
+                        throw new Error(`${result.error.message} (Kode: ${result.error.code})`);
+                    }
+
                     const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
                     
                     if (text) {
@@ -1220,11 +1232,30 @@
                         processed = true;
                     }
                 } catch (e) {
-                    console.warn("API Connection failed, falling back to smart local rules matrix...");
+                    console.error("Koneksi API Gemini Gagal:", e);
+                    // Informasikan error ke ruang obrolan agar pengguna tahu penyebab kegagalan API
+                    const loaderEl = document.getElementById(loadId);
+                    if (loaderEl) loaderEl.remove();
+                    
+                    chat.innerHTML += `
+                        <div class="flex items-start space-x-2 max-w-[85%]">
+                            <div class="w-7 h-7 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 flex-shrink-0">
+                                <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                            </div>
+                            <div class="bg-red-950/20 rounded-2xl p-3 border border-red-900/30">
+                                <p class="text-xs text-red-400 leading-relaxed font-semibold">
+                                    ⚠️ LogiBot mengalami kendala saat memproses kunci API Anda.<br>
+                                    <span class="text-[10px] font-normal opacity-90 block mt-1">Detail Error: ${e.message}</span>
+                                    <span class="text-[9px] font-normal text-slate-400 block mt-1">Sistem otomatis beralih sementara ke database offline/mock untuk menjawab kueri Anda.</span>
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    chat.scrollTop = chat.scrollHeight;
                 }
             }
 
-            // High-fidelity fallback triggered when no key is entered, key fails, or offline
+            // High-fidelity fallback jika API key kosong atau gagal diproses
             if (!processed) {
                 setTimeout(() => {
                     const loaderEl = document.getElementById(loadId);
@@ -1234,7 +1265,7 @@
                     chat.innerHTML += `
                         <div class="flex items-start space-x-2 max-w-[85%]">
                             <div class="w-7 h-7 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 flex-shrink-0">
-                                <i data-lucide="bot" class="w-4 h-4"></i>
+                                    <i data-lucide="bot" class="w-4 h-4"></i>
                             </div>
                             <div class="bg-slate-900/50 rounded-2xl p-3 border border-slate-800/60">
                                 <p class="text-xs text-slate-200 whitespace-pre-line leading-relaxed">${fallbackText}</p>
