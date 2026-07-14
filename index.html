@@ -504,6 +504,25 @@
             </div>
 
             <div class="flex-1 overflow-y-auto pr-1 space-y-6">
+                <!-- API Key Configuration (Securely saved in browser LocalStorage) -->
+                <div class="space-y-3 p-3 bg-slate-950 rounded-xl border border-rose-500/10">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wide flex items-center space-x-1.5">
+                        <i data-lucide="key" class="w-3.5 h-3.5 text-rose-400"></i>
+                        <span>Integrasi Google Gemini API Key</span>
+                    </h4>
+                    <p class="text-[10px] text-slate-400 leading-relaxed">
+                        Agar asisten AI dapat berpikir cerdas di server GitHub Anda, dapatkan kunci API gratis melalui 
+                        <a href="https://aistudio.google.com/" target="_blank" class="text-rose-400 hover:underline font-semibold">Google AI Studio</a>. 
+                        Kunci ini disimpan aman di browser lokal Anda & tidak akan bocor ke publik.
+                    </p>
+                    <div class="flex space-x-2">
+                        <input type="password" id="gemini-api-key" placeholder="Masukkan API Key Anda (AIzaSy...)" class="flex-1 bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-rose-500">
+                        <button onclick="saveApiKey()" class="px-3 py-2 bg-rose-600 hover:bg-rose-500 rounded-lg text-white text-[11px] font-bold transition-all-300">
+                            Simpan
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Core Persona -->
                 <div class="space-y-2">
                     <h4 class="text-xs font-bold text-white uppercase tracking-wide">Core Persona Prompt</h4>
@@ -764,11 +783,22 @@
             }
             document.getElementById('training-persona').value = persona;
 
+            // Load API Key from localstorage
+            let apiKey = localStorage.getItem('gemini_api_key') || '';
+            document.getElementById('gemini-api-key').value = apiKey;
+
             let rules = localStorage.getItem('logibot_rules');
             if (!rules) {
                 localStorage.setItem('logibot_rules', JSON.stringify(DEFAULT_RULES));
             }
             renderRulesList();
+        }
+
+        // Save Custom API Key safely inside Local Storage
+        function saveApiKey() {
+            const key = document.getElementById('gemini-api-key').value.trim();
+            localStorage.setItem('gemini_api_key', key);
+            showToast('API Key berhasil disimpan dengan aman di browser!', 'success');
         }
 
         // Render knowledge rules UI inside training slider
@@ -856,6 +886,8 @@
         function resetTrainingToDefault() {
             localStorage.setItem('logibot_persona', DEFAULT_PERSONA);
             localStorage.setItem('logibot_rules', JSON.stringify(DEFAULT_RULES));
+            localStorage.removeItem('gemini_api_key');
+            document.getElementById('gemini-api-key').value = '';
             loadAITrainingSettings();
             showToast('Konfigurasi dikembalikan ke standar bawaan.', 'info');
         }
@@ -1055,17 +1087,25 @@
             document.getElementById('chat-input').value = text;
         }
 
-        // Simulating smart fallback in case Gemini API is not configured with direct key
+        // Smart match dynamic rule fallback engine when offline / no API key is provided
         function getSmartMockResponse(query, rules) {
             const q = query.toLowerCase();
             
-            // Check custom memory rules first
+            // Look into active user memory rules first using keyword frequency
             for (const rule of rules) {
-                if (q.includes(rule.title.toLowerCase()) || q.split(" ").some(word => word.length > 4 && rule.desc.toLowerCase().includes(word))) {
-                    return `Berdasarkan basis pengetahuan internal PAS Logistics:\n\n**${rule.title}**\n${rule.desc}`;
+                const titleWords = rule.title.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+                const descWords = rule.desc.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+                
+                // If query matches rule title or description elements
+                const matchesTitle = titleWords.filter(word => q.includes(word)).length >= 2;
+                const matchesDirect = q.includes(rule.title.toLowerCase());
+                
+                if (matchesTitle || matchesDirect) {
+                    return `📝 **[Jawaban Berbasis Memori Internal]**\n\n**${rule.title}**\n\n${rule.desc}\n\n*(Catatan: Jawaban disajikan berdasarkan basis memori kustom yang disuntikkan)*`;
                 }
             }
 
+            // Global standard fallbacks
             if (q.includes('singapura') || q.includes('lcl') || q.includes('tarif')) {
                 return `Untuk pengiriman LCL dari Singapura ke Jakarta (Tanjung Priok), estimasi tarif dasar adalah **USD 95 per CBM**. \n\nBiaya ini belum termasuk:\n- Bea Masuk Impor & PPN (sesuai HS Code barang)\n- Port Handling & Admin CFS Gudang: **Rp 850.000**\n\nAda dimensi kargo spesifik (Panjang x Lebar x Tinggi) yang ingin Anda hitungkan? Anda bisa menggunakan menu **CBM & Rate Estimator** di bagian atas!`;
             }
@@ -1119,18 +1159,24 @@
             lucide.createIcons();
             chat.scrollTop = chat.scrollHeight;
 
-            // Fetch settings
+            // Fetch settings from LocalStorage
             const activePersona = localStorage.getItem('logibot_persona') || DEFAULT_PERSONA;
             const rules = JSON.parse(localStorage.getItem('logibot_rules') || '[]');
+            const savedApiKey = localStorage.getItem('gemini_api_key') || '';
 
-            // Set up a brief timeout for API call, using smart local fallback as safety
             let processed = false;
-            
             const useGrounding = document.getElementById('search-grounding').checked;
-            const apiKey = ""; // API key resolved at proxy level, or empty for fallback
+
+            // Use the saved API key, fallback to blank string (which our system preview handles)
+            const apiKey = savedApiKey || "";
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
-            if (apiKey) {
+            // Check if we have an API key or if we are in the development sandbox environment
+            const isSandbox = window.location.hostname === 'localhost' || 
+                              window.location.hostname.includes('sandbox') || 
+                              window.location.hostname.includes('webcontainer');
+
+            if (apiKey || isSandbox) {
                 try {
                     let rulesContext = "\n\nAturan pabean & operasional internal PAS Logistics:\n";
                     rules.forEach((rule, idx) => { rulesContext += `${idx + 1}. ${rule.title}: ${rule.desc}\n`; });
@@ -1144,7 +1190,7 @@
                     if (useGrounding) { payload.tools = [{ "google_search": {} }]; }
 
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 7500); // 7.5 seconds timeout
+                    const timeoutId = setTimeout(() => controller.abort(), 7000); // 7-second timeout for rapid fallback
 
                     const response = await fetch(apiUrl, {
                         method: 'POST',
@@ -1158,7 +1204,9 @@
                     const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
                     
                     if (text) {
-                        document.getElementById(loadId).remove();
+                        const loaderEl = document.getElementById(loadId);
+                        if (loaderEl) loaderEl.remove();
+                        
                         chat.innerHTML += `
                             <div class="flex items-start space-x-2 max-w-[85%]">
                                 <div class="w-7 h-7 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 flex-shrink-0">
@@ -1172,14 +1220,16 @@
                         processed = true;
                     }
                 } catch (e) {
-                    console.log("Using smart offline database matching...");
+                    console.warn("API Connection failed, falling back to smart local rules matrix...");
                 }
             }
 
-            // High fidelity fallback when key is not configured or fails
+            // High-fidelity fallback triggered when no key is entered, key fails, or offline
             if (!processed) {
                 setTimeout(() => {
-                    document.getElementById(loadId).remove();
+                    const loaderEl = document.getElementById(loadId);
+                    if (loaderEl) loaderEl.remove();
+
                     const fallbackText = getSmartMockResponse(query, rules);
                     chat.innerHTML += `
                         <div class="flex items-start space-x-2 max-w-[85%]">
@@ -1193,7 +1243,7 @@
                     `;
                     lucide.createIcons();
                     chat.scrollTop = chat.scrollHeight;
-                }, 800);
+                }, 600);
             }
 
             lucide.createIcons();
