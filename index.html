@@ -610,19 +610,22 @@
             chat.scrollTop = chat.scrollHeight;
 
             try {
-                // Menembak serverless function milik kita di Vercel (Tanpa API key di client side!)
                 const apiUrl = '/api/chat'; 
                 
-                // Menyusun prompt terstruktur gabungan instruksi persona dan database aturan internal
-                let knowledgeBaseContext = "\n\nDATABASE ATURAN INTERNAL OPERASIONAL PERUSAHAAN:\n";
+                // Menyusun Aturan Internal Operasional secara rapi
+                let knowledgeBaseContext = "DATABASE ATURAN INTERNAL OPERASIONAL PERUSAHAAN:\n";
                 DEFAULT_RULES.forEach((r, i) => { knowledgeBaseContext += `${i+1}. ${r.title}: ${r.desc}\n`; });
 
-                const fullPrompt = `${DEFAULT_PERSONA} ${knowledgeBaseContext}\n\nPertanyaan Klien: ${query}`;
+                const systemRules = `${DEFAULT_PERSONA}\n\n${knowledgeBaseContext}`;
 
+                // Kirim pesan USER dan aturan SYSTEM secara terpisah ke Vercel agar disetujui Google
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: fullPrompt })
+                    body: JSON.stringify({ 
+                        message: query,
+                        systemInstruction: systemRules
+                    })
                 });
 
                 const result = await response.json();
