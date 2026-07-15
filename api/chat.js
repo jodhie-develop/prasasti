@@ -1,68 +1,48 @@
-export default async function handler(req, res) {
-    // Penanganan CORS Policy
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+import { askOpenAI } from "../lib/openai.js";
 
-    if (req.method === 'OPTIONS') {
+export default async function handler(req, res) {
+
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+    if (req.method === "OPTIONS") {
         return res.status(200).end();
     }
 
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method Not Allowed' });
-    }
-
-    // Mengambil API Key dari Environment Variables Vercel
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-        return res.status(500).json({ error: 'Error: Konfigurasi GEMINI_API_KEY tidak ditemukan di Dashboard Vercel.' });
+    if (req.method !== "POST") {
+        return res.status(405).json({
+            error: "Method Not Allowed"
+        });
     }
 
     try {
-        const { message, systemInstruction } = req.body;
+
+        const { message, history = [] } = req.body;
+
         if (!message) {
-            return res.status(400).json({ error: 'Pesan kosong' });
+            return res.status(400).json({
+                error: "Message is required"
+            });
         }
 
-        // Menggunakan model Gemini 1.5 Flash yang sangat stabil
-        const modelName = "gemini-1.5-flash";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
-
-        // Menggunakan struktur payload resmi Google Gemini (Memisahkan System Instruction dan User Message)
-        const geminiPayload = {
-            contents: [
-                {
-                    role: "user",
-                    parts: [{ text: message }]
-                }
-            ]
-        };
-
-        // Jika ada instruksi sistem/aturan bot, masukkan ke parameter resmi systemInstruction
-        if (systemInstruction) {
-            geminiPayload.systemInstruction = {
-                parts: [{ text: systemInstruction }]
-            };
-        }
-
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(geminiPayload)
+        const reply = await askOpenAI({
+            message,
+            history
         });
 
-        const data = await response.json();
+        return res.status(200).json({
+            reply
+        });
 
-        if (!response.ok) {
-            return res.status(response.status).json({ error: data.error?.message || "Gemini API Gateway Error" });
-        }
+    } catch (err) {
 
-        // Ekstraksi teks balasan murni dari struktur json Google Gemini
-        const replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, saya tidak dapat memproses jawaban saat ini.";
+        console.error(err);
 
-        return res.status(200).json({ reply: replyText });
+        return res.status(500).json({
+            error: err.message
+        });
 
-    } catch (error) {
-        return res.status(500).json({ error: error.message });
     }
+
 }
