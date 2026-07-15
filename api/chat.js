@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
-    // Mengambil API Key yang disembunyikan aman di Environment Variables Vercel
+    // Mengambil API Key dari Environment Variables Vercel
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
         return res.status(500).json({ error: 'Error: Konfigurasi GEMINI_API_KEY tidak ditemukan di Dashboard Vercel.' });
@@ -20,8 +20,11 @@ export default async function handler(req, res) {
 
     try {
         const { message } = req.body;
+        if (!message) {
+            return res.status(400).json({ error: 'Pesan kosong' });
+        }
 
-        // Menggunakan model Gemini 2.5 Flash tercepat dan terbaru
+        // Menggunakan model Gemini 2.5 Flash terbaru
         const modelName = "gemini-2.5-flash";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
@@ -49,3 +52,8 @@ export default async function handler(req, res) {
         const replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, saya tidak dapat memproses jawaban saat ini.";
 
         return res.status(200).json({ reply: replyText });
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+}
