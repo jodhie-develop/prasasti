@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         }
 
         // Menggunakan model Gemini 2.5 Flash terbaru
-        const modelName = "gemini-2.5-flash";
+        const modelName = "gemini-1.5-flash";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
         const geminiPayload = {
