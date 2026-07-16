@@ -635,7 +635,9 @@
                 });
 
                 const result = await response.json();
-                document.getElementById(loadId).remove();
+
+                // Remove the loading bubble once, safely (works even if it's somehow already gone).
+                document.getElementById(loadId)?.remove();
 
                 if (result.reply) {
                     chat.innerHTML += `
@@ -661,10 +663,10 @@
                 }
             } catch (err) {
                 console.error("API Proxy Error:", err);
-                document.getElementById(loadId).remove();
+                document.getElementById(loadId)?.remove();
                 chat.innerHTML += `
                     <div class="text-xs text-red-400 p-3 bg-red-950/20 border border-red-900/30 rounded-xl">
-                        ⚠️ Koneksi terputus. Pastikan Environment Variable OPENAI_API_KEY sudah disave pada dashboard Vercel Anda, lalu redeploy.
+                        ⚠️ ${err.message || "Koneksi terputus."}
                     </div>
                 `;
             }
