@@ -18,9 +18,9 @@ export default async function handler(req, res) {
 
     try {
 
-        const { message, history = [] } = req.body;
+        const { message, history = [], systemInstruction = "" } = req.body || {};
 
-        if (!message) {
+        if (!message || typeof message !== "string") {
             return res.status(400).json({
                 error: "Message is required"
             });
@@ -28,7 +28,8 @@ export default async function handler(req, res) {
 
         const reply = await askOpenAI({
             message,
-            history
+            history,
+            extraContext: systemInstruction
         });
 
         return res.status(200).json({

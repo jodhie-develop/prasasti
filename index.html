@@ -566,6 +566,7 @@
 
         function clearChat() {
             document.getElementById('chat-messages').innerHTML = `<p class="text-xs text-slate-500 p-2">Layar obrolan dibersihkan.</p>`;
+            conversationHistory = [];
         }
 
         function quickPrompt(text) { document.getElementById('chat-input').value = text; }
@@ -577,6 +578,10 @@
             document.getElementById('modal-content').innerText = `Informasi mendetail seputar ${type} PT PAS Logistics International. Terakreditasi kepatuhan penuh ekspor-impor pabean internasional.`;
         }
         function closeModal() { document.getElementById('global-modal').add('hidden'); }
+
+        // Simple in-memory conversation history so LogiBot has context across turns.
+        // Resets on page refresh (no localStorage, kept purely in JS memory).
+        let conversationHistory = [];
 
         // PROXY VERCEL BACKEND CONNECTION LOGIC
         async function handleSendChat(event) {
@@ -624,6 +629,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
                         message: query,
+                        history: conversationHistory,
                         systemInstruction: systemRules
                     })
                 });
@@ -642,6 +648,14 @@
                             </div>
                         </div>
                     `;
+
+                    // Remember this turn so the next message keeps context.
+                    conversationHistory.push({ role: 'user', content: query });
+                    conversationHistory.push({ role: 'assistant', content: result.reply });
+                    // Keep only the last 10 turns (20 messages) to avoid oversized requests.
+                    if (conversationHistory.length > 20) {
+                        conversationHistory = conversationHistory.slice(-20);
+                    }
                 } else {
                     throw new Error(result.error || "Gagal mendapatkan balasan valid.");
                 }
@@ -650,7 +664,7 @@
                 document.getElementById(loadId).remove();
                 chat.innerHTML += `
                     <div class="text-xs text-red-400 p-3 bg-red-950/20 border border-red-900/30 rounded-xl">
-                        ⚠️ Koneksi terputus. Pastikan Environment Variable GEMINI_API_KEY sudah disave pada dashboard Vercel Anda.
+                        ⚠️ Koneksi terputus. Pastikan Environment Variable OPENAI_API_KEY sudah disave pada dashboard Vercel Anda, lalu redeploy.
                     </div>
                 `;
             }
