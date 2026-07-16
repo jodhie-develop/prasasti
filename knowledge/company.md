@@ -1,4 +1,4 @@
-PT Prasasti Logistics
+Prasasti Adyadma Sentosa
 
 Perusahaan Freight Forwarding Indonesia.
 
