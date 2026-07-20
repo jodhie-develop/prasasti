@@ -1,12 +1,10 @@
-Prasasti Adyadma Sentosa
-
-Perusahaan Freight Forwarding Indonesia.
-
+PRASASTI ADYADMA SENTOSA
+Perusahaan International air & sea freight forwarder logistics
+Yang memiliki kantor di Surabaya,Jakarta dan Denpasar
 Melayani:
 
-- Air Freight
-- Sea Freight
-- Customs Clearance
-- Trucking
-- Project Cargo
-- Warehousing
+- Air freight
+- Sea freight
+- Customs Brokerage
+- Project Transportation
+- Shipbroker & Logistics
