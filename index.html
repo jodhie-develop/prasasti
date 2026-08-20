@@ -58,7 +58,15 @@
     content:"";
     width:22px;height:1px;background:var(--brass-500);
     display:inline-block;
+    transform-origin:left center;
+    animation:drawLine .7s .15s cubic-bezier(.3,.7,.2,1) both;
   }
+  .eyebrow .caret{
+    display:inline-block;width:7px;height:13px;background:var(--brass-500);
+    margin-left:2px;animation:caretBlink 1s steps(1) infinite;
+  }
+  @keyframes drawLine{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+  @keyframes caretBlink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
   .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
   @media(max-width:640px){.wrap{padding:0 20px;}}
 
@@ -129,7 +137,7 @@
     background-size:64px 64px;
     mask-image:linear-gradient(to bottom,rgba(0,0,0,0.9),transparent 85%);
   }
-  .route-svg{position:absolute;right:-6%;top:8%;width:64%;max-width:760px;opacity:0.9;}
+  .route-svg{position:absolute;right:-6%;top:8%;width:64%;max-width:760px;opacity:0.9;transition:transform .5s cubic-bezier(.2,.7,.2,1);}
   @media(max-width:980px){.route-svg{opacity:0.35;right:-20%;}}
   .route-path{
     fill:none;stroke:var(--brass-400);stroke-width:1.4;stroke-dasharray:6 8;opacity:0.75;
@@ -155,11 +163,54 @@
     color:#fff;
     margin:22px 0 6px;
     line-height:1.04;
+    perspective:800px;
   }
-  .hero h1 em{font-style:italic;color:var(--brass-400);font-weight:400;}
+  .hero h1 .w{
+    display:inline-block;
+    opacity:0;
+    filter:blur(6px);
+    transform:translateY(48px) rotateX(35deg);
+    animation:wordUp .95s cubic-bezier(.16,.84,.24,1) forwards;
+    animation-delay:calc(var(--i, 0) * 90ms + 200ms);
+    transform-origin:bottom center;
+  }
+  @keyframes wordUp{
+    to{opacity:1;filter:blur(0);transform:translateY(0) rotateX(0);}
+  }
+  .hero h1 em{
+    font-style:italic;font-weight:400;
+    background:linear-gradient(100deg, var(--brass-500) 0%, #fff 32%, var(--brass-400) 55%, var(--brass-500) 100%);
+    background-size:250% auto;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:wordUp .95s cubic-bezier(.16,.84,.24,1) forwards,
+              shimmer 5s linear infinite 1.3s;
+    animation-delay:calc(var(--i, 0) * 90ms + 200ms), 1.3s;
+  }
+  @keyframes shimmer{
+    0%{background-position:0% 50%;}
+    100%{background-position:250% 50%;}
+  }
   .hero .lede{
     font-size:1.02rem;color:rgba(255,255,255,0.72);max-width:480px;margin:20px 0 34px;
     font-weight:300;
+    opacity:0;
+    animation:fadeUp .8s ease forwards;
+    animation-delay:1.05s;
+  }
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(16px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero .btn-row{opacity:0;animation:fadeUp .8s ease forwards;animation-delay:1.25s;}
+  .hero-meta{opacity:0;animation:fadeUp .9s ease forwards;animation-delay:1.4s;}
+  .hero-meta div strong{
+    display:block;font-family:'Fraunces',serif;font-size:1.6rem;color:#fff;
+  }
+  .hero-meta div{position:relative;}
+  .hero-meta div::after{
+    content:"";position:absolute;left:0;bottom:-27px;height:1px;width:0;background:var(--brass-400);
+    animation:drawLine .8s cubic-bezier(.3,.7,.2,1) forwards;
+    animation-delay:calc(1.7s + var(--mi,0) * 120ms);
   }
   .btn{
     display:inline-flex;align-items:center;gap:10px;
@@ -361,19 +412,26 @@
   </svg>
 
   <div class="wrap hero-inner">
-    <p class="eyebrow reveal is-visible">PT. Prasasti Adyadma Sentosa — Est. 2017</p>
-    <h1 class="reveal is-visible">International <em>Air &amp; Sea</em> Freight Forwarder Logistics</h1>
-    <p class="lede reveal is-visible">Air Freight, Sea Freight, Customs Brokerage, Project Transportation, Shipbroker &amp; Logistics — menghubungkan kargo Anda dari Sidoarjo, Jakarta dan Denpasar ke seluruh dunia.</p>
-    <div class="btn-row reveal is-visible">
+    <p class="eyebrow">PT. Prasasti Adyadma Sentosa — Est. 2017<span class="caret"></span></p>
+    <h1>
+      <span class="w" style="--i:0">International</span>
+      <em class="w" style="--i:1">Air &amp;</em><br>
+      <em class="w" style="--i:2">Sea</em>
+      <span class="w" style="--i:3">Freight</span>
+      <span class="w" style="--i:4">Forwarder</span><br>
+      <span class="w" style="--i:5">Logistics</span>
+    </h1>
+    <p class="lede">Air Freight, Sea Freight, Customs Brokerage, Project Transportation, Shipbroker &amp; Logistics — menghubungkan kargo Anda dari Sidoarjo, Jakarta dan Denpasar ke seluruh dunia.</p>
+    <div class="btn-row">
       <a class="btn" href="#contact">Contact Us</a>
       <a class="btn ghost" href="#services">Lihat Layanan</a>
     </div>
 
     <div class="hero-meta">
-      <div><strong>2017</strong><span>Tahun berdiri</span></div>
-      <div><strong>3</strong><span>Kantor cabang</span></div>
-      <div><strong>WCA</strong><span>World member</span></div>
-      <div><strong>IATA</strong><span>Certified</span></div>
+      <div style="--mi:0"><strong data-count="2017">0</strong><span>Tahun berdiri</span></div>
+      <div style="--mi:1"><strong data-count="3">0</strong><span>Kantor cabang</span></div>
+      <div style="--mi:2"><strong>WCA</strong><span>World member</span></div>
+      <div style="--mi:3"><strong>IATA</strong><span>Certified</span></div>
     </div>
   </div>
 </section>
@@ -604,6 +662,38 @@
 </footer>
 
 <script>
+  // Count-up numbers in hero stats
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    const duration = 1400;
+    const startDelay = 1600;
+    setTimeout(() => {
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }, startDelay);
+  });
+
+  // Subtle mouse-parallax on the hero route line
+  const routeSvg = document.querySelector('.route-svg');
+  const heroSection = document.querySelector('.hero');
+  if (routeSvg && heroSection && window.matchMedia('(min-width: 981px)').matches) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth - 0.5) * 18;
+      const y = (e.clientY / innerHeight - 0.5) * 18;
+      routeSvg.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    heroSection.addEventListener('mouseleave', () => {
+      routeSvg.style.transform = 'translate(0,0)';
+    });
+  }
+
   // Sticky header state
   const header = document.getElementById('site-header');
   window.addEventListener('scroll', () => {
