@@ -143,24 +143,18 @@
   /* ---------- hero cargo scene (animated bg) ---------- */
   .hero-scene{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
   @media(max-width:760px){.hero-scene{opacity:0.55;}}
-  .hero-photo{display:none;}
-  .scene-sun{animation:sunPulse 6s ease-in-out infinite;}
-  @keyframes sunPulse{0%,100%{opacity:0.65;}50%{opacity:1;}}
-  .scene-ship{animation:shipBob 7s ease-in-out infinite;}
-  @keyframes shipBob{0%,100%{transform:translate(560px,410px);}50%{transform:translate(560px,400px);}}
-  .scene-crane{opacity:0.65;}
-  .scene-truck{animation:truckDrive 15s linear infinite;}
-  @keyframes truckDrive{
-    0%{transform:translateX(-160px);}
-    100%{transform:translateX(1760px);}
+  .hero-photo{
+    position:absolute;inset:0;z-index:0;
+    background-image:url('gallery/full/BG1.jpeg');
+    background-size:cover;background-position:center;
+    animation:kenBurns 26s ease-in-out infinite alternate;
+    filter:saturate(0.9) brightness(0.85);
   }
-  .scene-plane{animation:planeFly 24s linear infinite;}
-  @keyframes planeFly{
-    0%{transform:translate(-80px,540px) scale(1);opacity:0;}
-    8%{opacity:.9;}
-    92%{opacity:.9;}
-    100%{transform:translate(1760px,60px) scale(1.5);opacity:0;}
+  @keyframes kenBurns{
+    0%{transform:scale(1) translate(0,0);}
+    100%{transform:scale(1.14) translate(-2%,-2%);}
   }
+  @media(prefers-reduced-motion: reduce){.hero-photo{animation:none;}}
   .hero::before{
     content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(100deg, var(--navy-950) 0%, rgba(7,20,34,0.86) 32%, rgba(7,20,34,0.32) 58%, transparent 82%);
@@ -475,19 +469,6 @@
 
   <svg class="hero-scene" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
-      <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#1C5580" stop-opacity="0.5"/>
-        <stop offset="55%" stop-color="#0B1E33" stop-opacity="0.12"/>
-        <stop offset="100%" stop-color="#071422" stop-opacity="0"/>
-      </linearGradient>
-      <radialGradient id="sunGlow" cx="80%" cy="34%" r="42%">
-        <stop offset="0%" stop-color="#DCB463" stop-opacity="0.5"/>
-        <stop offset="100%" stop-color="#DCB463" stop-opacity="0"/>
-      </radialGradient>
-      <linearGradient id="hullGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#123153"/>
-        <stop offset="100%" stop-color="#071422"/>
-      </linearGradient>
       <filter id="sceneGlow" x="-50%" y="-50%" width="200%" height="200%">
         <feGaussianBlur stdDeviation="3.5" result="blur"/>
         <feMerge>
@@ -497,48 +478,11 @@
       </filter>
     </defs>
 
-    <rect x="0" y="0" width="1600" height="800" fill="url(#skyFade)"/>
-    <circle class="scene-sun" cx="1250" cy="260" r="220" fill="url(#sunGlow)"/>
-
-    <g class="scene-trails" stroke="#DCB463" stroke-width="2.4" filter="url(#sceneGlow)">
-      <path class="trail t1" d="M80,636 L720,598"/>
-      <path class="trail t2" d="M80,676 L820,634"/>
-      <path class="trail t3" d="M80,716 L740,688"/>
-      <path class="trail t4" d="M80,756 L860,722"/>
-    </g>
-
-    <g class="scene-crane" stroke="#4A8DC2" stroke-width="4" fill="none" transform="translate(230,0)">
-      <line x1="700" y1="560" x2="700" y2="300"/>
-      <line x1="700" y1="320" x2="900" y2="320"/>
-      <line x1="700" y1="360" x2="850" y2="360"/>
-      <line x1="830" y1="320" x2="830" y2="470"/>
-    </g>
-
-    <g class="scene-ship" transform="translate(560,410)">
-      <rect x="0" y="60" width="420" height="60" rx="4" fill="url(#hullGrad)"/>
-      <polygon points="0,120 40,150 420,150 460,120" fill="#071422"/>
-      <rect x="20" y="0" width="46" height="34" fill="#C6963C" opacity="0.85"/>
-      <rect x="70" y="0" width="46" height="34" fill="#2C6FA0" opacity="0.85"/>
-      <rect x="120" y="0" width="46" height="34" fill="#DCB463" opacity="0.7"/>
-      <rect x="20" y="-38" width="46" height="34" fill="#1C5580" opacity="0.85"/>
-      <rect x="70" y="-38" width="46" height="34" fill="#C6963C" opacity="0.7"/>
-      <rect x="220" y="0" width="46" height="34" fill="#2C6FA0" opacity="0.8"/>
-      <rect x="270" y="0" width="46" height="34" fill="#DCB463" opacity="0.75"/>
-      <rect x="220" y="-38" width="46" height="34" fill="#C6963C" opacity="0.8"/>
-      <rect x="360" y="10" width="50" height="50" fill="#0B1E33"/>
-    </g>
-
-    <line x1="0" y1="700" x2="1600" y2="700" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
-    <g class="scene-truck">
-      <rect x="0" y="650" width="80" height="42" rx="3" fill="#DCB463"/>
-      <rect x="80" y="620" width="46" height="72" rx="3" fill="#F6F3EC"/>
-      <rect x="92" y="632" width="22" height="20" fill="#0B1E33"/>
-      <circle cx="24" cy="696" r="12" fill="#071422"/>
-      <circle cx="100" cy="696" r="12" fill="#071422"/>
-    </g>
-
-    <g class="scene-plane" fill="#F6F3EC">
-      <path d="M0,0 L46,-14 L60,-10 L30,4 L46,22 L34,22 L14,6 L2,8 Z"/>
+    <g class="scene-trails" stroke="#DCB463" stroke-width="2" filter="url(#sceneGlow)">
+      <path class="trail t1" d="M-120,636 L520,598"/>
+      <path class="trail t2" d="M-120,676 L620,634"/>
+      <path class="trail t3" d="M-120,716 L540,688"/>
+      <path class="trail t4" d="M-120,756 L660,722"/>
     </g>
   </svg>
 
