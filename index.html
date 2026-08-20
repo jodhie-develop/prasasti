@@ -372,6 +372,39 @@
   }
   .map-frame svg{width:100%;height:100%;}
 
+  /* ---------- GALLERY ---------- */
+  .gallery{background:var(--paper-100);}
+  .g-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+  .g-tab{
+    font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;
+    padding:9px 18px;border-radius:999px;border:1px solid var(--mist-200);background:#fff;color:var(--ink-600);
+    cursor:pointer;transition:all .25s ease;
+  }
+  .g-tab:hover{border-color:var(--brass-500);color:var(--navy-900);}
+  .g-tab.active{background:var(--navy-900);border-color:var(--navy-900);color:#fff;}
+  .g-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;
+  }
+  .g-item{
+    position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:4px;
+    background:var(--mist-200);opacity:0;transform:translateY(16px) scale(0.97);
+  }
+  .g-grid.g-visible .g-item{
+    animation:gpop .6s cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay:calc(var(--gi, 0) * 35ms);
+  }
+  @keyframes gpop{to{opacity:1;transform:translateY(0) scale(1);}}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .4s ease;filter:grayscale(0.15) contrast(1.02);}
+  .g-item::after{
+    content:"↗";position:absolute;right:10px;top:10px;width:26px;height:26px;border-radius:50%;
+    background:rgba(7,20,34,0.55);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:0.85rem;opacity:0;transform:translateY(-6px);transition:all .3s ease;
+  }
+  .g-item:hover img{transform:scale(1.08);filter:none;}
+  .g-item:hover::after{opacity:1;transform:translateY(0);}
+  .g-item.g-hidden{display:none;}
+  .g-count{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--ink-600);margin-top:26px;text-align:center;}
+
   footer{background:var(--navy-950);color:rgba(255,255,255,0.6);padding:50px 0 30px;}
   .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:24px;}
   .footer-top .brand-text strong{color:#fff;}
@@ -392,6 +425,7 @@
       <a href="#top">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
       <a href="#contact" class="nav-cta">Contact Us</a>
     </div>
@@ -571,6 +605,305 @@
   </div>
 </div>
 
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Gallery</p>
+      <h2>Dokumentasi tim, sertifikasi, dan operasional kami.</h2>
+      <p>Kumpulan foto asli dari aktivitas lapangan, tim, legalitas, hingga proses kargo PT. Prasasti Adyadma Sentosa.</p>
+    </div>
+    <div class="g-tabs">
+      <button class="g-tab active" data-filter="all">Semua</button>
+      <button class="g-tab" data-filter="tim">Tim &amp; Aktivitas</button>
+      <button class="g-tab" data-filter="sertifikasi">Sertifikasi</button>
+      <button class="g-tab" data-filter="operasional">Operasional &amp; Kargo</button>
+      <button class="g-tab" data-filter="logo">Logo &amp; Identitas</button>
+    </div>
+    <div class="g-grid" id="galleryGrid">
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-01-08-at-03.37.211.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-01-08-at-03.37.211.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-08-at-23.02.48.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-08-at-23.02.48.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-09-at-13.35.29.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-09-at-13.35.29.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-00.42.55.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-00.42.55.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-00.46.03.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-00.46.03.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-00.48.01-1.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-00.48.01-1.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-00.48.01-2.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-00.48.01-2.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-00.48.01-3.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-00.48.01-3.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-00.48.01.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-00.48.01.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-00.53.33.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-00.53.33.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-00.56.35.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-00.56.35.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-01.00.56-1.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-01.00.56-1.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-15-at-01.00.56.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-15-at-01.00.56.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-16-at-17.25.29.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-16-at-17.25.29.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-16-at-17.29.05.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-16-at-17.29.05.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-16-at-17.33.58.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-16-at-17.33.58.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-16-at-17.45.14.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-16-at-17.45.14.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-16-at-17.45.38.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-16-at-17.45.38.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-16-at-17.46.01.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-16-at-17.46.01.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-16-at-17.46.29.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-16-at-17.46.29.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-16-at-17.46.59.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-16-at-17.46.59.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.11.48.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.11.48.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.11.53-1.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.11.53-1.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.11.53.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.11.53.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.12.51-2.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.12.51-2.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.12.51-3.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.12.51-3.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.19.05-1.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.05-1.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.19.06-1.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.06-1.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.19.07-1.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.07-1.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.19.08.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.08.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.19.09.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.09.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-09.29.14.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-09.29.14.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-10.12.42.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-10.12.42.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-10.12.43-1.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-10.12.43-1.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-10.12.43.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-10.12.43.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-10.12.44.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-10.12.44.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.11.05.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.11.05.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.11.59.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.11.59.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.14.46.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.14.46.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.15.11.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.15.11.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.17.39.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.17.39.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.18.08.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.18.08.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.18.32.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.18.32.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.18.57.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.18.57.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.19.31.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.19.31.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.21.08.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.21.08.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.21.55.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.21.55.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.23.21.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.23.21.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.24.22.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.24.22.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.25.14.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.25.14.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2022-02-17-at-15.26.26.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-02-17-at-15.26.26.jpeg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2023-01-24-at-22.19.38.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2023-01-24-at-22.19.38.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2023-01-24-at-22.49.10.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2023-01-24-at-22.49.10.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2023-01-25-at-09.50.12.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2023-01-25-at-09.50.12.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2023-02-09-at-10.36.52.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2023-02-09-at-10.36.52.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2024-05-21-at-09.57.12_8c5ea7d8.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2024-05-21-at-09.57.12_8c5ea7d8.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2024-05-21-at-09.58.07_753e5935.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2024-05-21-at-09.58.07_753e5935.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2024-05-21-at-10.00.24_ec508565.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2024-05-21-at-10.00.24_ec508565.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2024-05-21-at-10.08.14_4e6d673e.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2024-05-21-at-10.08.14_4e6d673e.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2024-05-21-at-10.22.06_703612b8.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2024-05-21-at-10.22.06_703612b8.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="tim" href="gallery/full/WhatsApp-Image-2024-05-21-at-11.44.19_e3e20bb6.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2024-05-21-at-11.44.19_e3e20bb6.jpg" alt="Tim &amp; Aktivitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="sertifikasi" href="gallery/full/ALFI.png" target="_blank" rel="noopener">
+  <img src="gallery/thumb/ALFI.png" alt="Sertifikasi &amp; Keanggotaan" loading="lazy">
+</a>
+<a class="g-item" data-cat="sertifikasi" href="gallery/full/Cert-IATA-PAS_page-0001.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/Cert-IATA-PAS_page-0001.jpg" alt="Sertifikasi &amp; Keanggotaan" loading="lazy">
+</a>
+<a class="g-item" data-cat="sertifikasi" href="gallery/full/logo_WCAworld-fococlipping-standard.png" target="_blank" rel="noopener">
+  <img src="gallery/thumb/logo_WCAworld-fococlipping-standard.png" alt="Sertifikasi &amp; Keanggotaan" loading="lazy">
+</a>
+<a class="g-item" data-cat="sertifikasi" href="gallery/full/WhatsApp-Image-2022-05-24-at-1.16.22-PM.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/WhatsApp-Image-2022-05-24-at-1.16.22-PM.jpeg" alt="Sertifikasi &amp; Keanggotaan" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/BG1.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/BG1.jpeg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/Air-Freight.png" target="_blank" rel="noopener">
+  <img src="gallery/thumb/Air-Freight.png" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/Air-Freight-1.png" target="_blank" rel="noopener">
+  <img src="gallery/thumb/Air-Freight-1.png" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/Air-Freight-2.png" target="_blank" rel="noopener">
+  <img src="gallery/thumb/Air-Freight-2.png" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/Air-Freight-1.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/Air-Freight-1.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/banner-header-export-1157109.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/banner-header-export-1157109.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/bea-cukaiok.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/bea-cukaiok.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/shipping-container-port-shipping-4245980.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/shipping-container-port-shipping-4245980.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/container-container-ship-port-1611490.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/container-container-ship-port-1611490.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/container-port-ship-6751623.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/container-port-ship-6751623.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/container-ship-freight-cargo-ship-2893480.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/container-ship-freight-cargo-ship-2893480.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/port-container-export-4602964.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/port-container-export-4602964.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/port-ship-shipping-5349834.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/port-ship-shipping-5349834.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/aircraft-airport-jet-5706274.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/aircraft-airport-jet-5706274.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/aircraft-plane-cargo-78185.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/aircraft-plane-cargo-78185.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/airplane-cargo-bay-transportation-2214497.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/airplane-cargo-bay-transportation-2214497.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/cargo-ship-1.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/cargo-ship-1.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/logistics-truck-cargo-ship-3125136.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/logistics-truck-cargo-ship-3125136.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/plane-logistics-world-5238847.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/plane-logistics-world-5238847.jpg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/fococlipping-20211231-145832.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/fococlipping-20211231-145832.jpeg" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/fococlipping-20220103-22416.png" target="_blank" rel="noopener">
+  <img src="gallery/thumb/fococlipping-20220103-22416.png" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="operasional" href="gallery/full/fococlipping-20220103-225317.png" target="_blank" rel="noopener">
+  <img src="gallery/thumb/fococlipping-20220103-225317.png" alt="Operasional &amp; Kargo" loading="lazy">
+</a>
+<a class="g-item" data-cat="logo" href="gallery/full/Logo-PAS-Transparan.png" target="_blank" rel="noopener">
+  <img src="gallery/thumb/Logo-PAS-Transparan.png" alt="Logo &amp; Identitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="logo" href="gallery/full/LOGO-PAS.jpeg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/LOGO-PAS.jpeg" alt="Logo &amp; Identitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="logo" href="gallery/full/Picsart_22-02-13_00-41-08-729.png" target="_blank" rel="noopener">
+  <img src="gallery/thumb/Picsart_22-02-13_00-41-08-729.png" alt="Logo &amp; Identitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="logo" href="gallery/full/8d3cfb23-516e-4c4b-9543-378eb02ec717.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/8d3cfb23-516e-4c4b-9543-378eb02ec717.jpg" alt="Logo &amp; Identitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="logo" href="gallery/full/66d5b180-a7fb-40dd-ae7a-19468a2cafc7.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/66d5b180-a7fb-40dd-ae7a-19468a2cafc7.jpg" alt="Logo &amp; Identitas" loading="lazy">
+</a>
+<a class="g-item" data-cat="logo" href="gallery/full/88d7b408-6799-4337-879e-83808eca6a38.jpg" target="_blank" rel="noopener">
+  <img src="gallery/thumb/88d7b408-6799-4337-879e-83808eca6a38.jpg" alt="Logo &amp; Identitas" loading="lazy">
+</a>
+    </div>
+    <p class="g-count" id="galleryCount"></p>
+  </div>
+</section>
+
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="section-head reveal">
@@ -651,6 +984,7 @@
         <a href="#top">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -705,6 +1039,39 @@
   const navlinks = document.getElementById('navlinks');
   toggle.addEventListener('click', () => navlinks.classList.toggle('open'));
   navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+
+  // Gallery filter
+  const gTabs = document.querySelectorAll('.g-tab');
+  const gItems = document.querySelectorAll('.g-item');
+  gItems.forEach((item, i) => item.style.setProperty('--gi', i % 24));
+  const gCount = document.getElementById('galleryCount');
+  const gGrid = document.getElementById('galleryGrid');
+  const gObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('g-visible');
+        gObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  if (gGrid) gObserver.observe(gGrid);
+  function updateCount(filter){
+    const visible = filter === 'all' ? gItems.length : document.querySelectorAll(`.g-item[data-cat="${filter}"]`).length;
+    gCount.textContent = `Menampilkan ${visible} dari ${gItems.length} foto`;
+  }
+  gTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      gTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.getAttribute('data-filter');
+      gItems.forEach(item => {
+        const match = filter === 'all' || item.getAttribute('data-cat') === filter;
+        item.classList.toggle('g-hidden', !match);
+      });
+      updateCount(filter);
+    });
+  });
+  updateCount('all');
 
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
