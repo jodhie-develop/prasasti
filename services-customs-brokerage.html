@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRASASTI ADYADMA SENTOSA — Global Logistics & Cargo Transport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Public+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<title>Customs Brokerage — PRASASTI ADYADMA SENTOSA</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="site-header">
+  <nav class="wrap">
+    <a class="brand" href="index.html">
+      <img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/cropped-88d7b408-6799-4337-879e-83808eca6a38-e1644658306558.jpg" alt="PRASASTI ADYADMA SENTOSA">
+      <span class="brand-text"><strong>PRASASTI</strong><span>Adyadma Sentosa</span></span>
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#contact" class="nav-cta">Contact Us</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="wrap page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#services">Services</a> / Customs Brokerage</p>
+    <p class="eyebrow">Custom Clearance</p>
+    <h1>Mengurus kepabeanan barang masuk dan keluar Indonesia.</h1>
+  </div>
+</section>
+
+<section class="service-detail">
+  <div class="wrap">
+    <p class="sd-lede reveal">Kami membantu importir dan eksportir mengurus proses clearance barang yang datang maupun keluar dari Indonesia. Setelah kargo lolos bea cukai, kami langsung mengatur pengiriman lanjutan ke lokasi akhir.</p>
+    <div class="sd-grid">
+      <div class="sd-photos reveal">
+      <img class="tall" src="gallery/full/banner-header-export-1157109.jpg" alt="Proses ekspor & customs">
+      <img class="short" src="gallery/full/bea-cukaiok.jpg" alt="Dokumen Bea Cukai">
+      <img class="short" src="gallery/full/WhatsApp-Image-2022-02-16-at-17.29.05.jpeg" alt="Tim customs brokerage">
+      </div>
+      <div class="sd-copy reveal">
+      <p>Berpengalaman dalam aturan dan prosedur yang ditetapkan Bea Cukai serta instansi pemerintah terkait, tim kami menyiapkan dan mengajukan seluruh dokumentasi yang dibutuhkan, dan selalu memberi kabar di setiap tahap prosesnya.</p>
+      <p>Baik Anda importir/eksportir pemula maupun yang sudah berpengalaman, kami siap membantu.</p>
+
+        <a class="btn" href="index.html#contact">Let&rsquo;s Talk Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="other-services">
+  <div class="wrap">
+    <p class="eyebrow">Explore other services</p>
+    <div class="os-grid">
+      <a class="os-card" href="services-air-freight.html">
+        <span class="tag">Layanan · Udara</span>
+        <h4>Air Freight</h4>
+        <span>Lihat detail <span>→</span></span>
+      </a>
+      <a class="os-card" href="services-sea-freight.html">
+        <span class="tag">Layanan · Laut</span>
+        <h4>Sea Freight</h4>
+        <span>Lihat detail <span>→</span></span>
+      </a>
+      <a class="os-card" href="services-project-cargo.html">
+        <span class="tag">Layanan · Proyek & Curah</span>
+        <h4>Project & Bulk Cargo</h4>
+        <span>Lihat detail <span>→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="brand" href="index.html">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/cropped-88d7b408-6799-4337-879e-83808eca6a38-e1644658306558.jpg" alt="PRASASTI ADYADMA SENTOSA">
+        <span class="brand-text"><strong>PRASASTI</strong><span>Adyadma Sentosa</span></span>
+      </a>
+      <div class="flinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2017 – PRASASTI ADYADMA SENTOSA. All rights reserved.</span>
+      <span>Air Freight · Sea Freight · Customs Brokerage · Project &amp; Bulk Cargo</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const toggle = document.getElementById('menuToggle');
+  const navlinks = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => navlinks.classList.toggle('open'));
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
