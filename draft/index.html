@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRASASTI ADYADMA SENTOSA — Global Logistics & Cargo Transport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Public+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#071422;
+    --navy-900:#0B1E33;
+    --navy-800:#123153;
+    --ocean-600:#1C5580;
+    --ocean-500:#2C6FA0;
+    --brass-500:#C6963C;
+    --brass-400:#DCB463;
+    --paper-50:#F6F3EC;
+    --paper-100:#EFEADF;
+    --ink-900:#101820;
+    --ink-600:#4A5A66;
+    --mist-200:#DCE3E8;
+    --line:rgba(255,255,255,0.14);
+    --shadow-soft:0 20px 60px -25px rgba(7,20,34,0.45);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper-50);
+    color:var(--ink-900);
+    font-family:'Public Sans',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    margin:0;
+    color:var(--navy-900);
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass-500);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;background:var(--brass-500);
+    display:inline-block;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:22px 0;
+    transition:all .4s ease;
+    background:transparent;
+  }
+  header.scrolled{
+    padding:12px 0;
+    background:rgba(7,20,34,0.86);
+    backdrop-filter:blur(14px);
+    box-shadow:0 10px 30px -20px rgba(0,0,0,0.6);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.3);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;}
+  .brand-text strong{font-family:'Fraunces',serif;font-size:0.95rem;color:#fff;letter-spacing:0.03em;}
+  .brand-text span{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;color:var(--brass-400);text-transform:uppercase;}
+  .navlinks{display:flex;gap:34px;align-items:center;}
+  .navlinks a{
+    font-size:0.85rem;color:rgba(255,255,255,0.85);position:relative;padding:6px 0;
+    transition:color .25s ease;
+  }
+  .navlinks a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--brass-400);
+    transition:width .3s ease;
+  }
+  .navlinks a:hover{color:#fff;}
+  .navlinks a:hover::after{width:100%;}
+  .nav-cta{
+    border:1px solid var(--brass-400); color:#fff !important; padding:9px 20px !important;
+    border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:0.72rem !important;
+    letter-spacing:0.08em; text-transform:uppercase;
+  }
+  .nav-cta::after{display:none;}
+  .nav-cta:hover{background:var(--brass-400);color:var(--navy-950) !important;}
+  .menu-toggle{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer;}
+  @media(max-width:880px){
+    .navlinks{position:fixed;inset:0 0 0 auto;width:78%;max-width:320px;background:var(--navy-950);
+      flex-direction:column;justify-content:center;align-items:flex-start;padding:40px;gap:26px;
+      transform:translateX(100%);transition:transform .4s ease;}
+    .navlinks.open{transform:translateX(0);}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:radial-gradient(ellipse at 20% 0%, #14314f 0%, var(--navy-950) 55%);
+    color:#fff;
+    display:flex;align-items:center;
+    padding:150px 0 100px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,0.045) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,0.045) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,0.9),transparent 85%);
+  }
+  .route-svg{position:absolute;right:-6%;top:8%;width:64%;max-width:760px;opacity:0.9;}
+  @media(max-width:980px){.route-svg{opacity:0.35;right:-20%;}}
+  .route-path{
+    fill:none;stroke:var(--brass-400);stroke-width:1.4;stroke-dasharray:6 8;opacity:0.75;
+  }
+  .route-path.solid{stroke:rgba(255,255,255,0.28);stroke-dasharray:none;stroke-width:1;}
+  .route-dot{fill:var(--brass-400);}
+  .route-ship{
+    offset-path: path("M40,210 C160,60 320,300 480,120 C560,32 620,140 660,70");
+    animation:sail 9s linear infinite;
+  }
+  @keyframes sail{ from{offset-distance:0%;} to{offset-distance:100%;} }
+  .pulse{animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{
+    0%,100%{opacity:1; r:4;}
+    50%{opacity:0.35; r:7;}
+  }
+
+  .hero-inner{position:relative;z-index:2;max-width:640px;}
+  .hero .eyebrow{color:var(--brass-400);}
+  .hero h1{
+    font-size:clamp(2.6rem,5.6vw,4.2rem);
+    font-weight:600;
+    color:#fff;
+    margin:22px 0 6px;
+    line-height:1.04;
+  }
+  .hero h1 em{font-style:italic;color:var(--brass-400);font-weight:400;}
+  .hero .lede{
+    font-size:1.02rem;color:rgba(255,255,255,0.72);max-width:480px;margin:20px 0 34px;
+    font-weight:300;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 30px;border-radius:2px;
+    font-family:'IBM Plex Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;
+    background:var(--brass-500);color:var(--navy-950);
+    border:1px solid var(--brass-500);
+    transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 16px 30px -12px rgba(198,150,60,0.55);}
+  .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,0.4);}
+  .btn.ghost:hover{background:rgba(255,255,255,0.08);border-color:#fff;}
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap;}
+
+  .hero-meta{
+    position:relative;z-index:2;
+    display:flex;gap:40px;margin-top:64px;flex-wrap:wrap;
+    border-top:1px solid var(--line);padding-top:26px;max-width:640px;
+  }
+  .hero-meta div strong{display:block;font-family:'Fraunces',serif;font-size:1.6rem;color:#fff;}
+  .hero-meta div span{font-size:0.74rem;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.06em;}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  .reveal-stagger > *{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal-stagger.is-visible > *{opacity:1;transform:translateY(0);}
+  .reveal-stagger.is-visible > *:nth-child(1){transition-delay:.05s;}
+  .reveal-stagger.is-visible > *:nth-child(2){transition-delay:.15s;}
+  .reveal-stagger.is-visible > *:nth-child(3){transition-delay:.25s;}
+  .reveal-stagger.is-visible > *:nth-child(4){transition-delay:.35s;}
+  .reveal-stagger.is-visible > *:nth-child(5){transition-delay:.45s;}
+
+  /* ---------- MARQUEE / MEMBERSHIP ---------- */
+  .strip{
+    background:var(--navy-900);padding:26px 0;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .strip .wrap{display:flex;align-items:center;gap:28px;}
+  .strip .eyebrow{color:rgba(255,255,255,0.55);white-space:nowrap;}
+  .strip .eyebrow::before{background:rgba(255,255,255,0.35);}
+  .marquee-track{display:flex;gap:64px;align-items:center;animation:marquee 22s linear infinite;}
+  .marquee-outer{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);}
+  .marquee-track img{height:44px;width:auto;filter:grayscale(1) brightness(2.4);opacity:0.85;}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:110px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:500;margin-top:14px;}
+  .section-head p{color:var(--ink-600);margin-top:16px;font-size:1rem;}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--paper-50);}
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--mist-200);border:1px solid var(--mist-200);}
+  @media(max-width:980px){.service-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.service-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--paper-50);padding:38px 30px;position:relative;overflow:hidden;
+    transition:background .35s ease;
+  }
+  .service-card:hover{background:#fff;}
+  .service-card::before{
+    content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--brass-500);transition:width .4s ease;
+  }
+  .service-card:hover::before{width:100%;}
+  .service-icon{width:44px;height:44px;margin-bottom:22px;}
+  .service-card h3{font-size:1.15rem;font-weight:600;margin-bottom:12px;}
+  .service-card p{font-size:0.88rem;color:var(--ink-600);margin:0 0 18px;}
+  .service-card a{
+    font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--ocean-600);display:inline-flex;align-items:center;gap:6px;
+  }
+  .service-card a span{transition:transform .3s ease;}
+  .service-card a:hover span{transform:translateX(4px);}
+
+  /* ---------- QUOTE ---------- */
+  .quote-section{
+    background:var(--navy-950);color:#fff;position:relative;
+  }
+  .quote-mark{font-family:'Fraunces',serif;font-size:6rem;color:var(--brass-500);opacity:0.6;line-height:0.6;}
+  .quote-section blockquote{
+    font-family:'Fraunces',serif;font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:400;font-style:italic;
+    max-width:760px;color:#fff;margin:12px 0 44px;line-height:1.3;
+  }
+  .quote-section blockquote strong{color:var(--brass-400);font-weight:600;font-style:normal;}
+  .team-row{display:flex;gap:20px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none;}
+  .team-row::-webkit-scrollbar{display:none;}
+  .team-card{flex:0 0 auto;width:150px;text-align:left;}
+  .team-card .ph{
+    width:150px;height:190px;border-radius:4px;overflow:hidden;position:relative;
+    filter:grayscale(0.5) contrast(1.02);
+  }
+  .team-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease, filter .5s ease;}
+  .team-card:hover img{transform:scale(1.06);filter:none;}
+  .team-card .name{font-size:0.82rem;margin-top:12px;color:#fff;}
+  .team-card .role{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--brass-400);text-transform:uppercase;letter-spacing:0.05em;margin-top:3px;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper-100);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;}
+  @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:40px;}}
+  .about-copy p{color:var(--ink-600);margin-bottom:18px;}
+  .about-photos{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;}
+  .about-photos img{border-radius:4px;object-fit:cover;height:100%;box-shadow:var(--shadow-soft);}
+  .about-photos .tall{grid-row:span 2;height:100%;aspect-ratio:3/4;}
+  .about-photos .short{aspect-ratio:4/3;}
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px;}
+  @media(max-width:600px){.pillars{grid-template-columns:1fr;}}
+  .pillar{border-left:2px solid var(--brass-500);padding-left:20px;}
+  .pillar h4{font-size:1.05rem;font-weight:600;margin-bottom:10px;}
+  .pillar p{font-size:0.88rem;color:var(--ink-600);}
+
+  /* ---------- PROJECT CARGO ---------- */
+  .project{background:var(--navy-900);color:#fff;}
+  .project-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media(max-width:900px){.project-grid{grid-template-columns:1fr;gap:36px;}}
+  .project h2{color:#fff;}
+  .project p{color:rgba(255,255,255,0.68);margin:20px 0 30px;}
+  .project-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .project-photos img{border-radius:4px;height:100%;object-fit:cover;}
+  .project-photos img:first-child{grid-row:span 2;aspect-ratio:3/4;}
+  .project-photos img:last-child{aspect-ratio:16/10;}
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{
+    background:linear-gradient(120deg,var(--brass-500),#B4842E);
+    color:var(--navy-950);text-align:center;padding:90px 0;
+  }
+  .cta-banner h2{color:var(--navy-950);font-size:clamp(1.8rem,4vw,2.6rem);}
+  .cta-banner p{max-width:520px;margin:16px auto 32px;color:rgba(7,20,34,0.75);}
+  .cta-banner .btn{background:var(--navy-950);color:#fff;border-color:var(--navy-950);}
+  .cta-banner .btn:hover{box-shadow:0 16px 30px -12px rgba(7,20,34,0.5);}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--paper-50);}
+  .offices{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--mist-200);border:1px solid var(--mist-200);margin-bottom:60px;}
+  @media(max-width:860px){.offices{grid-template-columns:1fr;}}
+  .office{background:#fff;padding:32px 28px;}
+  .office .tag{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--brass-500);text-transform:uppercase;letter-spacing:0.1em;}
+  .office h3{margin:12px 0 14px;font-size:1.2rem;}
+  .office address{font-style:normal;color:var(--ink-600);font-size:0.88rem;margin-bottom:14px;}
+  .office .line{font-size:0.85rem;color:var(--ink-900);margin:4px 0;}
+  .office .line b{color:var(--ink-600);font-weight:500;margin-right:6px;}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:44px;}}
+  .form-field{margin-bottom:20px;}
+  .form-field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-600);margin-bottom:8px;}
+  .form-field input, .form-field textarea{
+    width:100%;border:none;border-bottom:1.5px solid var(--mist-200);background:transparent;
+    padding:10px 2px;font-family:'Public Sans',sans-serif;font-size:0.95rem;color:var(--ink-900);
+    transition:border-color .3s ease;
+  }
+  .form-field input:focus, .form-field textarea:focus{outline:none;border-color:var(--brass-500);}
+  .form-field textarea{resize:vertical;min-height:100px;}
+  .map-frame{
+    border-radius:4px;overflow:hidden;position:relative;height:100%;min-height:340px;
+    background:var(--navy-900);
+  }
+  .map-frame svg{width:100%;height:100%;}
+
+  footer{background:var(--navy-950);color:rgba(255,255,255,0.6);padding:50px 0 30px;}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:24px;}
+  .footer-top .brand-text strong{color:#fff;}
+  footer .flinks{display:flex;gap:26px;font-size:0.82rem;flex-wrap:wrap;}
+  footer .flinks a:hover{color:var(--brass-400);}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.76rem;}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <nav class="wrap">
+    <a class="brand" href="#top">
+      <img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/cropped-88d7b408-6799-4337-879e-83808eca6a38-e1644658306558.jpg" alt="PRASASTI ADYADMA SENTOSA">
+      <span class="brand-text"><strong>PRASASTI</strong><span>Adyadma Sentosa</span></span>
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="#top">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Contact Us</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+
+  <svg class="route-svg" viewBox="0 0 700 340" fill="none">
+    <path class="route-path solid" d="M20,260 C120,180 220,300 320,220 C420,140 480,240 560,160 C610,110 640,130 680,70"/>
+    <path class="route-path" d="M40,210 C160,60 320,300 480,120 C560,32 620,140 660,70"/>
+    <circle class="route-dot pulse" cx="40" cy="210" r="4"/>
+    <circle class="route-dot pulse" cx="480" cy="120" r="4" style="animation-delay:.8s"/>
+    <circle class="route-dot pulse" cx="660" cy="70" r="4" style="animation-delay:1.6s"/>
+    <circle class="route-ship" r="5" fill="#fff"/>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <p class="eyebrow reveal is-visible">PT. Prasasti Adyadma Sentosa — Est. 2017</p>
+    <h1 class="reveal is-visible">International <em>Air &amp; Sea</em> Freight Forwarder Logistics</h1>
+    <p class="lede reveal is-visible">Air Freight, Sea Freight, Customs Brokerage, Project Transportation, Shipbroker &amp; Logistics — menghubungkan kargo Anda dari Sidoarjo, Jakarta dan Denpasar ke seluruh dunia.</p>
+    <div class="btn-row reveal is-visible">
+      <a class="btn" href="#contact">Contact Us</a>
+      <a class="btn ghost" href="#services">Lihat Layanan</a>
+    </div>
+
+    <div class="hero-meta">
+      <div><strong>2017</strong><span>Tahun berdiri</span></div>
+      <div><strong>3</strong><span>Kantor cabang</span></div>
+      <div><strong>WCA</strong><span>World member</span></div>
+      <div><strong>IATA</strong><span>Certified</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span class="eyebrow" style="margin-bottom:0">We are member of</span>
+    <div class="marquee-outer">
+      <div class="marquee-track">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2023/02/ALFI.png" alt="ALFI">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2023/02/Cert-IATA-PAS_page-0001-1024x724.jpg" alt="IATA Certificate">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2022/05/WhatsApp-Image-2022-05-24-at-1.16.22-PM.jpeg" alt="WCA World">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2023/02/ALFI.png" alt="ALFI">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2023/02/Cert-IATA-PAS_page-0001-1024x724.jpg" alt="IATA Certificate">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2022/05/WhatsApp-Image-2022-05-24-at-1.16.22-PM.jpeg" alt="WCA World">
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Our Services</p>
+      <h2>Empat lini layanan logistik, satu standar mutu.</h2>
+      <p>Dari udara, laut, kepabeanan hingga kargo proyek — ditangani tim berpengalaman dengan jaringan mitra terpercaya.</p>
+    </div>
+  </div>
+  <div class="service-grid reveal-stagger">
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="#123153" stroke-width="1.4"><path d="M4 28 L44 20 L38 12 L30 14 L20 6 L15 8 L21 18 L8 21 Z"/><path d="M8 34 h32" stroke-dasharray="2 3"/></svg>
+      <h3>Air Freight</h3>
+      <p>Pengiriman udara efisien dan tepat waktu untuk kargo Anda, bekerja sama dengan maskapai terpercaya dengan harga kompetitif.</p>
+      <a href="https://prasastiindonesia.com/services/#Air">Find More <span>→</span></a>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="#123153" stroke-width="1.4"><path d="M6 30 h36 l-4 8 H10 Z"/><path d="M14 30 V14 h20 v16" /><path d="M20 14 V8 h8 v6"/></svg>
+      <h3>Sea Freight</h3>
+      <p>Tim ekspor-impor dengan jaringan pelabuhan utama Indonesia dan mancanegara, berbasis di Surabaya (Tanjung Perak).</p>
+      <a href="https://prasastiindonesia.com/services/#Sea">Find More <span>→</span></a>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="#123153" stroke-width="1.4"><rect x="8" y="8" width="32" height="32" rx="3"/><path d="M16 24 l6 6 12-12"/></svg>
+      <h3>Customs Brokerage</h3>
+      <p>Membantu importir dan eksportir mengurus kepabeanan barang masuk dan keluar Indonesia sesuai regulasi terkini.</p>
+      <a href="https://prasastiindonesia.com/services/#Customs">Find More <span>→</span></a>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="#123153" stroke-width="1.4"><rect x="6" y="20" width="14" height="14"/><rect x="24" y="14" width="18" height="20"/><path d="M6 20 l7-8h7"/></svg>
+      <h3>Project &amp; Bulk Cargo</h3>
+      <p>Penanganan khusus kargo oversized dan berat, multi-moda darat, laut, udara dan rel dengan efisiensi biaya optimal.</p>
+      <a href="https://prasastiindonesia.com/services/#Project">Find More <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="quote-mark">“</span>
+      <blockquote><strong>Prasasti Adyadma Sentosa</strong> — the solution of global logistic and cargo transport.</blockquote>
+    </div>
+    <p class="eyebrow reveal" style="color:rgba(255,255,255,0.5)">Meet the people behind it</p>
+    <div class="team-row reveal" style="margin-top:26px;">
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-17-at-09.11.48-768x1024.jpeg" alt="M Ali Murtadlo"></div>
+        <div class="name">M Ali Murtadlo</div><div class="role">Director</div>
+      </div>
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-17-at-09.12.51-2-768x1024.jpeg" alt="Arif R Hakim"></div>
+        <div class="name">Arif R Hakim</div><div class="role">GM</div>
+      </div>
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2024-05-21-at-10.22.06_703612b8-768x1024.jpg" alt="Selfia"></div>
+        <div class="name">Selfia</div><div class="role">Manager Operational</div>
+      </div>
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2024-05-21-at-11.44.19_e3e20bb6-768x1024.jpg" alt="Putra Nanda"></div>
+        <div class="name">Putra Nanda</div><div class="role">BM Jakarta Office</div>
+      </div>
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2023-02-09-at-10.36.52-768x1024.jpg" alt="Anggie"></div>
+        <div class="name">Anggie</div><div class="role">BM Bali Office</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <p class="eyebrow">About Us</p>
+      <h2 style="margin-top:14px;">Berdiri sejak 2017, mengurus legalitas ulang di 2020.</h2>
+      <p style="margin-top:22px;">PRASASTI ADYADMA SENTOSA (PT. PAS) adalah freight forwarder yang didirikan pada 2017 dan memperbarui legalitas perusahaan pada 2020. Fokus kami adalah kualitas dan pelayanan tinggi kepada seluruh relasi, khususnya pelanggan, didukung tim profesional, ahli, dan solid dalam layanan kargo demi kepuasan maksimal pelanggan.</p>
+      <p>Di PT. PRASASTI ADYADMA SENTOSA (PT. PAS), kami menetapkan standar tinggi untuk memastikan pelanggan menerima kualitas dan perhatian terbaik dari layanan serta tim kami.</p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <h4>Our Mission</h4>
+          <p>Menjadi perusahaan logistik rantai pasok pilihan dunia dengan wawasan, kualitas layanan, dan inovasi untuk pertumbuhan berkelanjutan bagi bisnis dan masyarakat.</p>
+        </div>
+        <div class="pillar">
+          <h4>Our Values</h4>
+          <p>Continuous Improvement, Competence, Ethics, Equity, Management Efficiency, dan Respect for the Environment — dasar kepercayaan kami dengan mitra bisnis dan pelanggan.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-photos reveal">
+      <img class="tall" src="https://prasastiindonesia.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-16-at-17.45.14.jpeg" alt="Tim Prasasti">
+      <img class="short" src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2024-05-21-at-09.58.07_753e5935-768x1024.jpg" alt="Kegiatan operasional">
+      <img class="short" src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2024-05-21-at-10.00.24_ec508565-768x1024.jpg" alt="Tim lapangan">
+    </div>
+  </div>
+</section>
+
+<section class="project">
+  <div class="wrap project-grid">
+    <div class="project-photos reveal">
+      <img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-17-at-09.19.08-1024x768.jpeg" alt="Shipbroker">
+      <img src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2023-01-24-at-22.49.10.jpg" alt="Bulk cargo">
+    </div>
+    <div class="reveal">
+      <p class="eyebrow" style="color:var(--brass-400)">Shipbroker &amp; Project Cargo</p>
+      <h2>Chartering kapal untuk kargo curah domestik dan internasional.</h2>
+      <p>Menyediakan layanan chartering kapal domestik maupun internasional. Tim kami memiliki keahlian mendalam dalam pergerakan kargo curah kering termasuk Batu Bara, Semen, PKE, PKS, Pupuk, Produk Baja, dan lainnya.</p>
+      <a class="btn" href="#contact">Let's Talk Now</a>
+    </div>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <div class="wrap reveal">
+    <h2>Questions?</h2>
+    <p>Baik seputar layanan kami, cara kami menangani pengiriman Anda, atau bahkan media — kami siap menjawab pertanyaan apa pun.</p>
+    <a class="btn" href="#contact">Let's Talk Now</a>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Contact Us</p>
+      <h2>Tiga kantor, satu jaringan logistik.</h2>
+    </div>
+
+    <div class="offices reveal-stagger">
+      <div class="office">
+        <span class="tag">Head Office</span>
+        <h3>Sidoarjo</h3>
+        <address>Jl. Haji Syukur VII No.47, RT.22/RW.10, Sedati Gede, Kec. Sedati, Kabupaten Sidoarjo, Jawa Timur 61253.</address>
+        <div class="line"><b>Telp</b>031 9968 7039 (Hunting)</div>
+        <div class="line"><b>Fax</b>031 9968 7039</div>
+        <div class="line"><b>Email</b>info@prasastiindonesia.com</div>
+      </div>
+      <div class="office">
+        <span class="tag">Branch</span>
+        <h3>Jakarta</h3>
+        <address>Jl. Serdang Mawar No.8, RT.3/RW.4, Serdang, Kec. Kemayoran, Kota Jakarta Pusat, DKI Jakarta 10640.</address>
+        <div class="line"><b>Telp</b>021 2242 6020 (Hunting)</div>
+        <div class="line"><b>Fax</b>021 2242 6020</div>
+        <div class="line"><b>Email</b>info@prasastiindonesia.com</div>
+      </div>
+      <div class="office">
+        <span class="tag">Branch</span>
+        <h3>Denpasar</h3>
+        <address>Jl. Raya Sesetan No. 145, Desa Sesetan, Kelurahan Sesetan, Kec. Denpasar Selatan, Bali 80223.</address>
+        <div class="line"><b>Telp</b>0361 251470</div>
+        <div class="line"><b>Fax</b>0361 251470</div>
+        <div class="line"><b>Email</b>info@prasastiindonesia.com</div>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="eyebrow">Let's get in touch</p>
+        <div class="form-field" style="margin-top:24px;">
+          <label for="f-name">Name</label>
+          <input id="f-name" type="text" placeholder="Nama Anda">
+        </div>
+        <div class="form-field">
+          <label for="f-email">Email</label>
+          <input id="f-email" type="email" placeholder="nama@email.com">
+        </div>
+        <div class="form-field">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" placeholder="Tulis pesan Anda..."></textarea>
+        </div>
+        <button class="btn" type="button" onclick="alert('Ini mockup tampilan — form belum terhubung ke server.')">Send</button>
+      </div>
+
+      <div class="reveal map-frame">
+        <svg viewBox="0 0 400 340" width="100%" height="100%">
+          <rect width="400" height="340" fill="#0B1E33"/>
+          <path d="M40,60 C120,20 260,20 350,90 C300,150 340,220 280,270 C200,320 100,300 60,240 C10,180 30,110 40,60 Z" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <circle cx="150" cy="90" r="5" fill="#C6963C"/>
+          <text x="164" y="94" fill="#fff" font-family="IBM Plex Mono" font-size="11">Jakarta</text>
+          <circle cx="230" cy="150" r="5" fill="#C6963C"/>
+          <text x="244" y="154" fill="#fff" font-family="IBM Plex Mono" font-size="11">Sidoarjo (HQ)</text>
+          <circle cx="270" cy="230" r="5" fill="#C6963C"/>
+          <text x="284" y="234" fill="#fff" font-family="IBM Plex Mono" font-size="11">Denpasar</text>
+          <path d="M150,90 Q190,110 230,150 Q250,190 270,230" fill="none" stroke="#C6963C" stroke-width="1" stroke-dasharray="4 5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="brand" href="#top">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/cropped-88d7b408-6799-4337-879e-83808eca6a38-e1644658306558.jpg" alt="PRASASTI ADYADMA SENTOSA">
+        <span class="brand-text"><strong>PRASASTI</strong><span>Adyadma Sentosa</span></span>
+      </a>
+      <div class="flinks">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2017 – PRASASTI ADYADMA SENTOSA. All rights reserved.</span>
+      <span>Air Freight · Sea Freight · Customs Brokerage · Project &amp; Bulk Cargo</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky header state
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const navlinks = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => navlinks.classList.toggle('open'));
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
