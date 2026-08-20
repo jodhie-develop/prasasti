@@ -1,677 +1,633 @@
 <!DOCTYPE html>
-<html lang="id" class="dark scroll-smooth">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRASASTI ADYADMA SENTOSA - International air & sea freight forwarder logistics</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #030712;
-        }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #030712; }
-        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #374151; }
-        .transition-all-300 { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glow-red:hover { box-shadow: 0 0 25px rgba(239, 68, 68, 0.15); }
-        .glow-blue:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.15); }
-        .glow-teal:hover { box-shadow: 0 0 25px rgba(20, 184, 166, 0.15); }
-        .glow-orange:hover { box-shadow: 0 0 25px rgba(249, 115, 22, 0.15); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRASASTI ADYADMA SENTOSA — Global Logistics & Cargo Transport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Public+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#071422;
+    --navy-900:#0B1E33;
+    --navy-800:#123153;
+    --ocean-600:#1C5580;
+    --ocean-500:#2C6FA0;
+    --brass-500:#C6963C;
+    --brass-400:#DCB463;
+    --paper-50:#F6F3EC;
+    --paper-100:#EFEADF;
+    --ink-900:#101820;
+    --ink-600:#4A5A66;
+    --mist-200:#DCE3E8;
+    --line:rgba(255,255,255,0.14);
+    --shadow-soft:0 20px 60px -25px rgba(7,20,34,0.45);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper-50);
+    color:var(--ink-900);
+    font-family:'Public Sans',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    margin:0;
+    color:var(--navy-900);
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass-500);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;background:var(--brass-500);
+    display:inline-block;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:22px 0;
+    transition:all .4s ease;
+    background:transparent;
+  }
+  header.scrolled{
+    padding:12px 0;
+    background:rgba(7,20,34,0.86);
+    backdrop-filter:blur(14px);
+    box-shadow:0 10px 30px -20px rgba(0,0,0,0.6);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.3);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;}
+  .brand-text strong{font-family:'Fraunces',serif;font-size:0.95rem;color:#fff;letter-spacing:0.03em;}
+  .brand-text span{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;color:var(--brass-400);text-transform:uppercase;}
+  .navlinks{display:flex;gap:34px;align-items:center;}
+  .navlinks a{
+    font-size:0.85rem;color:rgba(255,255,255,0.85);position:relative;padding:6px 0;
+    transition:color .25s ease;
+  }
+  .navlinks a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--brass-400);
+    transition:width .3s ease;
+  }
+  .navlinks a:hover{color:#fff;}
+  .navlinks a:hover::after{width:100%;}
+  .nav-cta{
+    border:1px solid var(--brass-400); color:#fff !important; padding:9px 20px !important;
+    border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:0.72rem !important;
+    letter-spacing:0.08em; text-transform:uppercase;
+  }
+  .nav-cta::after{display:none;}
+  .nav-cta:hover{background:var(--brass-400);color:var(--navy-950) !important;}
+  .menu-toggle{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer;}
+  @media(max-width:880px){
+    .navlinks{position:fixed;inset:0 0 0 auto;width:78%;max-width:320px;background:var(--navy-950);
+      flex-direction:column;justify-content:center;align-items:flex-start;padding:40px;gap:26px;
+      transform:translateX(100%);transition:transform .4s ease;}
+    .navlinks.open{transform:translateX(0);}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:radial-gradient(ellipse at 20% 0%, #14314f 0%, var(--navy-950) 55%);
+    color:#fff;
+    display:flex;align-items:center;
+    padding:150px 0 100px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,0.045) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,0.045) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,0.9),transparent 85%);
+  }
+  .route-svg{position:absolute;right:-6%;top:8%;width:64%;max-width:760px;opacity:0.9;}
+  @media(max-width:980px){.route-svg{opacity:0.35;right:-20%;}}
+  .route-path{
+    fill:none;stroke:var(--brass-400);stroke-width:1.4;stroke-dasharray:6 8;opacity:0.75;
+  }
+  .route-path.solid{stroke:rgba(255,255,255,0.28);stroke-dasharray:none;stroke-width:1;}
+  .route-dot{fill:var(--brass-400);}
+  .route-ship{
+    offset-path: path("M40,210 C160,60 320,300 480,120 C560,32 620,140 660,70");
+    animation:sail 9s linear infinite;
+  }
+  @keyframes sail{ from{offset-distance:0%;} to{offset-distance:100%;} }
+  .pulse{animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{
+    0%,100%{opacity:1; r:4;}
+    50%{opacity:0.35; r:7;}
+  }
+
+  .hero-inner{position:relative;z-index:2;max-width:640px;}
+  .hero .eyebrow{color:var(--brass-400);}
+  .hero h1{
+    font-size:clamp(2.6rem,5.6vw,4.2rem);
+    font-weight:600;
+    color:#fff;
+    margin:22px 0 6px;
+    line-height:1.04;
+  }
+  .hero h1 em{font-style:italic;color:var(--brass-400);font-weight:400;}
+  .hero .lede{
+    font-size:1.02rem;color:rgba(255,255,255,0.72);max-width:480px;margin:20px 0 34px;
+    font-weight:300;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 30px;border-radius:2px;
+    font-family:'IBM Plex Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;
+    background:var(--brass-500);color:var(--navy-950);
+    border:1px solid var(--brass-500);
+    transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 16px 30px -12px rgba(198,150,60,0.55);}
+  .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,0.4);}
+  .btn.ghost:hover{background:rgba(255,255,255,0.08);border-color:#fff;}
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap;}
+
+  .hero-meta{
+    position:relative;z-index:2;
+    display:flex;gap:40px;margin-top:64px;flex-wrap:wrap;
+    border-top:1px solid var(--line);padding-top:26px;max-width:640px;
+  }
+  .hero-meta div strong{display:block;font-family:'Fraunces',serif;font-size:1.6rem;color:#fff;}
+  .hero-meta div span{font-size:0.74rem;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.06em;}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  .reveal-stagger > *{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal-stagger.is-visible > *{opacity:1;transform:translateY(0);}
+  .reveal-stagger.is-visible > *:nth-child(1){transition-delay:.05s;}
+  .reveal-stagger.is-visible > *:nth-child(2){transition-delay:.15s;}
+  .reveal-stagger.is-visible > *:nth-child(3){transition-delay:.25s;}
+  .reveal-stagger.is-visible > *:nth-child(4){transition-delay:.35s;}
+  .reveal-stagger.is-visible > *:nth-child(5){transition-delay:.45s;}
+
+  /* ---------- MARQUEE / MEMBERSHIP ---------- */
+  .strip{
+    background:var(--navy-900);padding:26px 0;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .strip .wrap{display:flex;align-items:center;gap:28px;}
+  .strip .eyebrow{color:rgba(255,255,255,0.55);white-space:nowrap;}
+  .strip .eyebrow::before{background:rgba(255,255,255,0.35);}
+  .marquee-track{display:flex;gap:64px;align-items:center;animation:marquee 22s linear infinite;}
+  .marquee-outer{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);}
+  .marquee-track img{height:44px;width:auto;filter:grayscale(1) brightness(2.4);opacity:0.85;}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:110px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:500;margin-top:14px;}
+  .section-head p{color:var(--ink-600);margin-top:16px;font-size:1rem;}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--paper-50);}
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--mist-200);border:1px solid var(--mist-200);}
+  @media(max-width:980px){.service-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.service-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--paper-50);padding:38px 30px;position:relative;overflow:hidden;
+    transition:background .35s ease;
+  }
+  .service-card:hover{background:#fff;}
+  .service-card::before{
+    content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--brass-500);transition:width .4s ease;
+  }
+  .service-card:hover::before{width:100%;}
+  .service-icon{width:44px;height:44px;margin-bottom:22px;}
+  .service-card h3{font-size:1.15rem;font-weight:600;margin-bottom:12px;}
+  .service-card p{font-size:0.88rem;color:var(--ink-600);margin:0 0 18px;}
+  .service-card a{
+    font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--ocean-600);display:inline-flex;align-items:center;gap:6px;
+  }
+  .service-card a span{transition:transform .3s ease;}
+  .service-card a:hover span{transform:translateX(4px);}
+
+  /* ---------- QUOTE ---------- */
+  .quote-section{
+    background:var(--navy-950);color:#fff;position:relative;
+  }
+  .quote-mark{font-family:'Fraunces',serif;font-size:6rem;color:var(--brass-500);opacity:0.6;line-height:0.6;}
+  .quote-section blockquote{
+    font-family:'Fraunces',serif;font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:400;font-style:italic;
+    max-width:760px;color:#fff;margin:12px 0 44px;line-height:1.3;
+  }
+  .quote-section blockquote strong{color:var(--brass-400);font-weight:600;font-style:normal;}
+  .team-row{display:flex;gap:20px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none;}
+  .team-row::-webkit-scrollbar{display:none;}
+  .team-card{flex:0 0 auto;width:150px;text-align:left;}
+  .team-card .ph{
+    width:150px;height:190px;border-radius:4px;overflow:hidden;position:relative;
+    filter:grayscale(0.5) contrast(1.02);
+  }
+  .team-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease, filter .5s ease;}
+  .team-card:hover img{transform:scale(1.06);filter:none;}
+  .team-card .name{font-size:0.82rem;margin-top:12px;color:#fff;}
+  .team-card .role{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--brass-400);text-transform:uppercase;letter-spacing:0.05em;margin-top:3px;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper-100);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;}
+  @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:40px;}}
+  .about-copy p{color:var(--ink-600);margin-bottom:18px;}
+  .about-photos{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;}
+  .about-photos img{border-radius:4px;object-fit:cover;height:100%;box-shadow:var(--shadow-soft);}
+  .about-photos .tall{grid-row:span 2;height:100%;aspect-ratio:3/4;}
+  .about-photos .short{aspect-ratio:4/3;}
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px;}
+  @media(max-width:600px){.pillars{grid-template-columns:1fr;}}
+  .pillar{border-left:2px solid var(--brass-500);padding-left:20px;}
+  .pillar h4{font-size:1.05rem;font-weight:600;margin-bottom:10px;}
+  .pillar p{font-size:0.88rem;color:var(--ink-600);}
+
+  /* ---------- PROJECT CARGO ---------- */
+  .project{background:var(--navy-900);color:#fff;}
+  .project-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media(max-width:900px){.project-grid{grid-template-columns:1fr;gap:36px;}}
+  .project h2{color:#fff;}
+  .project p{color:rgba(255,255,255,0.68);margin:20px 0 30px;}
+  .project-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .project-photos img{border-radius:4px;height:100%;object-fit:cover;}
+  .project-photos img:first-child{grid-row:span 2;aspect-ratio:3/4;}
+  .project-photos img:last-child{aspect-ratio:16/10;}
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{
+    background:linear-gradient(120deg,var(--brass-500),#B4842E);
+    color:var(--navy-950);text-align:center;padding:90px 0;
+  }
+  .cta-banner h2{color:var(--navy-950);font-size:clamp(1.8rem,4vw,2.6rem);}
+  .cta-banner p{max-width:520px;margin:16px auto 32px;color:rgba(7,20,34,0.75);}
+  .cta-banner .btn{background:var(--navy-950);color:#fff;border-color:var(--navy-950);}
+  .cta-banner .btn:hover{box-shadow:0 16px 30px -12px rgba(7,20,34,0.5);}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--paper-50);}
+  .offices{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--mist-200);border:1px solid var(--mist-200);margin-bottom:60px;}
+  @media(max-width:860px){.offices{grid-template-columns:1fr;}}
+  .office{background:#fff;padding:32px 28px;}
+  .office .tag{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--brass-500);text-transform:uppercase;letter-spacing:0.1em;}
+  .office h3{margin:12px 0 14px;font-size:1.2rem;}
+  .office address{font-style:normal;color:var(--ink-600);font-size:0.88rem;margin-bottom:14px;}
+  .office .line{font-size:0.85rem;color:var(--ink-900);margin:4px 0;}
+  .office .line b{color:var(--ink-600);font-weight:500;margin-right:6px;}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:44px;}}
+  .form-field{margin-bottom:20px;}
+  .form-field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-600);margin-bottom:8px;}
+  .form-field input, .form-field textarea{
+    width:100%;border:none;border-bottom:1.5px solid var(--mist-200);background:transparent;
+    padding:10px 2px;font-family:'Public Sans',sans-serif;font-size:0.95rem;color:var(--ink-900);
+    transition:border-color .3s ease;
+  }
+  .form-field input:focus, .form-field textarea:focus{outline:none;border-color:var(--brass-500);}
+  .form-field textarea{resize:vertical;min-height:100px;}
+  .map-frame{
+    border-radius:4px;overflow:hidden;position:relative;height:100%;min-height:340px;
+    background:var(--navy-900);
+  }
+  .map-frame svg{width:100%;height:100%;}
+
+  footer{background:var(--navy-950);color:rgba(255,255,255,0.6);padding:50px 0 30px;}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:24px;}
+  .footer-top .brand-text strong{color:#fff;}
+  footer .flinks{display:flex;gap:26px;font-size:0.82rem;flex-wrap:wrap;}
+  footer .flinks a:hover{color:var(--brass-400);}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.76rem;}
+</style>
 </head>
-<body class="text-slate-100 min-h-screen flex flex-col overflow-x-hidden">
+<body>
 
-    <!-- NAVIGATION BAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#030712]/95 backdrop-blur-md border-b border-slate-900 px-6 lg:px-16 py-4 flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" class="w-8 h-8 animate-pulse">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#ef4444" stroke-width="4" />
-                    <circle cx="50" cy="50" r="30" fill="none" stroke="#eab308" stroke-width="4" stroke-dasharray="40 20" />
-                    <circle cx="50" cy="50" r="15" fill="#3b82f6" />
-                </svg>
-            </div>
-            <div>
-                <span class="text-base font-bold tracking-tight text-white block">Prasasti Adyadma Sentosa</span>
-                <span class="text-[9px] text-slate-400 tracking-wider uppercase block -mt-1">International air & sea freight forwarder logistics</span>
-            </div>
-        </div>
+<header id="site-header">
+  <nav class="wrap">
+    <a class="brand" href="#top">
+      <img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/cropped-88d7b408-6799-4337-879e-83808eca6a38-e1644658306558.jpg" alt="PRASASTI ADYADMA SENTOSA">
+      <span class="brand-text"><strong>PRASASTI</strong><span>Adyadma Sentosa</span></span>
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="#top">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Contact Us</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
 
-        <div class="hidden lg:flex items-center space-x-8">
-            <a href="#services" class="text-sm font-medium text-slate-300 hover:text-white transition-all-300">Services</a>
-            <a href="#tracking" class="text-sm font-medium text-slate-300 hover:text-white transition-all-300">Tracking</a>
-            <button onclick="openModal('certifications')" class="text-sm font-medium text-slate-300 hover:text-white transition-all-300">Certifications</button>
-            <button onclick="openModal('clients')" class="text-sm font-medium text-slate-300 hover:text-white transition-all-300">Clients</button>
-            <button onclick="openModal('offices')" class="text-sm font-medium text-slate-300 hover:text-white transition-all-300">Offices</button>
-            <button onclick="openModal('gallery')" class="text-sm font-medium text-slate-300 hover:text-white transition-all-300">Gallery</button>
-        </div>
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
 
-        <div class="flex items-center space-x-3">
-            <button onclick="toggleSlideOver('cbm-estimator')" class="hidden sm:flex px-4 py-2 text-xs font-semibold rounded-lg border border-indigo-500/40 hover:border-indigo-400 text-indigo-300 hover:text-indigo-200 bg-indigo-500/5 transition-all-300">
-                Get a Quote
-            </button>
-            <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-slate-400 hover:text-white rounded-lg">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
-        </div>
-    </nav>
+  <svg class="route-svg" viewBox="0 0 700 340" fill="none">
+    <path class="route-path solid" d="M20,260 C120,180 220,300 320,220 C420,140 480,240 560,160 C610,110 640,130 680,70"/>
+    <path class="route-path" d="M40,210 C160,60 320,300 480,120 C560,32 620,140 660,70"/>
+    <circle class="route-dot pulse" cx="40" cy="210" r="4"/>
+    <circle class="route-dot pulse" cx="480" cy="120" r="4" style="animation-delay:.8s"/>
+    <circle class="route-dot pulse" cx="660" cy="70" r="4" style="animation-delay:1.6s"/>
+    <circle class="route-ship" r="5" fill="#fff"/>
+  </svg>
 
-    <!-- Mobile Nav Slide Panel -->
-    <div id="mobile-nav" class="fixed inset-y-0 right-0 z-50 w-64 bg-[#080d1a] border-l border-slate-800 p-6 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
-        <div class="flex justify-end mb-6">
-            <button onclick="toggleMobileNav()" class="p-2 text-slate-400 hover:text-white">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-        </div>
-        <div class="flex flex-col space-y-4">
-            <a href="#services" onclick="toggleMobileNav()" class="text-sm font-medium text-slate-300 hover:text-white py-2">Services</a>
-            <a href="#tracking" onclick="toggleMobileNav()" class="text-sm font-medium text-slate-300 hover:text-white py-2">Tracking</a>
-            <button onclick="toggleMobileNav(); openModal('certifications')" class="text-left text-sm font-medium text-slate-300 hover:text-white py-2">Certifications</button>
-            <button onclick="toggleMobileNav(); openModal('clients')" class="text-left text-sm font-medium text-slate-300 hover:text-white py-2">Clients</button>
-            <button onclick="toggleMobileNav(); openModal('offices')" class="text-left text-sm font-medium text-slate-300 hover:text-white py-2">Offices</button>
-            <button onclick="toggleMobileNav(); openModal('gallery')" class="text-left text-sm font-medium text-slate-300 hover:text-white py-2">Gallery</button>
-            <button onclick="toggleMobileNav(); toggleSlideOver('cbm-estimator')" class="w-full py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white text-center">Get a Quote</button>
-        </div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow reveal is-visible">PT. Prasasti Adyadma Sentosa — Est. 2017</p>
+    <h1 class="reveal is-visible">International <em>Air &amp; Sea</em> Freight Forwarder Logistics</h1>
+    <p class="lede reveal is-visible">Air Freight, Sea Freight, Customs Brokerage, Project Transportation, Shipbroker &amp; Logistics — menghubungkan kargo Anda dari Sidoarjo, Jakarta dan Denpasar ke seluruh dunia.</p>
+    <div class="btn-row reveal is-visible">
+      <a class="btn" href="#contact">Contact Us</a>
+      <a class="btn ghost" href="#services">Lihat Layanan</a>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="relative min-h-[90vh] flex flex-col justify-center pt-28 pb-16 px-6 lg:px-16 overflow-hidden bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-950/20 via-slate-950 to-slate-950">
-        <div class="absolute inset-0 opacity-10 pointer-events-none bg-[linear-gradient(to_right,#3b82f6_1px,transparent_1px),linear-gradient(to_bottom,#3b82f6_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
-        <div class="absolute top-1/4 right-10 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="hero-meta">
+      <div><strong>2017</strong><span>Tahun berdiri</span></div>
+      <div><strong>3</strong><span>Kantor cabang</span></div>
+      <div><strong>WCA</strong><span>World member</span></div>
+      <div><strong>IATA</strong><span>Certified</span></div>
+    </div>
+  </div>
+</section>
 
-        <div class="relative z-10 max-w-4xl space-y-6">
-            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-950/80 border border-slate-800">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-xs font-semibold tracking-wide text-slate-300">Certified & Trusted Partner</span>
-            </div>
+<div class="strip">
+  <div class="wrap">
+    <span class="eyebrow" style="margin-bottom:0">We are member of</span>
+    <div class="marquee-outer">
+      <div class="marquee-track">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2023/02/ALFI.png" alt="ALFI">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2023/02/Cert-IATA-PAS_page-0001-1024x724.jpg" alt="IATA Certificate">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2022/05/WhatsApp-Image-2022-05-24-at-1.16.22-PM.jpeg" alt="WCA World">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2023/02/ALFI.png" alt="ALFI">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2023/02/Cert-IATA-PAS_page-0001-1024x724.jpg" alt="IATA Certificate">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2022/05/WhatsApp-Image-2022-05-24-at-1.16.22-PM.jpeg" alt="WCA World">
+      </div>
+    </div>
+  </div>
+</div>
 
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                Fast Air, Reliable Sea, <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-emerald-400">Total Visibility</span>.
-            </h1>
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Our Services</p>
+      <h2>Empat lini layanan logistik, satu standar mutu.</h2>
+      <p>Dari udara, laut, kepabeanan hingga kargo proyek — ditangani tim berpengalaman dengan jaringan mitra terpercaya.</p>
+    </div>
+  </div>
+  <div class="service-grid reveal-stagger">
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="#123153" stroke-width="1.4"><path d="M4 28 L44 20 L38 12 L30 14 L20 6 L15 8 L21 18 L8 21 Z"/><path d="M8 34 h32" stroke-dasharray="2 3"/></svg>
+      <h3>Air Freight</h3>
+      <p>Pengiriman udara efisien dan tepat waktu untuk kargo Anda, bekerja sama dengan maskapai terpercaya dengan harga kompetitif.</p>
+      <a href="https://prasastiindonesia.com/services/#Air">Find More <span>→</span></a>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="#123153" stroke-width="1.4"><path d="M6 30 h36 l-4 8 H10 Z"/><path d="M14 30 V14 h20 v16" /><path d="M20 14 V8 h8 v6"/></svg>
+      <h3>Sea Freight</h3>
+      <p>Tim ekspor-impor dengan jaringan pelabuhan utama Indonesia dan mancanegara, berbasis di Surabaya (Tanjung Perak).</p>
+      <a href="https://prasastiindonesia.com/services/#Sea">Find More <span>→</span></a>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="#123153" stroke-width="1.4"><rect x="8" y="8" width="32" height="32" rx="3"/><path d="M16 24 l6 6 12-12"/></svg>
+      <h3>Customs Brokerage</h3>
+      <p>Membantu importir dan eksportir mengurus kepabeanan barang masuk dan keluar Indonesia sesuai regulasi terkini.</p>
+      <a href="https://prasastiindonesia.com/services/#Customs">Find More <span>→</span></a>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="#123153" stroke-width="1.4"><rect x="6" y="20" width="14" height="14"/><rect x="24" y="14" width="18" height="20"/><path d="M6 20 l7-8h7"/></svg>
+      <h3>Project &amp; Bulk Cargo</h3>
+      <p>Penanganan khusus kargo oversized dan berat, multi-moda darat, laut, udara dan rel dengan efisiensi biaya optimal.</p>
+      <a href="https://prasastiindonesia.com/services/#Project">Find More <span>→</span></a>
+    </div>
+  </div>
+</section>
 
-            <p class="text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed">
-                Carrier coordination, documentation, and tracking built for enterprise supply chains. Empowering global trade operations with cutting edge AI assistants.
-            </p>
+<section class="quote-section">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="quote-mark">“</span>
+      <blockquote><strong>Prasasti Adyadma Sentosa</strong> — the solution of global logistic and cargo transport.</blockquote>
+    </div>
+    <p class="eyebrow reveal" style="color:rgba(255,255,255,0.5)">Meet the people behind it</p>
+    <div class="team-row reveal" style="margin-top:26px;">
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-17-at-09.11.48-768x1024.jpeg" alt="M Ali Murtadlo"></div>
+        <div class="name">M Ali Murtadlo</div><div class="role">Director</div>
+      </div>
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-17-at-09.12.51-2-768x1024.jpeg" alt="Arif R Hakim"></div>
+        <div class="name">Arif R Hakim</div><div class="role">GM</div>
+      </div>
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2024-05-21-at-10.22.06_703612b8-768x1024.jpg" alt="Selfia"></div>
+        <div class="name">Selfia</div><div class="role">Manager Operational</div>
+      </div>
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2024-05-21-at-11.44.19_e3e20bb6-768x1024.jpg" alt="Putra Nanda"></div>
+        <div class="name">Putra Nanda</div><div class="role">BM Jakarta Office</div>
+      </div>
+      <div class="team-card">
+        <div class="ph"><img src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2023-02-09-at-10.36.52-768x1024.jpg" alt="Anggie"></div>
+        <div class="name">Anggie</div><div class="role">BM Bali Office</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="flex flex-wrap gap-4 pt-2">
-                <a href="#tracking" class="px-6 py-3 rounded-xl bg-gradient-to-r from-[#811822] to-[#1e1b4b] hover:from-[#991b1b] hover:to-[#2e1065] text-white text-sm font-semibold tracking-wide shadow-lg border border-red-700/30 transition-all-300">
-                    Track Shipment & AI Assistant
-                </a>
-                <a href="#services" class="px-6 py-3 rounded-xl bg-slate-950 hover:bg-slate-900 text-slate-200 text-sm font-semibold tracking-wide border border-slate-800 hover:border-slate-700 transition-all-300">
-                    Explore Services
-                </a>
-            </div>
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <p class="eyebrow">About Us</p>
+      <h2 style="margin-top:14px;">Berdiri sejak 2017, mengurus legalitas ulang di 2020.</h2>
+      <p style="margin-top:22px;">PRASASTI ADYADMA SENTOSA (PT. PAS) adalah freight forwarder yang didirikan pada 2017 dan memperbarui legalitas perusahaan pada 2020. Fokus kami adalah kualitas dan pelayanan tinggi kepada seluruh relasi, khususnya pelanggan, didukung tim profesional, ahli, dan solid dalam layanan kargo demi kepuasan maksimal pelanggan.</p>
+      <p>Di PT. PRASASTI ADYADMA SENTOSA (PT. PAS), kami menetapkan standar tinggi untuk memastikan pelanggan menerima kualitas dan perhatian terbaik dari layanan serta tim kami.</p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-12 max-w-3xl">
-                <div class="bg-slate-950/40 backdrop-blur-md border border-slate-800/85 p-4 rounded-xl">
-                    <p class="text-sm font-bold text-white">24/7</p>
-                    <p class="text-xs text-slate-400 mt-1">Tracking Support</p>
-                </div>
-                <div class="bg-slate-950/40 backdrop-blur-md border border-slate-800/85 p-4 rounded-xl">
-                    <p class="text-sm font-bold text-white">Worldwide</p>
-                    <p class="text-xs text-slate-400 mt-1">Network Coverage</p>
-                </div>
-                <div class="bg-slate-950/40 backdrop-blur-md border border-slate-800/85 p-4 rounded-xl">
-                    <p class="text-sm font-bold text-white">Compliance</p>
-                    <p class="text-xs text-slate-400 mt-1">Customs Expertise</p>
-                </div>
-            </div>
+      <div class="pillars">
+        <div class="pillar">
+          <h4>Our Mission</h4>
+          <p>Menjadi perusahaan logistik rantai pasok pilihan dunia dengan wawasan, kualitas layanan, dan inovasi untuk pertumbuhan berkelanjutan bagi bisnis dan masyarakat.</p>
         </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section id="services" class="py-24 px-6 lg:px-16 border-t border-slate-900 bg-[#02050d]">
-        <div class="max-w-7xl mx-auto space-y-12">
-            <div>
-                <h2 class="text-3xl font-extrabold text-white tracking-tight">Our Services</h2>
-                <p class="text-xs text-slate-500 mt-2">Tailored logistics solutions designed to ensure safety, speed, and standard compliant custom clearance.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1: Air Freight -->
-                <div class="bg-slate-950/40 backdrop-blur-md border border-red-500/10 hover:border-red-500/30 rounded-2xl p-6 flex flex-col justify-between h-[360px] transition-all-300 group glow-red">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="plane" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white">Air Freight</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            When speed is of the essence and you have a tight deadline to meet. We deal with your air shipments efficiently and effectively, delivering your cargo straight to and from your door.
-                        </p>
-                    </div>
-                    <button onclick="toggleSlideOver('cbm-estimator')" class="text-red-400 hover:text-red-300 text-xs font-semibold flex items-center space-x-1.5 group/link pt-4">
-                        <span>Learn more</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1"></i>
-                    </button>
-                </div>
-
-                <!-- Card 2: Sea Freight -->
-                <div class="bg-slate-950/40 backdrop-blur-md border border-blue-500/10 hover:border-blue-500/30 rounded-2xl p-6 flex flex-col justify-between h-[360px] transition-all-300 group glow-blue">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="ship" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white">Sea Freight</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Our Export and import operations team has links with all major Indonesia and overseas ports to facilitate and manage sea freight shipments worldwide.
-                        </p>
-                    </div>
-                    <button onclick="toggleSlideOver('cbm-estimator')" class="text-blue-400 hover:text-blue-300 text-xs font-semibold flex items-center space-x-1.5 group/link pt-4">
-                        <span>Learn more</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1"></i>
-                    </button>
-                </div>
-
-                <!-- Card 3: Customs Brokerage -->
-                <div class="bg-slate-950/40 backdrop-blur-md border border-teal-500/10 hover:border-teal-500/30 rounded-2xl p-6 flex flex-col justify-between h-[360px] transition-all-300 group glow-teal">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="file-check" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white">Customs Brokerage</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            We assist importers and exporters with the clearance of their goods arriving to and from Indonesia. Experienced in rules and procedures set by Customs.
-                        </p>
-                    </div>
-                    <button onclick="toggleSlideOver('hscode-search')" class="text-teal-400 hover:text-teal-300 text-xs font-semibold flex items-center space-x-1.5 group/link pt-4">
-                        <span>Directory Lookup</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1"></i>
-                    </button>
-                </div>
-
-                <!-- Card 4: Project Cargo -->
-                <div class="bg-slate-950/40 backdrop-blur-md border border-orange-500/10 hover:border-orange-500/30 rounded-2xl p-6 flex flex-col justify-between h-[360px] transition-all-300 group glow-orange">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="truck" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white">Project & Bulk Cargo</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Provides ship chartering services for both domestic and international vessels. Extensive knowledge in Coal, Cement, PKE, PKS, and Steel Products.
-                        </p>
-                    </div>
-                    <button onclick="toggleSlideOver('cbm-estimator')" class="text-orange-400 hover:text-orange-300 text-xs font-semibold flex items-center space-x-1.5 group/link pt-4">
-                        <span>Learn more</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1"></i>
-                    </button>
-                </div>
-            </div>
+        <div class="pillar">
+          <h4>Our Values</h4>
+          <p>Continuous Improvement, Competence, Ethics, Equity, Management Efficiency, dan Respect for the Environment — dasar kepercayaan kami dengan mitra bisnis dan pelanggan.</p>
         </div>
-    </section>
-
-    <!-- TRACKING SECTION & CHATBOT -->
-    <section id="tracking" class="py-24 px-6 lg:px-16 bg-[#030712] border-t border-slate-900">
-        <div class="max-w-4xl mx-auto space-y-8">
-            <div>
-                <h2 class="text-3xl font-extrabold text-white tracking-tight">Track Your Shipment</h2>
-                <p class="text-xs text-slate-400 mt-2">Enter your tracking number below to view the latest status updates.</p>
-            </div>
-
-            <div class="bg-slate-950/60 border border-slate-800/80 p-4 rounded-2xl shadow-xl space-y-4">
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <input type="text" id="tracker-input" value="PAS-SEA-2028-000123" class="flex-1 bg-[#060a16] border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none">
-                    <button onclick="handleTrackShipment()" class="px-8 py-3 rounded-xl bg-gradient-to-r from-red-900 to-indigo-950 text-white font-semibold text-sm transition-all-300">
-                        Track
-                    </button>
-                </div>
-
-                <div id="tracker-result-card" class="bg-[#050914] border border-indigo-500/15 rounded-xl p-5 space-y-6 hidden">
-                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-900 pb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                                <i data-lucide="ship" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded border border-indigo-500/30 uppercase font-bold" id="track-type-disp">OCEAN FREIGHT</span>
-                                <h4 id="track-id-disp" class="text-sm font-bold text-white mt-1">PAS-SEA-2028-000123</h4>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-slate-500 uppercase">ETA</p>
-                            <p id="track-eta-disp" class="text-sm font-bold text-indigo-400 mt-0.5">25 Juli 2026</p>
-                        </div>
-                    </div>
-
-                    <div class="relative py-2">
-                        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-slate-950 rounded-full"></div>
-                        <div id="track-progress-bar" class="absolute left-0 top-1/2 -translate-y-1/2 h-0.5 bg-indigo-500 rounded-full" style="width: 0%;"></div>
-                        <div class="relative flex justify-between">
-                            <div class="w-6 h-6 rounded-full bg-indigo-600 border-4 border-[#030712] flex items-center justify-center text-[10px]"><i data-lucide="check" class="w-3 h-3"></i></div>
-                            <div class="w-6 h-6 rounded-full bg-indigo-600 border-4 border-[#030712] flex items-center justify-center text-[10px]"><i data-lucide="check" class="w-3 h-3"></i></div>
-                            <div class="w-6 h-6 rounded-full bg-indigo-500 border-4 border-[#030712] flex items-center justify-center text-[10px]"><i data-lucide="anchor" class="w-3 h-3"></i></div>
-                            <div class="w-6 h-6 rounded-full bg-slate-900 border-4 border-[#030712] flex items-center justify-center text-[10px]"><i data-lucide="circle" class="w-3 h-3"></i></div>
-                        </div>
-                    </div>
-                    <div class="space-y-3 pt-2" id="tracker-milestones-container"></div>
-                </div>
-            </div>
-
-            <!-- CHATBOT BOT AREA -->
-            <div class="border border-indigo-500/10 bg-[#040816]/60 rounded-2xl overflow-hidden shadow-2xl">
-                <div class="p-4 bg-[#070d24] border-b border-slate-950 flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-9 h-9 rounded-full bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
-                            <i data-lucide="bot-message-square" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-white">Prasasti Smart Assistant</h3>
-                            <p class="text-[10px] text-emerald-400 flex items-center space-x-1 mt-0.5">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                                <span>Enterprise Cloud Active</span>
-                            </p>
-                        </div>
-                    </div>
-                    <button onclick="clearChat()" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-900" title="Clear Console">
-                        <i data-lucide="trash-2" class="w-4 h-4"></i>
-                    </button>
-                </div>
-
-                <div id="chat-messages" class="h-80 overflow-y-auto p-4 space-y-4 bg-slate-950/30">
-                    <div class="flex items-start space-x-3 max-w-[85%]">
-                        <div class="w-7 h-7 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 flex-shrink-0">
-                            <i data-lucide="bot" class="w-4 h-4"></i>
-                        </div>
-                        <div class="bg-[#0b1021] rounded-2xl p-3 border border-slate-800/60">
-                            <p class="text-xs leading-relaxed text-slate-300">
-                                Halo! Saya **Prasasti Smart Assistant**, AI Forwarding **Prasastiindonesia**. Anda boleh menanyakan kepada saya, apa saja terkait informasi forwarding dan layanan kami lainnya</p>
-                            <div class="flex flex-wrap gap-2 mt-3">
-                                <button onclick="quickPrompt('Berapa tarif LCL dari Singapura ke Jakarta?')" class="px-2.5 py-1 rounded-md bg-[#131a35] hover:bg-[#1c264d] border border-slate-800 text-[10px] text-slate-300 transition-all-300">Tarif Singapura - JKT</button>
-                                <button onclick="quickPrompt('Aturan komoditas Dangerous Goods')" class="px-2.5 py-1 rounded-md bg-[#131a35] hover:bg-[#1c264d] border border-slate-800 text-[10px] text-slate-300 transition-all-300">Info Dangerous Goods</button>
-                                <button onclick="quickPrompt('Cek HS Code laptop dan smartphone')" class="px-2.5 py-1 rounded-md bg-[#131a35] hover:bg-[#1c264d] border border-slate-800 text-[10px] text-slate-300 transition-all-300">HS Code Elektronik</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-3 bg-slate-950/80 border-t border-slate-900">
-                    <form onsubmit="handleSendChat(event)" class="flex items-center space-x-2">
-                        <input type="text" id="chat-input" placeholder="Tanyakan seputar logistik, regulasi pabean, atau estimasi tarif..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none">
-                        <button type="submit" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-900 to-indigo-950 text-white text-xs font-semibold flex items-center space-x-1 shadow-lg border border-red-800/20">
-                            <span>Kirim</span>
-                            <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                        </button>
-                    </form>
-                    <div class="flex items-center justify-between mt-2 px-1">
-                        <span class="text-[10px] text-slate-500 flex items-center space-x-1">
-                            <i data-lucide="info" class="w-3 h-3 text-indigo-400"></i>
-                            <span>Didukung model cerdas PAS Smart Assistant Versi 1.00</span>
-                        </span>
-                        <button onclick="toggleSlideOver('training-center')" class="text-[10px] text-indigo-400 hover:text-indigo-300 font-bold flex items-center space-x-0.5">
-                            <i data-lucide="brain" class="w-3 h-3"></i>
-                            <span>Basis Pengetahuan AI</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE-OVER: CBM ESTIMATOR -->
-    <div id="slideover-cbm-estimator" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-[#060a17] border-l border-slate-900 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between hidden">
-        <div>
-            <div class="flex items-center justify-between border-b border-slate-900 pb-4 mb-6">
-                <div class="flex items-center space-x-2">
-                    <i data-lucide="calculator" class="w-5 h-5 text-indigo-400"></i>
-                    <h3 class="text-base font-bold text-white">CBM & Rate Estimator</h3>
-                </div>
-                <button onclick="toggleSlideOver('cbm-estimator')" class="p-1 text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-
-            <div class="space-y-4">
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 uppercase mb-1">Panjang (cm)</label>
-                        <input type="number" id="calc-length" value="120" oninput="calculateCBM()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-white">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 uppercase mb-1">Lebar (cm)</label>
-                        <input type="number" id="calc-width" value="100" oninput="calculateCBM()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-white">
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 uppercase mb-1">Tinggi (cm)</label>
-                        <input type="number" id="calc-height" value="160" oninput="calculateCBM()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-white">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 uppercase mb-1">Jumlah Unit</label>
-                        <input type="number" id="calc-qty" value="4" oninput="calculateCBM()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-white">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-[10px] font-semibold text-slate-400 uppercase mb-1">Total Berat (kg)</label>
-                    <input type="number" id="calc-weight" value="650" oninput="calculateCBM()" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-white">
-                </div>
-
-                <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-900 space-y-3.5 pt-4 mt-6">
-                    <div class="grid grid-cols-3 gap-2 text-center">
-                        <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800/50">
-                            <span class="text-[9px] text-slate-400 block uppercase">Kubikasi</span>
-                            <span id="res-cbm" class="text-sm font-bold text-indigo-400 mt-1 block">0.000 CBM</span>
-                        </div>
-                        <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800/50">
-                            <span class="text-[9px] text-slate-400 block uppercase">Berat</span>
-                            <span id="res-weight" class="text-sm font-bold text-emerald-400 mt-1 block">0 kg</span>
-                        </div>
-                        <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800/50">
-                            <span class="text-[9px] text-slate-400 block uppercase">Mode</span>
-                            <span id="res-mode" class="text-sm font-bold text-purple-400 mt-1 block">LCL Kargo</span>
-                        </div>
-                    </div>
-                    <div class="space-y-2 text-xs border-t border-slate-900 pt-3">
-                        <div class="flex justify-between"><span class="text-slate-400">Total Tarif Freight:</span><span id="res-cost-freight" class="font-semibold text-white">Rp 0</span></div>
-                        <div class="flex justify-between"><span class="text-slate-400">Port Handling & Admin:</span><span id="res-cost-admin" class="font-semibold text-white">Rp 0</span></div>
-                        <div class="flex justify-between pt-1 border-t border-slate-900 font-bold"><span class="text-indigo-400">Grand Total:</span><span id="res-cost-grand" class="text-indigo-400">Rp 0</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="pt-4 border-t border-slate-900">
-            <button onclick="sendCalcToChat()" class="w-full py-2.5 rounded-xl bg-slate-900 text-indigo-400 text-xs font-semibold flex items-center justify-center space-x-1 border border-slate-800">
-                <span>Konsultasikan via Prasasti Smart Assistant</span> <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
-            </button>
-        </div>
+      </div>
     </div>
 
-    <!-- SLIDE-OVER: HS CODE -->
-    <div id="slideover-hscode-search" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-[#060a17] border-l border-slate-900 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between hidden">
-        <div>
-            <div class="flex items-center justify-between border-b border-slate-900 pb-4 mb-4">
-                <div class="flex items-center space-x-2">
-                    <i data-lucide="search" class="w-5 h-5 text-teal-400"></i>
-                    <h3 class="text-base font-bold text-white">HS Code Directory Lookup</h3>
-                </div>
-                <button onclick="toggleSlideOver('hscode-search')" class="p-1 text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            <input type="text" id="hscode-input" oninput="filterHsCodes()" placeholder="Cari kode HS atau nama komoditas..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white mb-4">
-            <div class="space-y-3 max-h-[60vh] overflow-y-auto pr-1" id="hscode-list-container"></div>
-        </div>
-        <div class="pt-4 border-t border-slate-900"><p class="text-[10px] text-slate-500 text-center">Data bersumber dari INSW.</p></div>
+    <div class="about-photos reveal">
+      <img class="tall" src="https://prasastiindonesia.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-16-at-17.45.14.jpeg" alt="Tim Prasasti">
+      <img class="short" src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2024-05-21-at-09.58.07_753e5935-768x1024.jpg" alt="Kegiatan operasional">
+      <img class="short" src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2024-05-21-at-10.00.24_ec508565-768x1024.jpg" alt="Tim lapangan">
+    </div>
+  </div>
+</section>
+
+<section class="project">
+  <div class="wrap project-grid">
+    <div class="project-photos reveal">
+      <img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-17-at-09.19.08-1024x768.jpeg" alt="Shipbroker">
+      <img src="https://prasastiindonesia.com/wp-content/uploads/2024/05/WhatsApp-Image-2023-01-24-at-22.49.10.jpg" alt="Bulk cargo">
+    </div>
+    <div class="reveal">
+      <p class="eyebrow" style="color:var(--brass-400)">Shipbroker &amp; Project Cargo</p>
+      <h2>Chartering kapal untuk kargo curah domestik dan internasional.</h2>
+      <p>Menyediakan layanan chartering kapal domestik maupun internasional. Tim kami memiliki keahlian mendalam dalam pergerakan kargo curah kering termasuk Batu Bara, Semen, PKE, PKS, Pupuk, Produk Baja, dan lainnya.</p>
+      <a class="btn" href="#contact">Let's Talk Now</a>
+    </div>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <div class="wrap reveal">
+    <h2>Questions?</h2>
+    <p>Baik seputar layanan kami, cara kami menangani pengiriman Anda, atau bahkan media — kami siap menjawab pertanyaan apa pun.</p>
+    <a class="btn" href="#contact">Let's Talk Now</a>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Contact Us</p>
+      <h2>Tiga kantor, satu jaringan logistik.</h2>
     </div>
 
-    <!-- SLIDE-OVER: AI TRAINING CENTER (READ ONLY KNOWLEDGE VIEW) -->
-    <div id="slideover-training-center" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-[#060a17] border-l border-slate-900 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between hidden">
-        <div class="flex flex-col h-full overflow-hidden">
-            <div class="flex items-center justify-between border-b border-slate-900 pb-4 mb-4 flex-shrink-0">
-                <div class="flex items-center space-x-2">
-                    <i data-lucide="brain" class="w-5 h-5 text-rose-400"></i>
-                    <h3 class="text-base font-bold text-white">Prasasti Smart Assistant</h3>
-                </div>
-                <button onclick="toggleSlideOver('training-center')" class="p-1 text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            <div class="flex-1 overflow-y-auto space-y-4">
-                <p class="text-xs text-slate-400 leading-relaxed">Berikut adalah memori aturan operasional tetap yang disuntikkan secara aman ke otak AI pabean kami di Vercel.</p>
-                <div id="rules-container" class="space-y-2"></div>
-            </div>
-        </div>
+    <div class="offices reveal-stagger">
+      <div class="office">
+        <span class="tag">Head Office</span>
+        <h3>Sidoarjo</h3>
+        <address>Jl. Haji Syukur VII No.47, RT.22/RW.10, Sedati Gede, Kec. Sedati, Kabupaten Sidoarjo, Jawa Timur 61253.</address>
+        <div class="line"><b>Telp</b>031 9968 7039 (Hunting)</div>
+        <div class="line"><b>Fax</b>031 9968 7039</div>
+        <div class="line"><b>Email</b>info@prasastiindonesia.com</div>
+      </div>
+      <div class="office">
+        <span class="tag">Branch</span>
+        <h3>Jakarta</h3>
+        <address>Jl. Serdang Mawar No.8, RT.3/RW.4, Serdang, Kec. Kemayoran, Kota Jakarta Pusat, DKI Jakarta 10640.</address>
+        <div class="line"><b>Telp</b>021 2242 6020 (Hunting)</div>
+        <div class="line"><b>Fax</b>021 2242 6020</div>
+        <div class="line"><b>Email</b>info@prasastiindonesia.com</div>
+      </div>
+      <div class="office">
+        <span class="tag">Branch</span>
+        <h3>Denpasar</h3>
+        <address>Jl. Raya Sesetan No. 145, Desa Sesetan, Kelurahan Sesetan, Kec. Denpasar Selatan, Bali 80223.</address>
+        <div class="line"><b>Telp</b>0361 251470</div>
+        <div class="line"><b>Fax</b>0361 251470</div>
+        <div class="line"><b>Email</b>info@prasastiindonesia.com</div>
+      </div>
     </div>
 
-    <!-- MODAL GLOBAL -->
-    <div id="global-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm hidden">
-        <div class="bg-[#060a17] border border-slate-800 w-full max-w-2xl rounded-2xl overflow-hidden flex flex-col max-h-[85vh]">
-            <div class="p-5 border-b border-slate-900 flex items-center justify-between">
-                <h3 id="modal-title" class="text-base font-bold text-white"></h3>
-                <button onclick="closeModal()" class="p-1.5 text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            <div id="modal-content" class="p-6 overflow-y-auto space-y-4 text-xs text-slate-300"></div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="eyebrow">Let's get in touch</p>
+        <div class="form-field" style="margin-top:24px;">
+          <label for="f-name">Name</label>
+          <input id="f-name" type="text" placeholder="Nama Anda">
         </div>
+        <div class="form-field">
+          <label for="f-email">Email</label>
+          <input id="f-email" type="email" placeholder="nama@email.com">
+        </div>
+        <div class="form-field">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" placeholder="Tulis pesan Anda..."></textarea>
+        </div>
+        <button class="btn" type="button" onclick="alert('Ini mockup tampilan — form belum terhubung ke server.')">Send</button>
+      </div>
+
+      <div class="reveal map-frame">
+        <svg viewBox="0 0 400 340" width="100%" height="100%">
+          <rect width="400" height="340" fill="#0B1E33"/>
+          <path d="M40,60 C120,20 260,20 350,90 C300,150 340,220 280,270 C200,320 100,300 60,240 C10,180 30,110 40,60 Z" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <circle cx="150" cy="90" r="5" fill="#C6963C"/>
+          <text x="164" y="94" fill="#fff" font-family="IBM Plex Mono" font-size="11">Jakarta</text>
+          <circle cx="230" cy="150" r="5" fill="#C6963C"/>
+          <text x="244" y="154" fill="#fff" font-family="IBM Plex Mono" font-size="11">Sidoarjo (HQ)</text>
+          <circle cx="270" cy="230" r="5" fill="#C6963C"/>
+          <text x="284" y="234" fill="#fff" font-family="IBM Plex Mono" font-size="11">Denpasar</text>
+          <path d="M150,90 Q190,110 230,150 Q250,190 270,230" fill="none" stroke="#C6963C" stroke-width="1" stroke-dasharray="4 5"/>
+        </svg>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-900 py-12 px-6 lg:px-16 text-xs text-slate-500 mt-auto">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <p>&copy; 2026 Prasasti Adyadma Sentosa. All rights reserved.</p>
-        </div>
-    </footer>
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="brand" href="#top">
+        <img src="https://prasastiindonesia.com/wp-content/uploads/2022/02/cropped-88d7b408-6799-4337-879e-83808eca6a38-e1644658306558.jpg" alt="PRASASTI ADYADMA SENTOSA">
+        <span class="brand-text"><strong>PRASASTI</strong><span>Adyadma Sentosa</span></span>
+      </a>
+      <div class="flinks">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2017 – PRASASTI ADYADMA SENTOSA. All rights reserved.</span>
+      <span>Air Freight · Sea Freight · Customs Brokerage · Project &amp; Bulk Cargo</span>
+    </div>
+  </div>
+</footer>
 
-    <!-- DYNAMIC CORE ENGINE SCRIPTS -->
-    <script>
-        const DEFAULT_PERSONA = `Kamu adalah LogiBot, asisten AI profesional representatif PT PAS Logistics International. Tugasmu membantu mengestimasi volume CBM, memverifikasi regulasi HS Code pabean Indonesia, menyusun dokumen pengapalan, dan menyajikan status pelacakan kargo secara informatif dalam Bahasa Indonesia taktis dan ramah.`;
+<script>
+  // Sticky header state
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
 
-        const DEFAULT_RULES = [
-            { id: '1', title: 'Tarif Kontainer LCL Singapura ke Jakarta', desc: 'Tarif dasar USD 95 per CBM pelabuhan ke pelabuhan. Tidak termasuk bea masuk impor, PPN, dan handling CFS pergudangan lokal Rp 850.000.' },
-            { id: '2', title: 'Rute Pelayaran Terpopuler', desc: 'Rute reguler terjadwal mingguan meliputi: Shanghai & Ningbo ke Jakarta, Busan ke Surabaya, Singapura ke Belawan, dan ekspor kargo ke Amerika Serikat.' },
-            { id: '3', title: 'Aturan Komoditas Dangerous Goods (DG)', desc: 'Komoditas baterai lithium, aerosol, cairan kimia wajib menyertakan MSDS (Material Safety Data Sheet) minimal 5 hari kerja sebelum kapal berlayar.' }
-        ];
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const navlinks = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => navlinks.classList.toggle('open'));
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
 
-        const HS_CODE_DATA = [
-            { code: '8471.30.10', desc: 'Laptop dan komputer jinjing portabel', bm: '0%', ppn: '11%', extra: 'Wajib verifikasi teknis Laporan Surveyor (LS) Indonesia.' },
-            { code: '8517.13.00', desc: 'Telepon seluler (Smartphone)', bm: '10%', ppn: '11%', extra: 'Membutuhkan Persetujuan Impor (PI) Kemendag & kelayakan IMEI Kominfo.' },
-            { code: '3004.90.99', desc: 'Obat-obatan umum dalam bentuk retail', bm: '5%', ppn: '11%', extra: 'Wajib mengantongi Surat Keterangan Impor (SKI) dari BPOM.' }
-        ];
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
 
-        const TRACKER_DB = {
-            'PAS-SEA-2028-000123': {
-                vessel: 'MV Ever Glory Vol. 109N', eta: '25 Juli 2026', dest: 'Surabaya (Tanjung Perak)', progress: 65, type: 'OCEAN FREIGHT',
-                milestones: [
-                    { time: '14 Juli 2026 - 08:30', title: 'Kapal Melintasi Selat Malaka', desc: 'Pelayaran stabil menuju pelabuhan transit akhir.' },
-                    { time: '12 Juli 2026 - 15:45', title: 'Departed from Singapore Port', desc: 'Selesai bongkar kargo transit, kontainer dinaikkan ke kapal utama.' }
-                ]
-            }
-        };
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+</script>
 
-        window.onload = function() {
-            lucide.createIcons();
-            populateHsCodes();
-            calculateCBM();
-            renderRulesList();
-        };
-
-        function toggleSlideOver(id) {
-            const el = document.getElementById(`slideover-${id}`);
-            if (!el) return;
-            if (el.classList.contains('hidden')) {
-                el.classList.remove('hidden');
-                setTimeout(() => el.classList.remove('translate-x-full'), 50);
-            } else {
-                el.classList.add('translate-x-full');
-                setTimeout(() => el.classList.add('hidden'), 300);
-            }
-        }
-
-        function toggleMobileNav() {
-            const nav = document.getElementById('mobile-nav');
-            nav.classList.toggle('translate-x-full');
-        }
-
-        function renderRulesList() {
-            const container = document.getElementById('rules-container');
-            container.innerHTML = DEFAULT_RULES.map(r => `
-                <div class="bg-slate-950 p-3 rounded-lg border border-slate-900">
-                    <h5 class="text-[11px] font-bold text-white">${r.title}</h5>
-                    <p class="text-[10px] text-slate-400 mt-1 leading-normal">${r.desc}</p>
-                </div>
-            `).join('');
-        }
-
-        function populateHsCodes() {
-            const container = document.getElementById('hscode-list-container');
-            container.innerHTML = HS_CODE_DATA.map(data => `
-                <div class="bg-slate-950 p-3 rounded-xl border border-slate-900 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-indigo-400">${data.code}</span>
-                        <div class="flex space-x-1.5 text-[10px]">
-                            <span class="bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/20">BM: ${data.bm}</span>
-                        </div>
-                    </div>
-                    <h4 class="text-xs font-semibold text-white leading-tight">${data.desc}</h4>
-                    <p class="text-[10px] text-slate-400 bg-slate-900 p-2 rounded-lg">${data.extra}</p>
-                    <button onclick="askAIForHsCode('${data.code}', '${data.desc}')" class="w-full py-1.5 bg-indigo-600/10 hover:bg-indigo-600 text-indigo-400 hover:text-white rounded-lg text-[10px] font-bold transition-all-300 flex items-center justify-center space-x-1">
-                        <i data-lucide="message-square" class="w-3 h-3"></i><span>Tanyakan Regulasi AI</span>
-                    </button>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
-
-        function askAIForHsCode(code, desc) {
-            toggleSlideOver('hscode-search');
-            document.getElementById('chat-input').value = `Jelaskan secara rinci regulasi bea impor dan dokumen wajib untuk mengimpor komoditas HS Code ${code} (${desc}) ke Indonesia.`;
-        }
-
-        function handleTrackShipment() {
-            const val = document.getElementById('tracker-input').value.trim().toUpperCase();
-            const card = document.getElementById('tracker-result-card');
-            const data = TRACKER_DB[val];
-            if (!data) { alert('Nomor lacak tidak ditemukan. Coba gunakan: PAS-SEA-2028-000123'); return; }
-
-            document.getElementById('track-id-disp').innerText = val;
-            document.getElementById('track-type-disp').innerText = data.type;
-            document.getElementById('track-eta-disp').innerText = data.eta;
-            document.getElementById('track-progress-bar').style.width = `${data.progress}%`;
-
-            document.getElementById('tracker-milestones-container').innerHTML = data.milestones.map(m => `
-                <div class="relative pl-5 border-l border-indigo-500/20 space-y-1">
-                    <span class="absolute -left-[4.5px] top-1 w-2 h-2 rounded-full bg-indigo-500"></span>
-                    <p class="text-[9px] text-slate-500 font-semibold">${m.time}</p>
-                    <h5 class="text-xs font-bold text-slate-200">${m.title}</h5>
-                    <p class="text-[11px] text-slate-400 leading-normal">${m.desc}</p>
-                </div>
-            `).join('');
-            card.classList.remove('hidden');
-        }
-
-        function calculateCBM() {
-            const l = parseFloat(document.getElementById('calc-length').value) || 0;
-            const w = parseFloat(document.getElementById('calc-width').value) || 0;
-            const h = parseFloat(document.getElementById('calc-height').value) || 0;
-            const qty = parseFloat(document.getElementById('calc-qty').value) || 0;
-            const weight = parseFloat(document.getElementById('calc-weight').value) || 0;
-
-            const cbm = (l * w * h) / 1000000 * qty;
-            document.getElementById('res-cbm').innerText = `${cbm.toFixed(3)} CBM`;
-            document.getElementById('res-weight').innerText = `${weight} kg`;
-
-            const totalFreight = cbm * 1250000;
-            const admin = 850000;
-            const grand = totalFreight + admin;
-            const formatter = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 });
-
-            document.getElementById('res-cost-freight').innerText = formatter.format(totalFreight);
-            document.getElementById('res-cost-admin').innerText = formatter.format(admin);
-            document.getElementById('res-cost-grand').innerText = formatter.format(grand);
-        }
-
-        function sendCalcToChat() {
-            const cbm = document.getElementById('res-cbm').innerText;
-            const cost = document.getElementById('res-cost-grand').innerText;
-            toggleSlideOver('cbm-estimator');
-            document.getElementById('chat-input').value = `Halo LogiBot, kami memiliki kargo dengan total kubikasi ${cbm} dengan estimasi biaya ${cost}. Tolong bantu cek kelayakan kontainer LCL dan kelengkapan berkas kepabeanannya.`;
-        }
-
-        function clearChat() {
-            document.getElementById('chat-messages').innerHTML = `<p class="text-xs text-slate-500 p-2">Layar obrolan dibersihkan.</p>`;
-            conversationHistory = [];
-        }
-
-        function quickPrompt(text) { document.getElementById('chat-input').value = text; }
-
-        function openModal(type) {
-            const modal = document.getElementById('global-modal');
-            modal.classList.remove('hidden');
-            document.getElementById('modal-title').innerText = type.toUpperCase();
-            document.getElementById('modal-content').innerText = `Informasi mendetail seputar ${type} Prasasti Adyadma Sentosa. Terakreditasi kepatuhan penuh ekspor-impor pabean internasional.`;
-        }
-        function closeModal() { document.getElementById('global-modal').add('hidden'); }
-
-        // Simple in-memory conversation history so LogiBot has context across turns.
-        // Resets on page refresh (no localStorage, kept purely in JS memory).
-        let conversationHistory = [];
-
-        // PROXY VERCEL BACKEND CONNECTION LOGIC
-        async function handleSendChat(event) {
-            event.preventDefault();
-            const inputEl = document.getElementById('chat-input');
-            const query = inputEl.value.trim();
-            if (!query) return;
-
-            inputEl.value = '';
-            const chat = document.getElementById('chat-messages');
-
-            // Append user bubble
-            chat.innerHTML += `
-                <div class="flex items-start justify-end space-x-2 max-w-[85%] ml-auto mb-4">
-                    <div class="bg-gradient-to-r from-red-900 to-indigo-950 rounded-2xl p-3 border border-red-800/10">
-                        <p class="text-xs text-white leading-relaxed">${query}</p>
-                    </div>
-                </div>
-            `;
-            chat.scrollTop = chat.scrollHeight;
-
-            // Loading state bubble
-            const loadId = 'loading-' + Date.now();
-            chat.innerHTML += `
-                <div id="${loadId}" class="flex items-start space-x-2 max-w-[85%] mb-4">
-                    <div class="bg-slate-900/50 rounded-2xl p-3 border border-slate-800/60 text-xs text-slate-400 animate-pulse">
-                        Terima kasih, Prasasti Smart Assistant sedang memproses data...
-                    </div>
-                </div>
-            `;
-            chat.scrollTop = chat.scrollHeight;
-
-            try {
-                const apiUrl = '/api/chat'; 
-                
-                // Menyusun Aturan Internal Operasional secara rapi
-                let knowledgeBaseContext = "DATABASE ATURAN INTERNAL OPERASIONAL PERUSAHAAN:\n";
-                DEFAULT_RULES.forEach((r, i) => { knowledgeBaseContext += `${i+1}. ${r.title}: ${r.desc}\n`; });
-
-                const systemRules = `${DEFAULT_PERSONA}\n\n${knowledgeBaseContext}`;
-
-                // Kirim pesan USER dan aturan SYSTEM secara terpisah ke Vercel agar disetujui Google
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        message: query,
-                        history: conversationHistory,
-                        systemInstruction: systemRules
-                    })
-                });
-
-                const result = await response.json();
-
-                // Remove the loading bubble once, safely (works even if it's somehow already gone).
-                document.getElementById(loadId)?.remove();
-
-                if (result.reply) {
-                    chat.innerHTML += `
-                        <div class="flex items-start space-x-2 max-w-[85%] mb-4">
-                            <div class="w-7 h-7 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 flex-shrink-0">
-                                <i data-lucide="bot" class="w-4 h-4"></i>
-                            </div>
-                            <div class="bg-slate-900/50 rounded-2xl p-3 border border-slate-800/60">
-                                <p class="text-xs text-slate-200 whitespace-pre-line leading-relaxed">${result.reply}</p>
-                            </div>
-                        </div>
-                    `;
-
-                    // Remember this turn so the next message keeps context.
-                    conversationHistory.push({ role: 'user', content: query });
-                    conversationHistory.push({ role: 'assistant', content: result.reply });
-                    // Keep only the last 10 turns (20 messages) to avoid oversized requests.
-                    if (conversationHistory.length > 20) {
-                        conversationHistory = conversationHistory.slice(-20);
-                    }
-                } else {
-                    throw new Error(result.error || "Gagal mendapatkan balasan valid.");
-                }
-            } catch (err) {
-                console.error("API Proxy Error:", err);
-                document.getElementById(loadId)?.remove();
-                chat.innerHTML += `
-                    <div class="text-xs text-red-400 p-3 bg-red-950/20 border border-red-900/30 rounded-xl">
-                        ⚠️ ${err.message || "Koneksi terputus."}
-                    </div>
-                `;
-            }
-            lucide.createIcons();
-            chat.scrollTop = chat.scrollHeight;
-        }
-    </script>
 </body>
 </html>
