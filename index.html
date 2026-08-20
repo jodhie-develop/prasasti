@@ -146,9 +146,9 @@
   .hero-photo{display:none;}
   .scene-sun{animation:sunPulse 6s ease-in-out infinite;}
   @keyframes sunPulse{0%,100%{opacity:0.65;}50%{opacity:1;}}
-  .scene-ship{animation:shipBob 7s ease-in-out infinite;transform-box:fill-box;transform-origin:center;}
-  @keyframes shipBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-  .scene-crane{opacity:0.55;}
+  .scene-ship{animation:shipBob 7s ease-in-out infinite;}
+  @keyframes shipBob{0%,100%{transform:translate(560px,410px);}50%{transform:translate(560px,400px);}}
+  .scene-crane{opacity:0.65;}
   .scene-truck{animation:truckDrive 15s linear infinite;}
   @keyframes truckDrive{
     0%{transform:translateX(-160px);}
@@ -500,21 +500,21 @@
     <rect x="0" y="0" width="1600" height="800" fill="url(#skyFade)"/>
     <circle class="scene-sun" cx="1250" cy="260" r="220" fill="url(#sunGlow)"/>
 
-    <g class="scene-trails" stroke="#DCB463" stroke-width="2" filter="url(#sceneGlow)">
-      <path class="trail t1" d="M-120,636 L520,598"/>
-      <path class="trail t2" d="M-120,676 L620,634"/>
-      <path class="trail t3" d="M-120,716 L540,688"/>
-      <path class="trail t4" d="M-120,756 L660,722"/>
+    <g class="scene-trails" stroke="#DCB463" stroke-width="2.4" filter="url(#sceneGlow)">
+      <path class="trail t1" d="M80,636 L720,598"/>
+      <path class="trail t2" d="M80,676 L820,634"/>
+      <path class="trail t3" d="M80,716 L740,688"/>
+      <path class="trail t4" d="M80,756 L860,722"/>
     </g>
 
-    <g class="scene-crane" stroke="#2C6FA0" stroke-width="4" fill="none">
+    <g class="scene-crane" stroke="#4A8DC2" stroke-width="4" fill="none" transform="translate(230,0)">
       <line x1="700" y1="560" x2="700" y2="300"/>
       <line x1="700" y1="320" x2="900" y2="320"/>
       <line x1="700" y1="360" x2="850" y2="360"/>
       <line x1="830" y1="320" x2="830" y2="470"/>
     </g>
 
-    <g class="scene-ship" transform="translate(120,430)">
+    <g class="scene-ship" transform="translate(560,410)">
       <rect x="0" y="60" width="420" height="60" rx="4" fill="url(#hullGrad)"/>
       <polygon points="0,120 40,150 420,150 460,120" fill="#071422"/>
       <rect x="20" y="0" width="46" height="34" fill="#C6963C" opacity="0.85"/>
