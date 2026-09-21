@@ -83,6 +83,8 @@
   .brand-text{display:flex;flex-direction:column;line-height:1.15;}
   .brand-text strong{font-family:'Fraunces',serif;font-size:0.95rem;color:#fff;letter-spacing:0.03em;}
   .brand-text span{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;color:var(--brass-400);text-transform:uppercase;}
+  header .brand-text{flex-direction:row;align-items:baseline;gap:0.3em;white-space:nowrap;}
+  header .brand-text span{font-family:'Fraunces',serif;font-size:0.95rem;letter-spacing:0.03em;color:#fff;text-transform:uppercase;}
   .navlinks{display:flex;gap:34px;align-items:center;}
   .navlinks a{
     font-size:0.85rem;color:rgba(255,255,255,0.85);position:relative;padding:6px 0;
