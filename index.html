@@ -48,10 +48,11 @@
 <section class="hero" id="top">
   <div class="hero-slides" aria-hidden="true">
     <div class="hero-photo active" style="background-image:url('gallery/full/BG1.jpeg');background-position:center"></div>
-    <div class="hero-photo" data-bg="gallery/full/container-port-ship-6751623.jpg" style="background-position:center"></div>
-    <div class="hero-photo" data-bg="gallery/full/container-ship-freight-cargo-ship-2893480.jpg" style="background-position:center"></div>
-    <div class="hero-photo" data-bg="gallery/full/aircraft-airport-jet-5706274.jpg" style="background-position:65% center"></div>
-    <div class="hero-photo" data-bg="gallery/full/WhatsApp-Image-2023-01-24-at-22.19.38.jpg" style="background-position:center"></div>
+    <div class="hero-photo is-right" data-bg="gallery/full/WhatsApp-Image-2022-02-17-at-09.29.14.jpeg" style="background-position:center 40%"></div>
+    <div class="hero-photo is-right" data-bg="gallery/full/WhatsApp-Image-2022-01-08-at-03.37.211.jpeg" style="background-position:center 75%"></div>
+    <div class="hero-photo is-right" data-bg="gallery/full/WhatsApp-Image-2023-01-24-at-22.19.38.jpg" style="background-position:80% 85%"></div>
+    <div class="hero-photo is-right" data-bg="gallery/full/WhatsApp-Image-2023-01-24-at-22.49.10.jpg" style="background-position:center 60%"></div>
+    <div class="hero-photo is-right" data-bg="gallery/full/WhatsApp-Image-2022-02-17-at-15.14.46.jpeg" style="background-position:center 45%"></div>
   </div>
   <div class="hero-grid"></div>
 
@@ -695,23 +696,32 @@
   }
 
   // Hero slideshow
-  const heroSlides = document.querySelectorAll('.hero-photo');
+  const heroSlides = [...document.querySelectorAll('.hero-photo')];
   if (heroSlides.length > 1) {
     let heroIndex = 0;
+    const heroReady = heroSlides.map((slide, i) => i === 0);
     window.addEventListener('load', () => {
-      heroSlides.forEach(slide => {
-        if (slide.dataset.bg) slide.style.backgroundImage = `url('${slide.dataset.bg}')`;
+      heroSlides.forEach((slide, i) => {
+        if (!slide.dataset.bg) return;
+        const img = new Image();
+        img.onload = () => {
+          slide.style.backgroundImage = `url('${slide.dataset.bg}')`;
+          heroReady[i] = true;
+        };
+        img.src = slide.dataset.bg;
       });
     });
     setInterval(() => {
       if (document.hidden) return;
+      const nextIndex = (heroIndex + 1) % heroSlides.length;
+      if (!heroReady[nextIndex]) return;
       const current = heroSlides[heroIndex];
-      heroIndex = (heroIndex + 1) % heroSlides.length;
-      const next = heroSlides[heroIndex];
+      const next = heroSlides[nextIndex];
       heroSlides.forEach(slide => slide.classList.remove('leaving'));
       current.classList.replace('active', 'leaving');
       next.classList.add('active');
-    }, 6500);
+      heroIndex = nextIndex;
+    }, 7000);
   }
 
   // Sticky header state
