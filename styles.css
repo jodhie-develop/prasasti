@@ -289,7 +289,8 @@
   .strip .eyebrow::before{background:rgba(255,255,255,0.35);}
   .marquee-track{display:flex;gap:64px;align-items:center;animation:marquee 22s linear infinite;}
   .marquee-outer{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);}
-  .marquee-track img{height:44px;width:auto;filter:grayscale(1) brightness(2.4);opacity:0.85;}
+  .marquee-track img{height:64px;width:auto;border-radius:4px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,0.35);opacity:0.92;transition:opacity .3s ease;}
+  .marquee-track img:hover{opacity:1;}
   @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
   /* ---------- SECTION SHELL ---------- */
