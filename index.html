@@ -724,6 +724,23 @@
     }, 7000);
   }
 
+  // Member strip slider: shift one logo every 5s
+  const memberTrack = document.querySelector('.marquee-track');
+  if (memberTrack && memberTrack.children.length > 1) {
+    setInterval(() => {
+      if (document.hidden) return;
+      const first = memberTrack.firstElementChild;
+      const gap = parseFloat(getComputedStyle(memberTrack).columnGap) || 0;
+      memberTrack.style.transition = 'transform .9s cubic-bezier(.65,0,.35,1)';
+      memberTrack.style.transform = `translateX(-${first.offsetWidth + gap}px)`;
+      setTimeout(() => {
+        memberTrack.style.transition = 'none';
+        memberTrack.appendChild(first);
+        memberTrack.style.transform = 'translateX(0)';
+      }, 950);
+    }, 5000);
+  }
+
   // Sticky header state
   const header = document.getElementById('site-header');
   window.addEventListener('scroll', () => {
