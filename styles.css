@@ -291,6 +291,7 @@
   .marquee-track img{flex:none;}
   .marquee-outer{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);}
   .marquee-track img{height:64px;width:auto;border-radius:4px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,0.35);opacity:0.92;transition:opacity .3s ease;}
+  .marquee-track img{cursor:zoom-in;}
   .marquee-track img:hover{opacity:1;}
 
   /* ---------- SECTION SHELL ---------- */
@@ -448,6 +449,7 @@
     animation:lbfade .25s ease;
   }
   .lightbox[hidden]{display:none;}
+  .lightbox.lb-single .lb-prev,.lightbox.lb-single .lb-next,.lightbox.lb-single .lb-count{display:none;}
   @keyframes lbfade{from{opacity:0;}to{opacity:1;}}
   .lb-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
   .lb-btn{

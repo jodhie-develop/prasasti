@@ -794,16 +794,17 @@
   function lbShow(i){
     lbIndex = (i + lbList.length) % lbList.length;
     const item = lbList[lbIndex];
-    lbImg.src = item.getAttribute('href');
-    lbImg.alt = item.querySelector('img').alt;
+    lbImg.src = item.src;
+    lbImg.alt = item.alt;
     lbCount.textContent = `${lbIndex + 1} / ${lbList.length}`;
   }
-  function lbOpen(item){
-    lbList = [...gItems].filter(el => !el.classList.contains('g-hidden'));
+  function lbOpen(list, index){
+    lbList = list;
     lbLastFocus = document.activeElement;
     lb.hidden = false;
     document.body.style.overflow = 'hidden';
-    lbShow(lbList.indexOf(item));
+    lb.classList.toggle('lb-single', list.length < 2);
+    lbShow(index);
     lb.querySelector('.lb-close').focus();
   }
   function lbClose(){
@@ -812,7 +813,27 @@
     document.body.style.overflow = '';
     if (lbLastFocus) lbLastFocus.focus();
   }
-  gItems.forEach(item => item.addEventListener('click', (e) => { e.preventDefault(); lbOpen(item); }));
+  gItems.forEach(item => item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const visible = [...gItems].filter(el => !el.classList.contains('g-hidden'));
+    lbOpen(visible.map(el => ({ src: el.getAttribute('href'), alt: el.querySelector('img').alt })), visible.indexOf(item));
+  }));
+
+  // Member strip: open certificates in the lightbox (full-size, deduplicated)
+  const memberStrip = document.querySelector('.marquee-track');
+  if (memberStrip) {
+    memberStrip.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+      const certs = [];
+      memberStrip.querySelectorAll('img').forEach(el => {
+        const src = el.getAttribute('src').replace('gallery/thumb/', 'gallery/full/');
+        if (!certs.some(c => c.src === src)) certs.push({ src, alt: el.alt });
+      });
+      const src = img.getAttribute('src').replace('gallery/thumb/', 'gallery/full/');
+      lbOpen(certs, certs.findIndex(c => c.src === src));
+    });
+  }
   lb.querySelector('.lb-close').addEventListener('click', lbClose);
   lb.querySelector('.lb-prev').addEventListener('click', () => lbShow(lbIndex - 1));
   lb.querySelector('.lb-next').addEventListener('click', () => lbShow(lbIndex + 1));
