@@ -135,18 +135,26 @@
   /* ---------- hero cargo scene (animated bg) ---------- */
   .hero-scene{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
   @media(max-width:760px){.hero-scene{opacity:0.55;}}
+  .hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden;}
   .hero-photo{
-    position:absolute;inset:0;z-index:0;
-    background-image:url('gallery/full/BG1.jpeg');
+    position:absolute;inset:0;
     background-size:cover;background-position:center;
-    animation:kenBurns 26s ease-in-out infinite alternate;
     filter:saturate(0.9) brightness(0.85);
+    opacity:0;transition:opacity 2s ease-in-out;
+    will-change:opacity,transform;
   }
+  .hero-photo.active{opacity:1;}
+  .hero-photo.active,.hero-photo.leaving{animation:kenBurns 9s ease-out forwards;}
+  .hero-photo:nth-child(even).active,.hero-photo:nth-child(even).leaving{animation-name:kenBurnsAlt;}
   @keyframes kenBurns{
-    0%{transform:scale(1) translate(0,0);}
-    100%{transform:scale(1.14) translate(-2%,-2%);}
+    from{transform:scale(1) translate(0,0);}
+    to{transform:scale(1.12) translate(-2%,-1.5%);}
   }
-  @media(prefers-reduced-motion: reduce){.hero-photo{animation:none;}}
+  @keyframes kenBurnsAlt{
+    from{transform:scale(1.12) translate(2%,-1%);}
+    to{transform:scale(1) translate(0,0);}
+  }
+  @media(prefers-reduced-motion: reduce){.hero-photo.active,.hero-photo.leaving{animation:none;}}
   .hero::before{
     content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(100deg, var(--navy-950) 0%, rgba(7,20,34,0.86) 32%, rgba(7,20,34,0.32) 58%, transparent 82%);
