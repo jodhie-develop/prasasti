@@ -518,7 +518,7 @@
 }
 .os-card:hover{background:#0e2438;}
 .os-card .tag{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--brass-400);text-transform:uppercase;letter-spacing:0.08em;}
-.os-card h4{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:#fff;margin:10px 0 12px;}
+.os-card h3{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:#fff;margin:10px 0 12px;}
 .os-card span{font-size:0.78rem;color:rgba(255,255,255,0.5);display:inline-flex;align-items:center;gap:6px;}
 /* Chat assistant widget */
 .chatw{position:fixed;right:24px;bottom:24px;z-index:900;font-family:'Public Sans',sans-serif;}

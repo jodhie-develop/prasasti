@@ -19,6 +19,17 @@
   ],
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "prasastiadyadmasentosa.vercel.app"
+        }
+      ],
+      "destination": "https://www.prasastiindonesia.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
