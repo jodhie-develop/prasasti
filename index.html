@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DGR22XG4RC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DGR22XG4RC');
+</script>
 <title>Prasasti Adyadma Sentosa — Freight Forwarder Surabaya</title>
 <meta name="description" content="Freight forwarder anggota IATA, ALFI &amp; WCA. Layanan air freight, sea freight, customs clearance, dan project cargo dari Sidoarjo/Surabaya, Jakarta, dan Bali.">
 <link rel="canonical" href="https://www.prasastiindonesia.com/">
@@ -755,7 +763,6 @@
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galeri foto" hidden>
   <button class="lb-btn lb-close" type="button" aria-label="Tutup">&times;</button>
   <button class="lb-btn lb-prev" type="button" aria-label="Sebelumnya">&#8249;</button>
-  <img class="lb-img" alt="Foto galeri PT Prasasti Adyadma Sentosa">
   <button class="lb-btn lb-next" type="button" aria-label="Berikutnya">&#8250;</button>
   <div class="lb-count" aria-live="polite"></div>
 </div>
@@ -886,7 +893,10 @@
 
   // Gallery lightbox
   const lb = document.getElementById('lightbox');
-  const lbImg = lb.querySelector('.lb-img');
+  // Built here rather than in the markup: its size depends on whichever photo is opened.
+  const lbImg = document.createElement('img');
+  lbImg.className = 'lb-img';
+  lb.querySelector('.lb-prev').after(lbImg);
   const lbCount = lb.querySelector('.lb-count');
   let lbList = [], lbIndex = 0, lbLastFocus = null;
   function lbShow(i){
