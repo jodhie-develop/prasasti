@@ -1,0 +1,951 @@
+{
+  "slider": {
+    "interval": 7,
+    "slides": [
+      {
+        "src": "gallery/full/BG1.webp",
+        "position": "center"
+      },
+      {
+        "src": "gallery/full/WhatsApp-Image-2022-02-17-at-09.29.14.webp",
+        "position": "center 40%"
+      },
+      {
+        "src": "gallery/full/WhatsApp-Image-2022-01-08-at-03.37.211.webp",
+        "position": "center 75%"
+      },
+      {
+        "src": "gallery/full/WhatsApp-Image-2023-01-24-at-22.19.38.webp",
+        "position": "80% 85%"
+      },
+      {
+        "src": "gallery/full/WhatsApp-Image-2023-01-24-at-22.49.10.webp",
+        "position": "center 60%"
+      },
+      {
+        "src": "gallery/full/WhatsApp-Image-2022-02-17-at-15.14.46.webp",
+        "position": "center 45%"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "tim",
+      "label": "Tim & Aktivitas"
+    },
+    {
+      "id": "sertifikasi",
+      "label": "Sertifikasi"
+    },
+    {
+      "id": "operasional",
+      "label": "Operasional & Kargo"
+    },
+    {
+      "id": "logo",
+      "label": "Logo & Identitas"
+    }
+  ],
+  "gallery": [
+    {
+      "id": "WhatsApp-Image-2022-01-08-at-03.37.211",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-01-08-at-03.37.211.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-01-08-at-03.37.211.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 405
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-08-at-23.02.48",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-08-at-23.02.48.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-08-at-23.02.48.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 560
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-09-at-13.35.29",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-09-at-13.35.29.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-09-at-13.35.29.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 396
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-00.42.55",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-00.42.55.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-00.42.55.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 379
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-00.46.03",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-00.46.03.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-00.46.03.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 400,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-00.48.01-1",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-00.48.01-1.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-00.48.01-1.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 379
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-00.48.01-2",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-00.48.01-2.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-00.48.01-2.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 379
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-00.48.01-3",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-00.48.01-3.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-00.48.01-3.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 379
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-00.48.01",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-00.48.01.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-00.48.01.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 379
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-00.53.33",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-00.53.33.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-00.53.33.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-00.56.35",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-00.56.35.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-00.56.35.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-01.00.56-1",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-01.00.56-1.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-01.00.56-1.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-15-at-01.00.56",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-15-at-01.00.56.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-15-at-01.00.56.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-16-at-17.25.29",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-16-at-17.25.29.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-16-at-17.25.29.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-16-at-17.29.05",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-16-at-17.29.05.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-16-at-17.29.05.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-16-at-17.33.58",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-16-at-17.33.58.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-16-at-17.33.58.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-16-at-17.45.14",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-16-at-17.45.14.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-16-at-17.45.14.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-16-at-17.45.38",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-16-at-17.45.38.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-16-at-17.45.38.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-16-at-17.46.01",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-16-at-17.46.01.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-16-at-17.46.01.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-16-at-17.46.29",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-16-at-17.46.29.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-16-at-17.46.29.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-16-at-17.46.59",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-16-at-17.46.59.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-16-at-17.46.59.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.11.48",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.11.48.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.11.48.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.11.53-1",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.11.53-1.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.11.53-1.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.11.53",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.11.53.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.11.53.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.12.51-2",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.12.51-2.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.12.51-2.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.12.51-3",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.12.51-3.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.12.51-3.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 426,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.19.05-1",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.19.05-1.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.05-1.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.19.06-1",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.19.06-1.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.06-1.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.19.07-1",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.19.07-1.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.07-1.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.19.08",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.19.08.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.08.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.19.09",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.19.09.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.19.09.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-09.29.14",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-09.29.14.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-09.29.14.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-10.12.42",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-10.12.42.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-10.12.42.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-10.12.43-1",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-10.12.43-1.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-10.12.43-1.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-10.12.43",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-10.12.43.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-10.12.43.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-10.12.44",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-10.12.44.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-10.12.44.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.11.05",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.11.05.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.11.05.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.11.59",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.11.59.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.11.59.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 452
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.14.46",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.14.46.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.14.46.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.15.11",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.15.11.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.15.11.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.17.39",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.17.39.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.17.39.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.18.08",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.18.08.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.18.08.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.18.32",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.18.32.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.18.32.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.18.57",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.18.57.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.18.57.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.19.31",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.19.31.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.19.31.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.21.08",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.21.08.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.21.08.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.21.55",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.21.55.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.21.55.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.23.21",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.23.21.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.23.21.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.24.22",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.24.22.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.24.22.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.25.14",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.25.14.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.25.14.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2022-02-17-at-15.26.26",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2022-02-17-at-15.26.26.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-02-17-at-15.26.26.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2023-01-24-at-22.19.38",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2023-01-24-at-22.19.38.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2023-01-24-at-22.19.38.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 337
+    },
+    {
+      "id": "WhatsApp-Image-2023-01-24-at-22.49.10",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2023-01-24-at-22.49.10.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2023-01-24-at-22.49.10.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2023-01-25-at-09.50.12",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2023-01-25-at-09.50.12.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2023-01-25-at-09.50.12.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 600,
+      "h": 450
+    },
+    {
+      "id": "WhatsApp-Image-2023-02-09-at-10.36.52",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2023-02-09-at-10.36.52.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2023-02-09-at-10.36.52.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2024-05-21-at-09.57.12_8c5ea7d8",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2024-05-21-at-09.57.12_8c5ea7d8.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2024-05-21-at-09.57.12_8c5ea7d8.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2024-05-21-at-09.58.07_753e5935",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2024-05-21-at-09.58.07_753e5935.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2024-05-21-at-09.58.07_753e5935.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2024-05-21-at-10.00.24_ec508565",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2024-05-21-at-10.00.24_ec508565.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2024-05-21-at-10.00.24_ec508565.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2024-05-21-at-10.08.14_4e6d673e",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2024-05-21-at-10.08.14_4e6d673e.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2024-05-21-at-10.08.14_4e6d673e.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2024-05-21-at-10.22.06_703612b8",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2024-05-21-at-10.22.06_703612b8.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2024-05-21-at-10.22.06_703612b8.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2024-05-21-at-11.44.19_e3e20bb6",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2024-05-21-at-11.44.19_e3e20bb6.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2024-05-21-at-11.44.19_e3e20bb6.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2026-09-21-at-16.00.26-4",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2026-09-21-at-16.00.26-4.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2026-09-21-at-16.00.26-4.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2026-09-21-at-16.00.27",
+      "cat": "tim",
+      "full": "gallery/full/WhatsApp-Image-2026-09-21-at-16.00.27.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2026-09-21-at-16.00.27.webp",
+      "alt": "Tim & Aktivitas",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "ALFI",
+      "cat": "sertifikasi",
+      "full": "gallery/full/ALFI.webp",
+      "thumb": "gallery/thumb/ALFI.webp",
+      "alt": "Sertifikasi & Keanggotaan",
+      "w": 424,
+      "h": 600
+    },
+    {
+      "id": "Cert-IATA-PAS_page-0001",
+      "cat": "sertifikasi",
+      "full": "gallery/full/Cert-IATA-PAS_page-0001.webp",
+      "thumb": "gallery/thumb/Cert-IATA-PAS_page-0001.webp",
+      "alt": "Sertifikasi & Keanggotaan",
+      "w": 600,
+      "h": 424
+    },
+    {
+      "id": "logo_WCAworld-fococlipping-standard",
+      "cat": "sertifikasi",
+      "full": "gallery/full/logo_WCAworld-fococlipping-standard.webp",
+      "thumb": "gallery/thumb/logo_WCAworld-fococlipping-standard.webp",
+      "alt": "Sertifikasi & Keanggotaan",
+      "w": 400,
+      "h": 210
+    },
+    {
+      "id": "WhatsApp-Image-2022-05-24-at-1.16.22-PM",
+      "cat": "sertifikasi",
+      "full": "gallery/full/WhatsApp-Image-2022-05-24-at-1.16.22-PM.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2022-05-24-at-1.16.22-PM.webp",
+      "alt": "Sertifikasi & Keanggotaan",
+      "w": 600,
+      "h": 445
+    },
+    {
+      "id": "BG1",
+      "cat": "operasional",
+      "full": "gallery/full/BG1.webp",
+      "thumb": "gallery/thumb/BG1.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 343
+    },
+    {
+      "id": "Air-Freight",
+      "cat": "operasional",
+      "full": "gallery/full/Air-Freight.webp",
+      "thumb": "gallery/thumb/Air-Freight.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 350
+    },
+    {
+      "id": "Air-Freight-1-png",
+      "cat": "operasional",
+      "full": "gallery/full/Air-Freight-1-png.webp",
+      "thumb": "gallery/thumb/Air-Freight-1-png.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 338
+    },
+    {
+      "id": "Air-Freight-2",
+      "cat": "operasional",
+      "full": "gallery/full/Air-Freight-2.webp",
+      "thumb": "gallery/thumb/Air-Freight-2.webp",
+      "alt": "Operasional & Kargo",
+      "w": 438,
+      "h": 244
+    },
+    {
+      "id": "Air-Freight-1-jpg",
+      "cat": "operasional",
+      "full": "gallery/full/Air-Freight-1-jpg.webp",
+      "thumb": "gallery/thumb/Air-Freight-1-jpg.webp",
+      "alt": "Operasional & Kargo",
+      "w": 442,
+      "h": 249
+    },
+    {
+      "id": "banner-header-export-1157109",
+      "cat": "operasional",
+      "full": "gallery/full/banner-header-export-1157109.webp",
+      "thumb": "gallery/thumb/banner-header-export-1157109.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 188
+    },
+    {
+      "id": "bea-cukaiok",
+      "cat": "operasional",
+      "full": "gallery/full/bea-cukaiok.webp",
+      "thumb": "gallery/thumb/bea-cukaiok.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 400
+    },
+    {
+      "id": "shipping-container-port-shipping-4245980",
+      "cat": "operasional",
+      "full": "gallery/full/shipping-container-port-shipping-4245980.webp",
+      "thumb": "gallery/thumb/shipping-container-port-shipping-4245980.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 401
+    },
+    {
+      "id": "container-container-ship-port-1611490",
+      "cat": "operasional",
+      "full": "gallery/full/container-container-ship-port-1611490.webp",
+      "thumb": "gallery/thumb/container-container-ship-port-1611490.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 400
+    },
+    {
+      "id": "container-port-ship-6751623",
+      "cat": "operasional",
+      "full": "gallery/full/container-port-ship-6751623.webp",
+      "thumb": "gallery/thumb/container-port-ship-6751623.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 413
+    },
+    {
+      "id": "container-ship-freight-cargo-ship-2893480",
+      "cat": "operasional",
+      "full": "gallery/full/container-ship-freight-cargo-ship-2893480.webp",
+      "thumb": "gallery/thumb/container-ship-freight-cargo-ship-2893480.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 400
+    },
+    {
+      "id": "port-container-export-4602964",
+      "cat": "operasional",
+      "full": "gallery/full/port-container-export-4602964.webp",
+      "thumb": "gallery/thumb/port-container-export-4602964.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 399
+    },
+    {
+      "id": "port-ship-shipping-5349834",
+      "cat": "operasional",
+      "full": "gallery/full/port-ship-shipping-5349834.webp",
+      "thumb": "gallery/thumb/port-ship-shipping-5349834.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 401
+    },
+    {
+      "id": "aircraft-airport-jet-5706274",
+      "cat": "operasional",
+      "full": "gallery/full/aircraft-airport-jet-5706274.webp",
+      "thumb": "gallery/thumb/aircraft-airport-jet-5706274.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 400
+    },
+    {
+      "id": "aircraft-plane-cargo-78185",
+      "cat": "operasional",
+      "full": "gallery/full/aircraft-plane-cargo-78185.webp",
+      "thumb": "gallery/thumb/aircraft-plane-cargo-78185.webp",
+      "alt": "Operasional & Kargo",
+      "w": 400,
+      "h": 600
+    },
+    {
+      "id": "airplane-cargo-bay-transportation-2214497",
+      "cat": "operasional",
+      "full": "gallery/full/airplane-cargo-bay-transportation-2214497.webp",
+      "thumb": "gallery/thumb/airplane-cargo-bay-transportation-2214497.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 400
+    },
+    {
+      "id": "cargo-ship-1",
+      "cat": "operasional",
+      "full": "gallery/full/cargo-ship-1.webp",
+      "thumb": "gallery/thumb/cargo-ship-1.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 531
+    },
+    {
+      "id": "logistics-truck-cargo-ship-3125136",
+      "cat": "operasional",
+      "full": "gallery/full/logistics-truck-cargo-ship-3125136.webp",
+      "thumb": "gallery/thumb/logistics-truck-cargo-ship-3125136.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 400
+    },
+    {
+      "id": "plane-logistics-world-5238847",
+      "cat": "operasional",
+      "full": "gallery/full/plane-logistics-world-5238847.webp",
+      "thumb": "gallery/thumb/plane-logistics-world-5238847.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 367
+    },
+    {
+      "id": "fococlipping-20211231-145832",
+      "cat": "operasional",
+      "full": "gallery/full/fococlipping-20211231-145832.webp",
+      "thumb": "gallery/thumb/fococlipping-20211231-145832.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 337
+    },
+    {
+      "id": "fococlipping-20220103-22416",
+      "cat": "operasional",
+      "full": "gallery/full/fococlipping-20220103-22416.webp",
+      "thumb": "gallery/thumb/fococlipping-20220103-22416.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 313
+    },
+    {
+      "id": "fococlipping-20220103-225317",
+      "cat": "operasional",
+      "full": "gallery/full/fococlipping-20220103-225317.webp",
+      "thumb": "gallery/thumb/fococlipping-20220103-225317.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 397
+    },
+    {
+      "id": "WhatsApp-Image-2026-09-21-at-15.59.20-1",
+      "cat": "operasional",
+      "full": "gallery/full/WhatsApp-Image-2026-09-21-at-15.59.20-1.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2026-09-21-at-15.59.20-1.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 451
+    },
+    {
+      "id": "WhatsApp-Image-2026-09-21-at-15.59.21-1",
+      "cat": "operasional",
+      "full": "gallery/full/WhatsApp-Image-2026-09-21-at-15.59.21-1.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2026-09-21-at-15.59.21-1.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 452
+    },
+    {
+      "id": "WhatsApp-Image-2026-09-21-at-15.59.21",
+      "cat": "operasional",
+      "full": "gallery/full/WhatsApp-Image-2026-09-21-at-15.59.21.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2026-09-21-at-15.59.21.webp",
+      "alt": "Operasional & Kargo",
+      "w": 600,
+      "h": 453
+    },
+    {
+      "id": "WhatsApp-Image-2026-09-21-at-16.00.26-2",
+      "cat": "operasional",
+      "full": "gallery/full/WhatsApp-Image-2026-09-21-at-16.00.26-2.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2026-09-21-at-16.00.26-2.webp",
+      "alt": "Operasional & Kargo",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "WhatsApp-Image-2026-09-21-at-16.00.26-3",
+      "cat": "operasional",
+      "full": "gallery/full/WhatsApp-Image-2026-09-21-at-16.00.26-3.webp",
+      "thumb": "gallery/thumb/WhatsApp-Image-2026-09-21-at-16.00.26-3.webp",
+      "alt": "Operasional & Kargo",
+      "w": 450,
+      "h": 600
+    },
+    {
+      "id": "Logo-PAS-Transparan",
+      "cat": "logo",
+      "full": "gallery/full/Logo-PAS-Transparan.webp",
+      "thumb": "gallery/thumb/Logo-PAS-Transparan.webp",
+      "alt": "Logo & Identitas",
+      "w": 240,
+      "h": 180
+    },
+    {
+      "id": "LOGO-PAS",
+      "cat": "logo",
+      "full": "gallery/full/LOGO-PAS.webp",
+      "thumb": "gallery/thumb/LOGO-PAS.webp",
+      "alt": "Logo & Identitas",
+      "w": 600,
+      "h": 337
+    },
+    {
+      "id": "Picsart_22-02-13_00-41-08-729",
+      "cat": "logo",
+      "full": "gallery/full/Picsart_22-02-13_00-41-08-729.webp",
+      "thumb": "gallery/thumb/Picsart_22-02-13_00-41-08-729.webp",
+      "alt": "Logo & Identitas",
+      "w": 600,
+      "h": 200
+    },
+    {
+      "id": "8d3cfb23-516e-4c4b-9543-378eb02ec717",
+      "cat": "logo",
+      "full": "gallery/full/8d3cfb23-516e-4c4b-9543-378eb02ec717.webp",
+      "thumb": "gallery/thumb/8d3cfb23-516e-4c4b-9543-378eb02ec717.webp",
+      "alt": "Logo & Identitas",
+      "w": 600,
+      "h": 99
+    },
+    {
+      "id": "66d5b180-a7fb-40dd-ae7a-19468a2cafc7",
+      "cat": "logo",
+      "full": "gallery/full/66d5b180-a7fb-40dd-ae7a-19468a2cafc7.webp",
+      "thumb": "gallery/thumb/66d5b180-a7fb-40dd-ae7a-19468a2cafc7.webp",
+      "alt": "Logo & Identitas",
+      "w": 413,
+      "h": 413
+    },
+    {
+      "id": "88d7b408-6799-4337-879e-83808eca6a38",
+      "cat": "logo",
+      "full": "gallery/full/88d7b408-6799-4337-879e-83808eca6a38.webp",
+      "thumb": "gallery/thumb/88d7b408-6799-4337-879e-83808eca6a38.webp",
+      "alt": "Logo & Identitas",
+      "w": 600,
+      "h": 396
+    }
+  ]
+}

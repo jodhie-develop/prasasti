@@ -5,5 +5,8 @@
   "type": "module",
   "engines": {
     "node": ">=18.x"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.1"
   }
 }

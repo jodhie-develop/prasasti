@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin Konten — Prasasti</title>
+<link rel="icon" type="image/jpeg" href="gallery/thumb/88d7b408-6799-4337-879e-83808eca6a38.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#071422;
+    --navy-900:#0B1E33;
+    --navy-800:#123153;
+    --brass-500:#C6963C;
+    --paper-50:#F6F3EC;
+    --paper-100:#EFEADF;
+    --ink-900:#101820;
+    --ink-600:#4A5A66;
+    --mist-200:#DCE3E8;
+    --danger:#B4372F;
+    --ok:#2E7D4F;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper-50);color:var(--ink-900);font-family:'Public Sans',sans-serif;line-height:1.5;}
+  h1,h2{font-family:'Fraunces',serif;font-weight:600;margin:0;}
+  button,input,select{font:inherit;}
+  [hidden]{display:none !important;}
+
+  .btn{border:1px solid var(--navy-900);background:var(--navy-900);color:#fff;padding:9px 16px;border-radius:6px;cursor:pointer;font-weight:600;font-size:.9rem;}
+  .btn:hover{background:var(--navy-800);}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .btn-ghost{background:transparent;color:var(--navy-900);}
+  .btn-ghost:hover{background:var(--paper-100);}
+  .btn-danger{background:transparent;border-color:var(--danger);color:var(--danger);}
+  .btn-danger:hover{background:var(--danger);color:#fff;}
+  .btn-sm{padding:5px 10px;font-size:.8rem;}
+  input[type=text],input[type=password],input[type=number],select{border:1px solid var(--mist-200);background:#fff;border-radius:6px;padding:8px 10px;color:var(--ink-900);min-width:0;}
+  input:focus,select:focus,.btn:focus-visible{outline:2px solid var(--brass-500);outline-offset:1px;}
+  label{font-size:.82rem;font-weight:600;color:var(--ink-600);display:flex;flex-direction:column;gap:5px;}
+
+  /* Login */
+  .login{min-height:100vh;display:grid;place-items:center;padding:16px;background:var(--navy-950);}
+  .login form{background:#fff;padding:32px;border-radius:10px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:16px;}
+  .login p{margin:0;color:var(--ink-600);font-size:.9rem;}
+
+  /* Shell */
+  header{background:var(--navy-900);color:#fff;padding:14px 16px;}
+  header .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  header h1{font-size:1.15rem;flex:1;}
+  header a{color:var(--brass-500);font-size:.85rem;}
+  header .btn{border-color:rgba(255,255,255,.3);background:transparent;}
+  .wrap{max-width:1180px;margin:0 auto;}
+  main{padding:24px 16px 80px;}
+  .tabs{display:flex;gap:4px;border-bottom:1px solid var(--mist-200);margin-bottom:24px;}
+  .tab{background:none;border:0;border-bottom:3px solid transparent;padding:10px 16px;cursor:pointer;font-weight:600;color:var(--ink-600);}
+  .tab.active{color:var(--navy-900);border-color:var(--brass-500);}
+  .panel{background:#fff;border:1px solid var(--mist-200);border-radius:10px;padding:20px;margin-bottom:24px;}
+  .panel h2{font-size:1.1rem;margin-bottom:14px;}
+  .hint{font-size:.82rem;color:var(--ink-600);margin:0 0 14px;}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;}
+  .row > label{flex:1 1 180px;}
+
+  /* Upload */
+  .drop{border:2px dashed var(--mist-200);border-radius:8px;padding:22px;text-align:center;cursor:pointer;color:var(--ink-600);margin-bottom:14px;transition:border-color .2s,background .2s;}
+  .drop.over,.drop:hover{border-color:var(--brass-500);background:var(--paper-50);}
+  .drop strong{color:var(--navy-900);}
+  .queue{list-style:none;margin:14px 0 0;padding:0;font-family:'IBM Plex Mono',monospace;font-size:.78rem;}
+  .queue li{padding:4px 0;border-bottom:1px solid var(--paper-100);display:flex;justify-content:space-between;gap:12px;}
+  .queue .ok{color:var(--ok);} .queue .err{color:var(--danger);}
+
+  /* Gallery grid */
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+  .filters button{border:1px solid var(--mist-200);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font-size:.82rem;}
+  .filters button.active{background:var(--navy-900);border-color:var(--navy-900);color:#fff;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;}
+  .card{border:1px solid var(--mist-200);border-radius:8px;overflow:hidden;background:#fff;display:flex;flex-direction:column;}
+  .card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--paper-100);}
+  .card .meta{padding:8px;display:flex;flex-direction:column;gap:6px;}
+  .card .alt{font-size:.78rem;color:var(--ink-600);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .card .acts{display:flex;gap:6px;}
+  .card .acts select{flex:1;font-size:.78rem;padding:4px 6px;}
+  .badge{font-size:.68rem;font-weight:700;background:var(--brass-500);color:#fff;border-radius:4px;padding:1px 6px;align-self:flex-start;}
+  .count{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--ink-600);margin-top:14px;}
+
+  /* Slider */
+  .slides{display:flex;flex-direction:column;gap:14px;}
+  .slide{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:16px;border:1px solid var(--mist-200);border-radius:8px;padding:12px;align-items:start;}
+  .slide .pv{position:relative;aspect-ratio:16/9;background:var(--paper-100) no-repeat;background-size:cover;border-radius:6px;cursor:crosshair;}
+  .slide .pv::after{content:'';position:absolute;left:var(--fx,50%);top:var(--fy,50%);width:14px;height:14px;margin:-7px 0 0 -7px;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 2px var(--navy-900);pointer-events:none;}
+  .slide .num{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--ink-600);}
+  .slide .ctl{display:flex;flex-direction:column;gap:10px;}
+  .slide .btns{display:flex;gap:6px;flex-wrap:wrap;}
+  .savebar{position:sticky;bottom:0;background:var(--navy-900);color:#fff;padding:12px 16px;border-radius:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .savebar span{flex:1;font-size:.88rem;}
+  .savebar .btn{background:var(--brass-500);border-color:var(--brass-500);}
+
+  /* Picker */
+  dialog{border:0;border-radius:10px;padding:0;width:min(900px,calc(100vw - 32px));max-height:calc(100vh - 64px);}
+  dialog::backdrop{background:rgba(7,20,34,.6);}
+  .dlg-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--mist-200);position:sticky;top:0;background:#fff;z-index:1;}
+  .dlg-body{padding:18px;}
+  .pick{border:2px solid transparent;padding:0;background:none;cursor:pointer;border-radius:6px;overflow:hidden;}
+  .pick:hover,.pick:focus-visible{border-color:var(--brass-500);}
+  .pick img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink-900);color:#fff;padding:10px 18px;border-radius:8px;font-size:.88rem;z-index:10;max-width:calc(100vw - 32px);}
+  .toast.err{background:var(--danger);}
+
+  @media(max-width:640px){
+    .slide{grid-template-columns:1fr;}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+  }
+</style>
+</head>
+<body>
+
+<section class="login" id="login">
+  <form id="loginForm">
+    <h1>Admin Konten</h1>
+    <p>Kelola gallery dan slider halaman utama.</p>
+    <label>Password
+      <input type="password" id="password" autocomplete="current-password" required>
+    </label>
+    <button class="btn" type="submit">Masuk</button>
+    <p id="loginError" style="color:var(--danger)" hidden></p>
+  </form>
+</section>
+
+<div id="app" hidden>
+  <header>
+    <div class="wrap">
+      <h1>Admin Konten</h1>
+      <a href="/" target="_blank" rel="noopener">Lihat situs ↗</a>
+      <button class="btn btn-sm" id="logout" type="button">Keluar</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="gallery" role="tab">Gallery</button>
+      <button class="tab" data-tab="slider" role="tab">Slider</button>
+    </div>
+
+    <!-- Gallery -->
+    <div id="tab-gallery">
+      <section class="panel">
+        <h2>Upload foto</h2>
+        <p class="hint">Foto otomatis diperkecil dan dikompres sebelum diupload. Bisa pilih banyak foto sekaligus.</p>
+        <div class="drop" id="drop" tabindex="0" role="button">
+          <strong>Klik untuk pilih foto</strong> atau seret foto ke sini
+          <div id="picked" class="hint" style="margin:6px 0 0"></div>
+        </div>
+        <input type="file" id="files" accept="image/*" multiple hidden>
+        <div class="row">
+          <label>Kategori
+            <select id="upCat"></select>
+          </label>
+          <label>Keterangan (opsional)
+            <input type="text" id="upAlt" maxlength="120" placeholder="mis. Loading kargo di Tanjung Perak">
+          </label>
+          <button class="btn" id="upBtn" type="button" disabled>Upload</button>
+        </div>
+        <ul class="queue" id="queue"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Foto di gallery</h2>
+        <div class="filters" id="filters"></div>
+        <div class="grid" id="grid"></div>
+        <p class="count" id="count"></p>
+      </section>
+    </div>
+
+    <!-- Slider -->
+    <div id="tab-slider" hidden>
+      <section class="panel">
+        <h2>Slider halaman utama</h2>
+        <p class="hint">Urutan slide = urutan tampil. Klik pada preview untuk menentukan titik fokus foto (bagian yang tetap terlihat saat foto terpotong).</p>
+        <div class="row" style="margin-bottom:18px">
+          <label style="flex:0 0 200px">Ganti slide setiap (detik)
+            <input type="number" id="interval" min="3" max="30" step="1">
+          </label>
+          <button class="btn btn-ghost" id="addFromGallery" type="button">+ Dari gallery</button>
+          <button class="btn btn-ghost" id="addUpload" type="button">+ Upload foto baru</button>
+          <input type="file" id="slideFile" accept="image/*" hidden>
+        </div>
+        <div class="slides" id="slides"></div>
+        <div class="savebar">
+          <span id="sliderState">Tidak ada perubahan.</span>
+          <button class="btn btn-ghost" id="sliderReset" type="button" style="color:#fff;border-color:rgba(255,255,255,.3)" disabled>Batal</button>
+          <button class="btn" id="sliderSave" type="button" disabled>Simpan slider</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<dialog id="picker">
+  <div class="dlg-head">
+    <h2 style="font-size:1.05rem">Pilih foto dari gallery</h2>
+    <button class="btn btn-ghost btn-sm" type="button" id="pickerClose">Tutup</button>
+  </div>
+  <div class="dlg-body">
+    <div class="grid" id="pickerGrid"></div>
+  </div>
+</dialog>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const KEY = 'pasAdminPassword';
+  let password = '';
+  let content = null;
+  let slides = [], interval = 7, sliderDirty = false;
+  let galleryFilter = 'all';
+
+  function storage(fn){ try { return fn(sessionStorage); } catch { return null; } }
+
+  function toast(msg, isErr){
+    const el = document.createElement('div');
+    el.className = 'toast' + (isErr ? ' err' : '');
+    el.textContent = msg;
+    el.setAttribute('role', 'status');
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), isErr ? 5000 : 2500);
+  }
+
+  async function api(action, data = {}){
+    const res = await fetch('/api/admin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + password },
+      body: JSON.stringify({ action, ...data })
+    });
+    let json = {};
+    try { json = await res.json(); } catch {}
+    if (res.status === 401) { logout(); throw new Error(json.error || 'Sesi berakhir, silakan masuk lagi'); }
+    if (res.status === 413) throw new Error('Foto terlalu besar');
+    if (!res.ok) throw new Error(json.error || `Gagal (${res.status})`);
+    return json;
+  }
+
+  // Paths in the repo are relative to the site root.
+  const url = (src) => /^https?:/.test(src) ? src : '/' + src;
+
+  /* ---------- Login ---------- */
+  $('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    password = $('password').value;
+    $('loginError').hidden = true;
+    try {
+      await start();
+      storage(s => s.setItem(KEY, password));
+    } catch (err) {
+      $('loginError').textContent = err.message;
+      $('loginError').hidden = false;
+    }
+  });
+
+  function logout(){
+    password = '';
+    storage(s => s.removeItem(KEY));
+    $('app').hidden = true;
+    $('login').hidden = false;
+    $('password').value = '';
+    $('password').focus();
+  }
+  $('logout').addEventListener('click', logout);
+
+  async function start(){
+    content = await api('get');
+    $('login').hidden = true;
+    $('app').hidden = false;
+    renderCategories();
+    renderGallery();
+    loadSlider();
+  }
+
+  /* ---------- Tabs ---------- */
+  document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => {
+    if (tab.dataset.tab === 'gallery' && sliderDirty && !confirm('Perubahan slider belum disimpan. Tetap pindah?')) return;
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === tab));
+    $('tab-gallery').hidden = tab.dataset.tab !== 'gallery';
+    $('tab-slider').hidden = tab.dataset.tab !== 'slider';
+  }));
+  window.addEventListener('beforeunload', (e) => { if (sliderDirty) e.preventDefault(); });
+
+  /* ---------- Image processing ---------- */
+  async function encode(file, maxSide, quality){
+    let bitmap;
+    try {
+      bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
+    } catch {
+      throw new Error('Format foto tidak didukung (gunakan JPG/PNG/WebP)');
+    }
+    const scale = Math.min(1, maxSide / Math.max(bitmap.width, bitmap.height));
+    const w = Math.round(bitmap.width * scale), h = Math.round(bitmap.height * scale);
+    const canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#fff'; // flatten transparent PNGs for the JPEG fallback
+    ctx.fillRect(0, 0, w, h);
+    ctx.drawImage(bitmap, 0, 0, w, h);
+    bitmap.close();
+    const toBlob = (type, q) => new Promise(r => canvas.toBlob(r, type, q));
+    let blob = await toBlob('image/webp', quality);
+    if (!blob || blob.type !== 'image/webp') blob = await toBlob('image/jpeg', quality);
+    const buf = new Uint8Array(await blob.arrayBuffer());
+    let bin = '';
+    for (let i = 0; i < buf.length; i += 0x8000) bin += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000));
+    return { data: btoa(bin), w, h };
+  }
+
+  // Function request bodies max out at 4.5 MB, so step quality down until it fits.
+  async function encodeFitting(file, maxSide, budget){
+    for (const q of [0.82, 0.7, 0.55]) {
+      const out = await encode(file, maxSide, q);
+      if (out.data.length <= budget) return out;
+    }
+    throw new Error('Foto terlalu besar meski sudah dikompres');
+  }
+
+  /* ---------- Gallery ---------- */
+  function renderCategories(){
+    $('upCat').innerHTML = '';
+    content.categories.forEach(c => $('upCat').add(new Option(c.label, c.id)));
+    $('filters').innerHTML = '';
+    [{ id: 'all', label: 'Semua' }, ...content.categories].forEach(c => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = c.label;
+      b.classList.toggle('active', c.id === galleryFilter);
+      b.addEventListener('click', () => { galleryFilter = c.id; renderCategories(); renderGallery(); });
+      $('filters').appendChild(b);
+    });
+  }
+
+  function renderGallery(){
+    const inSlider = new Set(content.slider.slides.map(s => s.src));
+    const items = content.gallery.filter(g => galleryFilter === 'all' || g.cat === galleryFilter);
+    const grid = $('grid');
+    grid.innerHTML = '';
+    items.forEach(g => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      const img = document.createElement('img');
+      img.src = url(g.thumb); img.alt = g.alt; img.loading = 'lazy';
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      const alt = document.createElement('div');
+      alt.className = 'alt'; alt.textContent = g.alt; alt.title = g.alt;
+      meta.appendChild(alt);
+      if (inSlider.has(g.full)) {
+        const badge = document.createElement('span');
+        badge.className = 'badge'; badge.textContent = 'Dipakai di slider';
+        meta.appendChild(badge);
+      }
+      const acts = document.createElement('div');
+      acts.className = 'acts';
+      const sel = document.createElement('select');
+      sel.setAttribute('aria-label', 'Kategori');
+      content.categories.forEach(c => sel.add(new Option(c.label, c.id, false, c.id === g.cat)));
+      sel.addEventListener('change', async () => {
+        sel.disabled = true;
+        try {
+          ({ content } = await api('update', { id: g.id, cat: sel.value }));
+          toast('Kategori diubah');
+          renderGallery();
+        } catch (err) { toast(err.message, true); sel.value = g.cat; sel.disabled = false; }
+      });
+      const delBtn = document.createElement('button');
+      delBtn.type = 'button';
+      delBtn.className = 'btn btn-danger btn-sm';
+      delBtn.textContent = 'Hapus';
+      delBtn.addEventListener('click', async () => {
+        if (!confirm('Hapus foto ini dari gallery?')) return;
+        delBtn.disabled = true;
+        try {
+          ({ content } = await api('delete', { id: g.id }));
+          toast('Foto dihapus');
+          renderGallery();
+        } catch (err) { toast(err.message, true); delBtn.disabled = false; }
+      });
+      acts.append(sel, delBtn);
+      meta.appendChild(acts);
+      card.append(img, meta);
+      grid.appendChild(card);
+    });
+    $('count').textContent = `${items.length} foto` + (galleryFilter === 'all' ? '' : ` di kategori ini (total ${content.gallery.length})`);
+  }
+
+  let pickedFiles = [];
+  function setPicked(files){
+    pickedFiles = [...files].filter(f => f.type.startsWith('image/'));
+    $('picked').textContent = pickedFiles.length ? `${pickedFiles.length} foto dipilih` : '';
+    $('upBtn').disabled = !pickedFiles.length;
+  }
+  const drop = $('drop');
+  drop.addEventListener('click', () => $('files').click());
+  drop.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('files').click(); } });
+  drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('over'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('over'));
+  drop.addEventListener('drop', (e) => { e.preventDefault(); drop.classList.remove('over'); setPicked(e.dataTransfer.files); });
+  $('files').addEventListener('change', (e) => setPicked(e.target.files));
+
+  $('upBtn').addEventListener('click', async () => {
+    const files = pickedFiles, cat = $('upCat').value, alt = $('upAlt').value.trim();
+    $('upBtn').disabled = true;
+    const queue = $('queue');
+    queue.innerHTML = '';
+    let done = 0;
+    for (const file of files) {
+      const li = document.createElement('li');
+      const name = document.createElement('span'); name.textContent = file.name;
+      const state = document.createElement('span'); state.textContent = 'memproses…';
+      li.append(name, state);
+      queue.appendChild(li);
+      try {
+        const full = await encodeFitting(file, 1600, 2800000);
+        const thumb = await encodeFitting(file, 600, 600000);
+        state.textContent = 'mengupload…';
+        ({ content } = await api('upload', { target: 'gallery', name: file.name, cat, alt, full: full.data, thumb: thumb.data, w: thumb.w, h: thumb.h }));
+        state.textContent = 'selesai'; state.className = 'ok';
+        done++;
+        renderGallery();
+      } catch (err) {
+        state.textContent = err.message; state.className = 'err';
+      }
+    }
+    toast(`${done} dari ${files.length} foto terupload`, done < files.length);
+    setPicked([]);
+    $('files').value = '';
+    $('upAlt').value = '';
+  });
+
+  /* ---------- Slider ---------- */
+  function loadSlider(){
+    slides = content.slider.slides.map(s => ({ ...s }));
+    interval = content.slider.interval || 7;
+    $('interval').value = interval;
+    setDirty(false);
+    renderSlides();
+  }
+
+  function setDirty(dirty){
+    sliderDirty = dirty;
+    $('sliderState').textContent = dirty ? 'Ada perubahan yang belum disimpan.' : 'Tidak ada perubahan.';
+    $('sliderSave').disabled = !dirty;
+    $('sliderReset').disabled = !dirty;
+  }
+
+  // "center 40%" → [50, 40] so the focus marker can be drawn.
+  function parsePosition(pos){
+    const word = { left: 0, top: 0, center: 50, right: 100, bottom: 100 };
+    const parts = String(pos || 'center').trim().split(/\s+/);
+    const val = (p) => p in word ? word[p] : (parseFloat(p) || 50);
+    if (parts.length === 1) {
+      if (parts[0] === 'top' || parts[0] === 'bottom') return [50, val(parts[0])];
+      return [val(parts[0]), 50];
+    }
+    // "top left" style keywords may come in either order
+    if (parts[0] === 'top' || parts[0] === 'bottom') return [val(parts[1]), val(parts[0])];
+    return [val(parts[0]), val(parts[1])];
+  }
+
+  function renderSlides(){
+    const wrap = $('slides');
+    wrap.innerHTML = '';
+    slides.forEach((s, i) => {
+      const row = document.createElement('div');
+      row.className = 'slide';
+      const pv = document.createElement('div');
+      pv.className = 'pv';
+      pv.style.backgroundImage = `url('${url(s.src)}')`;
+      pv.style.backgroundPosition = s.position;
+      const [fx, fy] = parsePosition(s.position);
+      pv.style.setProperty('--fx', fx + '%');
+      pv.style.setProperty('--fy', fy + '%');
+      pv.title = 'Klik untuk mengatur titik fokus';
+      pv.addEventListener('click', (e) => {
+        const r = pv.getBoundingClientRect();
+        const x = Math.round((e.clientX - r.left) / r.width * 100);
+        const y = Math.round((e.clientY - r.top) / r.height * 100);
+        s.position = `${x}% ${y}%`;
+        setDirty(true);
+        renderSlides();
+      });
+
+      const ctl = document.createElement('div');
+      ctl.className = 'ctl';
+      const num = document.createElement('div');
+      num.className = 'num';
+      num.textContent = `Slide ${i + 1}` + (i === 0 ? ' · tampil pertama (layar penuh)' : '');
+      const posLabel = document.createElement('label');
+      posLabel.textContent = 'Posisi fokus';
+      const pos = document.createElement('input');
+      pos.type = 'text'; pos.value = s.position; pos.maxLength = 30;
+      pos.placeholder = 'center, center 40%, 80% 85%';
+      pos.addEventListener('change', () => {
+        s.position = pos.value.trim() || 'center';
+        setDirty(true);
+        renderSlides();
+      });
+      posLabel.appendChild(pos);
+
+      const btns = document.createElement('div');
+      btns.className = 'btns';
+      const mk = (label, cls, fn, disabled) => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = 'btn btn-sm ' + cls; b.textContent = label; b.disabled = !!disabled;
+        b.addEventListener('click', fn);
+        btns.appendChild(b);
+      };
+      const move = (to) => { slides.splice(to, 0, slides.splice(i, 1)[0]); setDirty(true); renderSlides(); };
+      mk('↑ Naik', 'btn-ghost', () => move(i - 1), i === 0);
+      mk('↓ Turun', 'btn-ghost', () => move(i + 1), i === slides.length - 1);
+      mk('Hapus', 'btn-danger', () => {
+        if (slides.length === 1) return toast('Slider minimal berisi 1 foto', true);
+        slides.splice(i, 1); setDirty(true); renderSlides();
+      });
+
+      ctl.append(num, posLabel, btns);
+      row.append(pv, ctl);
+      wrap.appendChild(row);
+    });
+  }
+
+  $('interval').addEventListener('change', () => {
+    interval = Math.max(3, Math.min(30, parseInt($('interval').value, 10) || 7));
+    $('interval').value = interval;
+    setDirty(true);
+  });
+
+  function addSlide(src){
+    if (slides.length >= 12) return toast('Slider maksimal 12 foto', true);
+    slides.push({ src, position: 'center' });
+    setDirty(true);
+    renderSlides();
+    $('slides').lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  $('addFromGallery').addEventListener('click', () => {
+    const grid = $('pickerGrid');
+    grid.innerHTML = '';
+    content.gallery.forEach(g => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'pick'; b.title = g.alt;
+      const img = document.createElement('img');
+      img.src = url(g.thumb); img.alt = g.alt; img.loading = 'lazy';
+      b.appendChild(img);
+      b.addEventListener('click', () => { $('picker').close(); addSlide(g.full); });
+      grid.appendChild(b);
+    });
+    $('picker').showModal();
+  });
+  $('pickerClose').addEventListener('click', () => $('picker').close());
+
+  $('addUpload').addEventListener('click', () => $('slideFile').click());
+  $('slideFile').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    e.target.value = '';
+    if (!file) return;
+    $('addUpload').disabled = true;
+    $('addUpload').textContent = 'Mengupload…';
+    try {
+      const full = await encodeFitting(file, 1920, 4000000);
+      const { src } = await api('upload', { target: 'slider', name: file.name, full: full.data });
+      addSlide(src);
+      toast('Foto terupload — jangan lupa klik Simpan slider');
+    } catch (err) {
+      toast(err.message, true);
+    } finally {
+      $('addUpload').disabled = false;
+      $('addUpload').textContent = '+ Upload foto baru';
+    }
+  });
+
+  $('sliderReset').addEventListener('click', loadSlider);
+  $('sliderSave').addEventListener('click', async () => {
+    $('sliderSave').disabled = true;
+    try {
+      ({ content } = await api('slider', { slides, interval }));
+      loadSlider();
+      renderGallery();
+      toast('Slider disimpan. Situs terupdate dalam ±1 menit.');
+    } catch (err) {
+      toast(err.message, true);
+      $('sliderSave').disabled = false;
+    }
+  });
+
+  /* ---------- Boot ---------- */
+  const saved = storage(s => s.getItem(KEY));
+  if (saved) {
+    password = saved;
+    start().catch(() => logout());
+  } else {
+    $('password').focus();
+  }
+</script>
+</body>
+</html>

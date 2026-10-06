@@ -802,22 +802,25 @@
   }
 
   // Hero slideshow
-  const heroSlides = [...document.querySelectorAll('.hero-photo')];
-  if (heroSlides.length > 1) {
-    let heroIndex = 0;
-    const heroReady = heroSlides.map((slide, i) => i === 0);
-    window.addEventListener('load', () => {
-      heroSlides.forEach((slide, i) => {
-        if (!slide.dataset.bg) return;
-        const img = new Image();
-        img.onload = () => {
-          slide.style.backgroundImage = `url('${slide.dataset.bg}')`;
-          heroReady[i] = true;
-        };
-        img.src = slide.dataset.bg;
-      });
+  const heroWrap = document.querySelector('.hero-slides');
+  let heroSlides = [...heroWrap.querySelectorAll('.hero-photo')];
+  let heroIndex = 0, heroReady = [], heroTimer = null, heroDelay = 7000;
+  function heroLoad(){
+    heroReady = heroSlides.map(slide => !slide.dataset.bg);
+    heroSlides.forEach((slide, i) => {
+      if (!slide.dataset.bg) return;
+      const img = new Image();
+      img.onload = () => {
+        slide.style.backgroundImage = `url('${slide.dataset.bg}')`;
+        heroReady[i] = true;
+      };
+      img.src = slide.dataset.bg;
     });
-    setInterval(() => {
+  }
+  function heroStart(){
+    clearInterval(heroTimer);
+    if (heroSlides.length < 2) return;
+    heroTimer = setInterval(() => {
       if (document.hidden) return;
       const nextIndex = (heroIndex + 1) % heroSlides.length;
       if (!heroReady[nextIndex]) return;
@@ -827,7 +830,39 @@
       current.classList.replace('active', 'leaving');
       next.classList.add('active');
       heroIndex = nextIndex;
-    }, 7000);
+    }, heroDelay);
+  }
+  heroReady = heroSlides.map((slide, i) => i === 0);
+  if (document.readyState === 'complete') heroLoad();
+  else window.addEventListener('load', heroLoad);
+  heroStart();
+
+  // Swap in the slides managed from /admin; the first photo stays put when unchanged.
+  function heroApply(slider){
+    const slides = slider.slides || [];
+    if (!slides.length) return;
+    const first = heroSlides[0];
+    const keepFirst = first && first.classList.contains('active') && heroIndex === 0 &&
+      (first.style.backgroundImage.includes(slides[0].src) || first.dataset.bg === slides[0].src);
+    const built = slides.map((s, i) => {
+      if (i === 0 && keepFirst) {
+        first.style.backgroundPosition = s.position;
+        return first;
+      }
+      const el = document.createElement('div');
+      el.className = 'hero-photo' + (i > 0 ? ' is-right' : '') + (i === 0 ? ' active' : '');
+      el.dataset.bg = s.src;
+      el.style.backgroundPosition = s.position;
+      return el;
+    });
+    heroWrap.replaceChildren(...built);
+    heroSlides = built;
+    heroIndex = 0;
+    heroDelay = (slider.interval || 7) * 1000;
+    if (document.readyState === 'complete') heroLoad();
+    else heroReady = heroSlides.map(slide => !slide.dataset.bg);
+    if (keepFirst) heroReady[0] = true;
+    heroStart();
   }
 
   // Member strip slider: shift one logo every 5s
@@ -861,8 +896,9 @@
 
   // Gallery filter
   const gTabs = document.querySelectorAll('.g-tab');
-  const gItems = document.querySelectorAll('.g-item');
+  let gItems = document.querySelectorAll('.g-item');
   gItems.forEach((item, i) => item.style.setProperty('--gi', i % 24));
+  let gFilter = 'all';
   const gCount = document.getElementById('galleryCount');
   const gGrid = document.getElementById('galleryGrid');
   const gObserver = new IntersectionObserver((entries) => {
@@ -878,19 +914,45 @@
     const visible = filter === 'all' ? gItems.length : document.querySelectorAll(`.g-item[data-cat="${filter}"]`).length;
     gCount.textContent = `Menampilkan ${visible} dari ${gItems.length} foto`;
   }
+  function applyFilter(filter){
+    gFilter = filter;
+    gItems.forEach(item => {
+      const match = filter === 'all' || item.getAttribute('data-cat') === filter;
+      item.classList.toggle('g-hidden', !match);
+    });
+    updateCount(filter);
+  }
   gTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       gTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      const filter = tab.getAttribute('data-filter');
-      gItems.forEach(item => {
-        const match = filter === 'all' || item.getAttribute('data-cat') === filter;
-        item.classList.toggle('g-hidden', !match);
-      });
-      updateCount(filter);
+      applyFilter(tab.getAttribute('data-filter'));
     });
   });
   updateCount('all');
+
+  // Rebuild the grid from the photos managed in /admin.
+  function galleryApply(gallery){
+    const frag = document.createDocumentFragment();
+    gallery.forEach((g, i) => {
+      const a = document.createElement('a');
+      a.className = 'g-item';
+      a.dataset.cat = g.cat;
+      a.href = g.full;
+      a.style.setProperty('--gi', i % 24);
+      const img = document.createElement('img');
+      img.src = g.thumb;
+      img.alt = g.alt;
+      img.loading = 'lazy';
+      img.width = g.w;
+      img.height = g.h;
+      a.appendChild(img);
+      frag.appendChild(a);
+    });
+    gGrid.replaceChildren(frag);
+    gItems = gGrid.querySelectorAll('.g-item');
+    applyFilter(gFilter);
+  }
 
   // Gallery lightbox
   const lb = document.getElementById('lightbox');
@@ -922,11 +984,21 @@
     document.body.style.overflow = '';
     if (lbLastFocus) lbLastFocus.focus();
   }
-  gItems.forEach(item => item.addEventListener('click', (e) => {
+  gGrid.addEventListener('click', (e) => {
+    const item = e.target.closest('.g-item');
+    if (!item) return;
     e.preventDefault();
     const visible = [...gItems].filter(el => !el.classList.contains('g-hidden'));
     lbOpen(visible.map(el => ({ src: el.getAttribute('href'), alt: el.querySelector('img').alt })), visible.indexOf(item));
-  }));
+  });
+
+  fetch('/api/content')
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(content => {
+      if (content.slider) heroApply(content.slider);
+      if (Array.isArray(content.gallery)) galleryApply(content.gallery);
+    })
+    .catch(() => {}); // keep the photos already in the markup
 
   // Member strip: open certificates in the lightbox (full-size, deduplicated)
   const memberStrip = document.querySelector('.marquee-track');
