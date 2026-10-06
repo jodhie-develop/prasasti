@@ -33,7 +33,7 @@
     letter-spacing:-0.01em;
   }
   a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
+  img{max-width:100%;height:auto;display:block;}
   .eyebrow{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.72rem;
@@ -475,6 +475,7 @@
   footer .flinks{display:flex;gap:26px;font-size:0.82rem;flex-wrap:wrap;}
   footer .flinks a:hover{color:var(--brass-400);}
   .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.76rem;}
+  .foot-services a:hover{color:var(--brass-400);}
 
 /* ---------- SERVICE DETAIL PAGE ---------- */
 .page-hero{
@@ -509,7 +510,7 @@
 }
 
 .other-services{background:var(--navy-900);color:#fff;padding:70px 0;}
-.other-services .eyebrow{color:var(--brass-400);margin-bottom:24px;}
+.other-services .eyebrow{color:var(--brass-400);margin-bottom:24px;font-weight:400;}
 .os-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1);}
 @media(max-width:760px){.os-grid{grid-template-columns:1fr;}}
 .os-card{
@@ -519,3 +520,4 @@
 .os-card .tag{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--brass-400);text-transform:uppercase;letter-spacing:0.08em;}
 .os-card h4{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:#fff;margin:10px 0 12px;}
 .os-card span{font-size:0.78rem;color:rgba(255,255,255,0.5);display:inline-flex;align-items:center;gap:6px;}
+
