@@ -1,7 +1,33 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "functions": {
     "api/chat.js": {
       "includeFiles": "{knowledge/**,prompt/**}"
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/(draft|full)/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "prasastiadyadmasentosa.vercel.app"
+        }
+      ],
+      "destination": "https://www.prasastiindonesia.com/:path*",
+      "permanent": true
+    }
+  ]
 }
