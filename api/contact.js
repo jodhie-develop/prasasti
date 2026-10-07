@@ -22,6 +22,15 @@ function clean(value, max) {
     return String(value ?? "").replace(/\r\n?/g, "\n").trim().slice(0, max);
 }
 
+// Accepts "0812-3456-789", "+62 812...", "62812..." etc. and returns digits with country code.
+function waNumber(raw) {
+    let digits = raw.replace(/[\s().-]/g, "");
+    if (!/^\+?\d{8,16}$/.test(digits)) return null;
+    digits = digits.replace(/^\+/, "");
+    if (digits.startsWith("0")) digits = "62" + digits.slice(1);
+    return digits;
+}
+
 function escapeHtml(s) {
     return s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[c]);
 }
@@ -44,13 +53,15 @@ async function resend(payload) {
     }
 }
 
-function notifyOffice({ name, email, message }) {
+function notifyOffice({ name, whatsapp, wa, email, message }) {
     const html = `
         <p><b>Nama:</b> ${escapeHtml(name)}<br>
+        <b>WhatsApp:</b> ${escapeHtml(whatsapp)} &middot; <a href="https://wa.me/${wa}">Chat di WhatsApp</a><br>
         <b>Email:</b> ${escapeHtml(email)}</p>
         <p style="white-space:pre-wrap">${escapeHtml(message)}</p>
         <hr><p style="color:#888;font-size:12px">Dikirim dari form kontak prasastiindonesia.com. Klik Reply untuk membalas pengirim.</p>`;
     const text = `Nama: ${name}
+WhatsApp: ${whatsapp} (https://wa.me/${wa})
 Email: ${email}
 
 ${message}
@@ -128,12 +139,20 @@ export default async function handler(req, res) {
     }
 
     const name = clean(body.name, 100);
+    const whatsapp = clean(body.whatsapp, 30);
     const email = clean(body.email, 200);
     const message = clean(body.message, 5000);
 
-    if (!name || !email || !message) {
+    if (!name || !whatsapp || !email || !message) {
         return res.status(400).json({
-            error: "Nama, email, dan pesan wajib diisi"
+            error: "Nama, nomor WhatsApp, email, dan pesan wajib diisi"
+        });
+    }
+
+    const wa = waNumber(whatsapp);
+    if (!wa) {
+        return res.status(400).json({
+            error: "Nomor WhatsApp tidak valid"
         });
     }
 
@@ -152,7 +171,7 @@ export default async function handler(req, res) {
 
     try {
 
-        await notifyOffice({ name, email, message });
+        await notifyOffice({ name, whatsapp, wa, email, message });
 
         // The office already has the message, so a failed confirmation shouldn't show an error.
         await replyToVisitor({ name, email }).catch(err => console.error("Auto-reply failed:", err));

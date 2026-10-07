@@ -711,6 +711,10 @@
           <input id="f-name" name="name" type="text" placeholder="Nama Anda" maxlength="100" autocomplete="name" required>
         </div>
         <div class="form-field">
+          <label for="f-wa">WhatsApp</label>
+          <input id="f-wa" name="whatsapp" type="tel" inputmode="tel" placeholder="0812 3456 7890" maxlength="30" autocomplete="tel" required>
+        </div>
+        <div class="form-field">
           <label for="f-email">Email</label>
           <input id="f-email" name="email" type="email" placeholder="nama@email.com" maxlength="200" autocomplete="email" required>
         </div>
@@ -1048,8 +1052,9 @@
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(contactForm));
-    data.name = data.name.trim(); data.email = data.email.trim(); data.message = data.message.trim();
-    if (!data.name || !data.email || !data.message) return contactSay('Mohon isi nama, email, dan pesan.', 'error');
+    data.name = data.name.trim(); data.whatsapp = data.whatsapp.trim(); data.email = data.email.trim(); data.message = data.message.trim();
+    if (!data.name || !data.whatsapp || !data.email || !data.message) return contactSay('Mohon isi nama, nomor WhatsApp, email, dan pesan.', 'error');
+    if (!/^\+?\d{8,16}$/.test(data.whatsapp.replace(/[\s().-]/g, ''))) return contactSay('Nomor WhatsApp tidak valid.', 'error');
     if (!contactForm.elements.email.checkValidity()) return contactSay('Alamat email tidak valid.', 'error');
 
     const btn = contactForm.querySelector('button[type="submit"]');
