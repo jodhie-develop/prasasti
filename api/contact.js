@@ -85,21 +85,20 @@ function replyToVisitor({ name, email }) {
     const first = name.replace(/\s+/g, " ").slice(0, 40);
     const html = `
         <div style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#1a2433;max-width:560px">
-        <p>Halo ${escapeHtml(first)},</p>
-        <p>Terima kasih telah menghubungi <b>PT. Prasasti Adyadma Sentosa</b>. Pesan Anda sudah kami terima dan tim kami akan segera menghubungi Anda kembali.</p>
-        <p>Untuk kebutuhan mendesak, silakan hubungi kami di <a href="mailto:${TO}">${TO}</a> atau kunjungi <a href="https://www.prasastiindonesia.com">prasastiindonesia.com</a>.</p>
-        <p style="color:#666">Thank you for contacting PT. Prasasti Adyadma Sentosa. We have received your message and our team will get back to you shortly.</p>
-        <p>Salam,<br><b>PT. Prasasti Adyadma Sentosa</b><br>International Air &amp; Sea Freight Forwarder Logistics</p>
+        <p>Dear ${escapeHtml(first)},</p>
+        <p>Thank you for reaching out to PT. Prasasti Adyadma Sentosa. We have received your message, and a representative from our team will contact you shortly.</p>
+        <p>For urgent inquiries, please do not hesitate to contact us via email at <a href="mailto:${TO}">${TO}</a> or visit our website at <a href="https://www.prasastiindonesia.com">prasastiindonesia.com</a>.</p>
+        <p>Sincerely,</p>
+        <p><b>PT. Prasasti Adyadma Sentosa</b><br>International Air &amp; Sea Freight Forwarder Logistics</p>
         </div>`;
-    const text = `Halo ${first},
+    const text = `Dear ${first},
 
-Terima kasih telah menghubungi PT. Prasasti Adyadma Sentosa. Pesan Anda sudah kami terima dan tim kami akan segera menghubungi Anda kembali.
+Thank you for reaching out to PT. Prasasti Adyadma Sentosa. We have received your message, and a representative from our team will contact you shortly.
 
-Untuk kebutuhan mendesak, silakan hubungi kami di ${TO} atau kunjungi https://www.prasastiindonesia.com.
+For urgent inquiries, please do not hesitate to contact us via email at ${TO} or visit our website at prasastiindonesia.com.
 
-Thank you for contacting PT. Prasasti Adyadma Sentosa. We have received your message and our team will get back to you shortly.
+Sincerely,
 
-Salam,
 PT. Prasasti Adyadma Sentosa
 International Air & Sea Freight Forwarder Logistics`;
 
@@ -107,7 +106,7 @@ International Air & Sea Freight Forwarder Logistics`;
         from: `PT. Prasasti Adyadma Sentosa <info@${domain()}>`,
         to: [email],
         reply_to: TO,
-        subject: "Terima kasih, pesan Anda sudah kami terima",
+        subject: "Thank You for Contacting PT. Prasasti Adyadma Sentosa",
         html,
         text
     });
