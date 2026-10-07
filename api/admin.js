@@ -87,19 +87,28 @@ const actions = {
         return { content };
     },
 
+    // Takes `id` or `ids`; photos still used in the slider are skipped, not deleted.
     async delete(body) {
+        const ids = Array.isArray(body.ids) ? body.ids.slice(0, 500) : [body.id];
+        let skipped = 0;
         const { content, result: removed } = await updateContent(content => {
-            const item = content.gallery.find(g => g.id === body.id);
-            if (!item) throw new HttpError(404, "Foto tidak ditemukan");
-            if (content.slider.slides.some(s => s.src === item.full)) {
-                throw new HttpError(409, "Foto ini dipakai di slider. Hapus dulu dari slider.");
+            const inSlider = new Set(content.slider.slides.map(s => s.src));
+            const wanted = new Set(ids);
+            const found = content.gallery.filter(g => wanted.has(g.id));
+            if (!found.length) throw new HttpError(404, "Foto tidak ditemukan");
+            const removed = found.filter(g => !inSlider.has(g.full));
+            skipped = found.length - removed.length;
+            if (!removed.length) {
+                throw new HttpError(409, found.length === 1
+                    ? "Foto ini dipakai di slider. Hapus dulu dari slider."
+                    : "Semua foto terpilih dipakai di slider. Hapus dulu dari slider.");
             }
-            content.gallery = content.gallery.filter(g => g !== item);
-            return item;
+            content.gallery = content.gallery.filter(g => !removed.includes(g));
+            return removed;
         });
         const used = usedSources(content);
-        await deleteBlobs([removed.full, removed.thumb].filter(src => !used.has(src)));
-        return { content };
+        await deleteBlobs(removed.flatMap(g => [g.full, g.thumb]).filter(src => !used.has(src)));
+        return { content, deleted: removed.length, skipped };
     },
 
     async slider(body) {

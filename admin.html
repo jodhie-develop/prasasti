@@ -82,6 +82,25 @@
   .card .alt{font-size:.78rem;color:var(--ink-600);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .card .acts{display:flex;gap:6px;}
   .card .acts select{flex:1;font-size:.78rem;padding:4px 6px;}
+  .card .acts .btn{flex:1;}
+  .card .imgwrap{position:relative;}
+  .card .pickbox{position:absolute;top:6px;left:6px;width:22px;height:22px;accent-color:var(--navy-900);cursor:pointer;}
+  .card.selected{border-color:var(--navy-900);box-shadow:0 0 0 2px var(--navy-900);}
+  .selbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;padding:10px 12px;background:var(--paper-50);border-radius:8px;font-size:.85rem;}
+  .selbar span{flex:1;color:var(--ink-600);}
+  label.check{flex-direction:row;align-items:center;gap:8px;color:var(--ink-900);cursor:pointer;}
+  label.check input{width:18px;height:18px;accent-color:var(--navy-900);}
+  .picked{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-bottom:14px;}
+  .picked:empty{display:none;}
+  .picked figure{margin:0;position:relative;}
+  .picked img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block;background:var(--paper-100);}
+  .picked figcaption{font-size:.68rem;color:var(--ink-600);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;}
+  .picked button{position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(7,20,34,.75);color:#fff;cursor:pointer;line-height:1;font-size:1rem;}
+  .edit-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start;}
+  .edit-body img{width:100%;max-height:60vh;object-fit:contain;background:var(--paper-100);border-radius:6px;}
+  .edit-fields{display:flex;flex-direction:column;gap:14px;}
+  .edit-fields .btns{display:flex;gap:8px;}
+  @media(max-width:640px){.edit-body{grid-template-columns:1fr;}}
   .badge{font-size:.68rem;font-weight:700;background:var(--brass-500);color:#fff;border-radius:4px;padding:1px 6px;align-self:flex-start;}
   .count{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--ink-600);margin-top:14px;}
 
@@ -151,14 +170,15 @@
         <p class="hint">Foto otomatis diperkecil dan dikompres sebelum diupload. Bisa pilih banyak foto sekaligus.</p>
         <div class="drop" id="drop" tabindex="0" role="button">
           <strong>Klik untuk pilih foto</strong> atau seret foto ke sini
-          <div id="picked" class="hint" style="margin:6px 0 0"></div>
+          <div class="hint" style="margin:6px 0 0">Bisa pilih banyak foto sekaligus (Ctrl/Shift + klik)</div>
         </div>
         <input type="file" id="files" accept="image/*" multiple hidden>
+        <div class="picked" id="picked"></div>
         <div class="row">
           <label>Kategori
             <select id="upCat"></select>
           </label>
-          <label>Keterangan (opsional)
+          <label>Keterangan (opsional, untuk semua foto di atas)
             <input type="text" id="upAlt" maxlength="120" placeholder="mis. Loading kargo di Tanjung Perak">
           </label>
           <button class="btn" id="upBtn" type="button" disabled>Upload</button>
@@ -169,6 +189,11 @@
       <section class="panel">
         <h2>Foto di gallery</h2>
         <div class="filters" id="filters"></div>
+        <div class="selbar">
+          <label class="check"><input type="checkbox" id="selAll"> Pilih semua</label>
+          <span id="selCount">Belum ada foto dipilih</span>
+          <button class="btn btn-danger btn-sm" id="delSelected" type="button" disabled>Hapus terpilih</button>
+        </div>
         <div class="grid" id="grid"></div>
         <p class="count" id="count"></p>
       </section>
@@ -197,6 +222,30 @@
     </div>
   </main>
 </div>
+
+<dialog id="editor">
+  <form method="dialog" id="editForm">
+    <div class="dlg-head">
+      <h2 style="font-size:1.05rem">Edit foto</h2>
+      <button class="btn btn-ghost btn-sm" type="button" id="editClose">Tutup</button>
+    </div>
+    <div class="dlg-body edit-body">
+      <img id="editImg" alt="">
+      <div class="edit-fields">
+        <label>Keterangan
+          <input type="text" id="editAlt" maxlength="120" required>
+        </label>
+        <label>Kategori
+          <select id="editCat"></select>
+        </label>
+        <div class="btns">
+          <button class="btn" type="submit" id="editSave">Simpan</button>
+          <button class="btn btn-ghost" type="button" id="editCancel">Batal</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</dialog>
 
 <dialog id="picker">
   <div class="dlg-head">
@@ -336,16 +385,98 @@
     });
   }
 
+  const selected = new Set();
+  const visibleItems = () => content.gallery.filter(g => galleryFilter === 'all' || g.cat === galleryFilter);
+
+  function updateSelection(){
+    const ids = new Set(content.gallery.map(g => g.id));
+    [...selected].forEach(id => { if (!ids.has(id)) selected.delete(id); });
+    const visible = visibleItems();
+    const picked = visible.filter(g => selected.has(g.id)).length;
+    $('selAll').checked = visible.length > 0 && picked === visible.length;
+    $('selAll').indeterminate = picked > 0 && picked < visible.length;
+    $('selCount').textContent = selected.size ? `${selected.size} foto dipilih` : 'Belum ada foto dipilih';
+    $('delSelected').disabled = !selected.size;
+    $('delSelected').textContent = selected.size ? `Hapus terpilih (${selected.size})` : 'Hapus terpilih';
+  }
+
+  $('selAll').addEventListener('change', () => {
+    visibleItems().forEach(g => $('selAll').checked ? selected.add(g.id) : selected.delete(g.id));
+    renderGallery();
+  });
+
+  async function deletePhotos(ids){
+    const res = await api('delete', { ids });
+    content = res.content;
+    ids.forEach(id => selected.delete(id));
+    toast(`${res.deleted} foto dihapus` + (res.skipped ? `, ${res.skipped} dilewati karena dipakai di slider` : ''), res.skipped > 0);
+    renderGallery();
+  }
+
+  $('delSelected').addEventListener('click', async () => {
+    const ids = [...selected];
+    if (!confirm(`Hapus ${ids.length} foto dari gallery?`)) return;
+    $('delSelected').disabled = true;
+    try { await deletePhotos(ids); }
+    catch (err) { toast(err.message, true); updateSelection(); }
+  });
+
+  /* Edit dialog */
+  let editing = null;
+  function openEditor(g){
+    editing = g;
+    $('editImg').src = url(g.thumb);
+    $('editImg').alt = g.alt;
+    $('editAlt').value = g.alt;
+    $('editCat').innerHTML = '';
+    content.categories.forEach(c => $('editCat').add(new Option(c.label, c.id, false, c.id === g.cat)));
+    $('editor').showModal();
+    $('editAlt').select();
+  }
+  $('editClose').addEventListener('click', () => $('editor').close());
+  $('editCancel').addEventListener('click', () => $('editor').close());
+  $('editForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const alt = $('editAlt').value.trim(), cat = $('editCat').value;
+    if (alt === editing.alt && cat === editing.cat) return $('editor').close();
+    $('editSave').disabled = true;
+    try {
+      ({ content } = await api('update', { id: editing.id, alt, cat }));
+      $('editor').close();
+      toast('Perubahan disimpan');
+      renderGallery();
+    } catch (err) {
+      toast(err.message, true);
+    } finally {
+      $('editSave').disabled = false;
+    }
+  });
+
   function renderGallery(){
     const inSlider = new Set(content.slider.slides.map(s => s.src));
-    const items = content.gallery.filter(g => galleryFilter === 'all' || g.cat === galleryFilter);
+    const catLabel = Object.fromEntries(content.categories.map(c => [c.id, c.label]));
+    const items = visibleItems();
     const grid = $('grid');
     grid.innerHTML = '';
     items.forEach(g => {
       const card = document.createElement('div');
-      card.className = 'card';
+      card.className = 'card' + (selected.has(g.id) ? ' selected' : '');
+      const imgwrap = document.createElement('div');
+      imgwrap.className = 'imgwrap';
       const img = document.createElement('img');
       img.src = url(g.thumb); img.alt = g.alt; img.loading = 'lazy';
+      const box = document.createElement('input');
+      box.type = 'checkbox'; box.className = 'pickbox'; box.checked = selected.has(g.id);
+      box.setAttribute('aria-label', 'Pilih ' + g.alt);
+      box.addEventListener('change', () => {
+        box.checked ? selected.add(g.id) : selected.delete(g.id);
+        card.classList.toggle('selected', box.checked);
+        updateSelection();
+      });
+      // Clicking the photo toggles selection too — a bigger target than the box.
+      img.addEventListener('click', () => { box.checked = !box.checked; box.dispatchEvent(new Event('change')); });
+      img.style.cursor = 'pointer';
+      imgwrap.append(img, box);
       const meta = document.createElement('div');
       meta.className = 'meta';
       const alt = document.createElement('div');
@@ -356,19 +487,17 @@
         badge.className = 'badge'; badge.textContent = 'Dipakai di slider';
         meta.appendChild(badge);
       }
+      const cat = document.createElement('div');
+      cat.className = 'alt'; cat.textContent = catLabel[g.cat] || g.cat;
+      cat.style.fontFamily = "'IBM Plex Mono',monospace"; cat.style.fontSize = '.7rem';
+      if (cat.textContent !== g.alt) meta.appendChild(cat);
       const acts = document.createElement('div');
       acts.className = 'acts';
-      const sel = document.createElement('select');
-      sel.setAttribute('aria-label', 'Kategori');
-      content.categories.forEach(c => sel.add(new Option(c.label, c.id, false, c.id === g.cat)));
-      sel.addEventListener('change', async () => {
-        sel.disabled = true;
-        try {
-          ({ content } = await api('update', { id: g.id, cat: sel.value }));
-          toast('Kategori diubah');
-          renderGallery();
-        } catch (err) { toast(err.message, true); sel.value = g.cat; sel.disabled = false; }
-      });
+      const editBtn = document.createElement('button');
+      editBtn.type = 'button';
+      editBtn.className = 'btn btn-ghost btn-sm';
+      editBtn.textContent = 'Edit';
+      editBtn.addEventListener('click', () => openEditor(g));
       const delBtn = document.createElement('button');
       delBtn.type = 'button';
       delBtn.className = 'btn btn-danger btn-sm';
@@ -376,37 +505,53 @@
       delBtn.addEventListener('click', async () => {
         if (!confirm('Hapus foto ini dari gallery?')) return;
         delBtn.disabled = true;
-        try {
-          ({ content } = await api('delete', { id: g.id }));
-          toast('Foto dihapus');
-          renderGallery();
-        } catch (err) { toast(err.message, true); delBtn.disabled = false; }
+        try { await deletePhotos([g.id]); }
+        catch (err) { toast(err.message, true); delBtn.disabled = false; }
       });
-      acts.append(sel, delBtn);
+      acts.append(editBtn, delBtn);
       meta.appendChild(acts);
-      card.append(img, meta);
+      card.append(imgwrap, meta);
       grid.appendChild(card);
     });
     $('count').textContent = `${items.length} foto` + (galleryFilter === 'all' ? '' : ` di kategori ini (total ${content.gallery.length})`);
+    updateSelection();
   }
 
+  // Picked files accumulate, so more can be added from another folder before uploading.
   let pickedFiles = [];
   function setPicked(files){
-    pickedFiles = [...files].filter(f => f.type.startsWith('image/'));
-    $('picked').textContent = pickedFiles.length ? `${pickedFiles.length} foto dipilih` : '';
+    $('picked').querySelectorAll('img').forEach(img => URL.revokeObjectURL(img.src));
+    pickedFiles = files;
+    $('picked').innerHTML = '';
+    pickedFiles.forEach((file, i) => {
+      const fig = document.createElement('figure');
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file); img.alt = '';
+      const cap = document.createElement('figcaption');
+      cap.textContent = file.name; cap.title = file.name;
+      const rm = document.createElement('button');
+      rm.type = 'button'; rm.textContent = '×'; rm.setAttribute('aria-label', 'Batalkan ' + file.name);
+      rm.addEventListener('click', () => setPicked(pickedFiles.filter((_, j) => j !== i)));
+      fig.append(img, cap, rm);
+      $('picked').appendChild(fig);
+    });
     $('upBtn').disabled = !pickedFiles.length;
+    $('upBtn').textContent = pickedFiles.length ? `Upload ${pickedFiles.length} foto` : 'Upload';
+  }
+  function addPicked(files){
+    setPicked([...pickedFiles, ...[...files].filter(f => f.type.startsWith('image/'))]);
   }
   const drop = $('drop');
   drop.addEventListener('click', () => $('files').click());
   drop.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('files').click(); } });
   drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('over'); });
   drop.addEventListener('dragleave', () => drop.classList.remove('over'));
-  drop.addEventListener('drop', (e) => { e.preventDefault(); drop.classList.remove('over'); setPicked(e.dataTransfer.files); });
-  $('files').addEventListener('change', (e) => setPicked(e.target.files));
+  drop.addEventListener('drop', (e) => { e.preventDefault(); drop.classList.remove('over'); addPicked(e.dataTransfer.files); });
+  $('files').addEventListener('change', (e) => { addPicked(e.target.files); e.target.value = ''; });
 
   $('upBtn').addEventListener('click', async () => {
     const files = pickedFiles, cat = $('upCat').value, alt = $('upAlt').value.trim();
-    $('upBtn').disabled = true;
+    setPicked([]);
     const queue = $('queue');
     queue.innerHTML = '';
     let done = 0;
@@ -429,8 +574,6 @@
       }
     }
     toast(`${done} dari ${files.length} foto terupload`, done < files.length);
-    setPicked([]);
-    $('files').value = '';
     $('upAlt').value = '';
   });
 
