@@ -83,8 +83,8 @@
   .brand-text{display:flex;flex-direction:column;line-height:1.15;}
   .brand-text strong{font-family:'Fraunces',serif;font-size:0.95rem;color:#fff;letter-spacing:0.03em;}
   .brand-text span{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;color:var(--brass-400);text-transform:uppercase;}
-  header .brand-text{flex-direction:row;align-items:baseline;gap:0.3em;white-space:nowrap;}
-  header .brand-text span{font-family:'Fraunces',serif;font-size:0.95rem;letter-spacing:0.03em;color:#fff;text-transform:uppercase;}
+  header .brand-text,footer .brand-text{flex-direction:row;align-items:baseline;gap:0.3em;white-space:nowrap;}
+  header .brand-text span,footer .brand-text span{font-family:'Fraunces',serif;font-size:0.95rem;letter-spacing:0.03em;color:#fff;text-transform:uppercase;}
   .navlinks{display:flex;gap:34px;align-items:center;}
   .navlinks a{
     font-size:0.85rem;color:rgba(255,255,255,0.85);position:relative;padding:6px 0;
@@ -194,13 +194,14 @@
   .hero-inner{position:relative;z-index:2;max-width:640px;}
   .hero .eyebrow{color:var(--brass-400);}
   .hero h1{
-    font-size:clamp(2.6rem,5.6vw,4.2rem);
+    font-size:clamp(2.6rem,4.6vw,4.2rem);
     font-weight:600;
     color:#fff;
     margin:22px 0 6px;
     line-height:1.04;
     perspective:800px;
   }
+  @media(min-width:721px){.hero h1 .h1-line{white-space:nowrap;}}
   .hero h1 .w{
     display:inline-block;
     opacity:0;
