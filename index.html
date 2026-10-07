@@ -704,22 +704,27 @@
     </div>
 
     <div class="contact-grid">
-      <div class="reveal">
+      <form class="reveal contact-form" id="contactForm" novalidate>
         <p class="eyebrow">Let's get in touch</p>
         <div class="form-field" style="margin-top:24px;">
           <label for="f-name">Name</label>
-          <input id="f-name" type="text" placeholder="Nama Anda">
+          <input id="f-name" name="name" type="text" placeholder="Nama Anda" maxlength="100" autocomplete="name" required>
         </div>
         <div class="form-field">
           <label for="f-email">Email</label>
-          <input id="f-email" type="email" placeholder="nama@email.com">
+          <input id="f-email" name="email" type="email" placeholder="nama@email.com" maxlength="200" autocomplete="email" required>
         </div>
         <div class="form-field">
           <label for="f-msg">Message</label>
-          <textarea id="f-msg" placeholder="Tulis pesan Anda..."></textarea>
+          <textarea id="f-msg" name="message" placeholder="Tulis pesan Anda..." maxlength="5000" required></textarea>
         </div>
-        <button class="btn" type="button" onclick="alert('Ini mockup tampilan — form belum terhubung ke server.')">Send</button>
-      </div>
+        <div class="form-hp" aria-hidden="true">
+          <label for="f-website">Website</label>
+          <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="btn" type="submit">Send</button>
+        <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+      </form>
 
       <div class="reveal map-frame">
         <svg viewBox="0 0 400 340" width="100%" height="100%">
@@ -1031,6 +1036,43 @@
     const dx = e.changedTouches[0].clientX - lbTouchX;
     if (Math.abs(dx) > 50) lbShow(lbIndex + (dx < 0 ? 1 : -1));
     lbTouchX = null;
+  });
+
+  // Contact form -> /api/contact (emails info@prasastiindonesia.com)
+  const contactForm = document.getElementById('contactForm');
+  const contactStatus = document.getElementById('contactStatus');
+  function contactSay(text, kind) {
+    contactStatus.textContent = text;
+    contactStatus.className = 'form-status' + (kind ? ' is-' + kind : '');
+  }
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(contactForm));
+    data.name = data.name.trim(); data.email = data.email.trim(); data.message = data.message.trim();
+    if (!data.name || !data.email || !data.message) return contactSay('Mohon isi nama, email, dan pesan.', 'error');
+    if (!contactForm.elements.email.checkValidity()) return contactSay('Alamat email tidak valid.', 'error');
+
+    const btn = contactForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    contactSay('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(out.error || 'Pesan gagal terkirim.');
+      contactForm.reset();
+      contactSay('Terima kasih! Pesan Anda sudah terkirim, tim kami akan segera menghubungi Anda.', 'ok');
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'contact_form' });
+    } catch (err) {
+      contactSay(err.message === 'Failed to fetch' ? 'Koneksi bermasalah, silakan coba lagi.' : err.message, 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+    }
   });
 
   // Scroll reveal

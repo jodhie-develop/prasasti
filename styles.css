@@ -405,6 +405,11 @@
   }
   .form-field input:focus, .form-field textarea:focus{outline:none;border-color:var(--brass-500);}
   .form-field textarea{resize:vertical;min-height:100px;}
+  .form-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .contact-form .btn:disabled{opacity:0.6;cursor:wait;transform:none;box-shadow:none;}
+  .form-status{margin-top:16px;font-size:0.9rem;min-height:1.4em;color:var(--ink-600);}
+  .form-status.is-ok{color:#1f7a4d;}
+  .form-status.is-error{color:#b3261e;}
   .map-frame{
     border-radius:4px;overflow:hidden;position:relative;height:100%;min-height:340px;
     background:var(--navy-900);
